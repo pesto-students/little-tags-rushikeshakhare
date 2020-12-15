@@ -8,11 +8,9 @@
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
-  "icons": [
-    {
-      "src": "./logo.svg",
-      "sizes": "512x512",
-      "type": "image/svg"
-    }
-  ]
+  "icons": [{
+    "src": "./logo.svg",
+    "sizes": "512x512",
+    "type": "image/svg"
+  }]
 }
