@@ -6,7 +6,9 @@ import iconPaymentVisa from '../../assets/images/visa_inverse.svg'
 import iconPaymentAmazon from '../../assets/images/amazon_inverse.svg'
 import './Footer.scss';
 
-export default function Footer() {
+interface IFooterProps {}
+
+export const Footer = (props: IFooterProps) => {
     return (
         <div className="footer-container">
             <div className="content">

@@ -6,6 +6,10 @@ Pesto Tech is proudly launching its own Online Clothing Store named **Little Tag
 
 https://cocky-pare-43b620.netlify.app/
 
+# Testbed Link for Viewing & Testing Components In The Browser
+
+https://cocky-pare-43b620.netlify.app/#/testbed
+
 # MVP Requirement
 
 1. Show Login/Signup popup to user when he/she lands on the site for first time.
