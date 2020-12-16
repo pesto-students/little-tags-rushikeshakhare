@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-export default function Footer() {
-    return (
-        <div></div>
-    )
-}
+interface IFooterProps {}
+
+export const Footer = (props: IFooterProps) => {
+  return <div></div>;
+};
