@@ -1,0 +1,118 @@
+@import '../../assets/scss/colors.scss';
+@import '../../assets/scss/mixins.scss';
+
+.menu {
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+    animation-name: animateMenu;
+    animation-duration: 300ms;
+    animation-iteration-count: initial;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 5px 0 10px 0 rgb(185, 185, 185);
+
+    .list {
+        list-style-type: none;
+
+        .list-item {
+            padding: 10px;
+            padding-left: 25px;
+            width: 100%;
+            text-align: left;
+            transition-duration: 100ms;
+        }
+
+        .list-item:hover {
+            background-color: black;
+            color: white;
+        }
+    }
+
+    &-separator {
+        padding: 15px 25px;
+    }
+
+    &-title {
+        padding: 25px;
+        align-items: center;
+
+        &-text {
+            flex: 1;
+        }
+
+        &-action {
+            button {
+                padding: 5px 10px;
+
+                img {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+    }
+
+    &-categories {
+        &-title {
+            margin-bottom: 10px;
+            padding: 25px;
+            padding-bottom: 0;
+        }
+
+    }
+
+    &-user {
+        background-color: black;
+        color: white;
+        padding: 13px 20px;
+        align-items: center;
+
+        &-icon {
+            img {
+                width: 25px;
+                height: 25px;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    &-logout {
+        padding: 25px;
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - 50px);
+
+        &-btn {
+            background-color: #ebebeb;
+            width: 100%;
+            padding: 13px;
+            border-radius: 5px;
+
+        }
+    }
+}
+
+@keyframes animateMenu {
+    0% {
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .menu {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .menu {
+        width: 24%;
+    }
+}
