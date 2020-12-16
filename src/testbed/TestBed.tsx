@@ -11,6 +11,7 @@ export const TestBed = () => {
   const getFixture = (): any => {
     if (currentKey === "Login") return fixtures.Login;
     if (currentKey === "Menu") return fixtures.Menu;
+    if (currentKey === "Header") return fixtures.Header;
     return null;
   };
 
