@@ -1,0 +1,62 @@
+.nav-header {
+    
+    height: 70px;
+
+    .hamburger-toggle-btn {
+        height: 44px;
+        padding-top: 11px;
+        margin-left: 3%;
+        margin-right: 24px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .logo-container {
+        width: auto;
+        font-size: 37px;
+        font-weight: 300;
+        line-height: 44px;
+        margin-top: 11px;
+    }
+    .search-bar-container {
+        width: 44%;
+        padding: 0px 13px;
+        padding-top: 11px;
+
+        .search-bar {
+            border: solid 1px;
+            height: 44px;
+            font-weight: 300;
+            line-height: 44px;
+            padding: 0 12px;
+        }
+    }
+
+    .user-data {
+        margin-right: 3%;
+        margin-top: 11px;
+
+        img {
+            height: 44px;
+        }
+        .user-text {
+            line-height: 44px;
+            padding-left: 6px;
+            font-weight: 300;
+            font-size: 18px;
+        }
+    }
+
+    .cart-btn-container {
+        width: 44px;
+        height: 44px;
+        margin-right: 3%;
+        margin-top: 11px;
+
+        img {
+            height: 100%;
+        }
+    }
+}
