@@ -4,8 +4,13 @@ import iconUserAvatar from '../../assets/images/user-avatar.svg';
 import iconCartBlack from '../../assets/images/cart-black.svg';
 import './Header.scss';
 
+export enum HeaderType {
+    TANSPARENT,
+    WHITE
+}
+
 interface Props {
-    type: 'TANSPARENT' | 'WHITE'
+    type: HeaderType
 }
 
 export default class Header extends Component<Props, any> {
