@@ -18,6 +18,10 @@ export const TestBed = () => {
     if (currentKey === "Login")
       return <AllComponents.Login {...getFixture()} />;
     if (currentKey === "Menu") return <AllComponents.Menu {...getFixture()} />;
+    if (currentKey === "Header")
+      return <AllComponents.Header {...getFixture()} />;
+    if (currentKey === "Footer")
+      return <AllComponents.Footer {...getFixture()} />;
     return <></>;
   };
 

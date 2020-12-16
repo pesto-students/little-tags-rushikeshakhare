@@ -1,4 +1,5 @@
 export const getObjectWithTypesAsString = (propObj: any): string => {
+  if (!propObj) return "null";
   let finalObject = "{";
   Object.keys(propObj).forEach((key: string) => {
     if (Array.isArray(propObj[key])) {
