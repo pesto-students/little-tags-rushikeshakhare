@@ -16,7 +16,7 @@ export default class Header extends Component<Props, any> {
                 <div className="hamburger-toggle-btn left pointer">
                     <img src={iconMenu} /> 
                 </div>
-                <div className="logo-container left pointer">
+                <div className="logo-container left pointer text-left">
                     Little Tags
                 </div>
 
@@ -29,7 +29,7 @@ export default class Header extends Component<Props, any> {
                 </div>
 
 
-                <div className="search-bar-container item-center pointer">
+                <div className="search-bar-container item-center pointer text-left">
                     <div className="search-bar">
                         Search bar (remove border once done)
                     </div>
