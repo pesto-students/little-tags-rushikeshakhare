@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './Header.scss';
 import iconMenu from '../../assets/images/icons8-menu-48.svg';
 import iconUserAvatar from '../../assets/images/user-avatar.svg';
 import iconCartBlack from '../../assets/images/cart-black.svg';
+import './Header.scss';
 
 interface Props {
     type: 'TANSPARENT' | 'WHITE'
