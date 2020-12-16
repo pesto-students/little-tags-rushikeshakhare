@@ -58,11 +58,11 @@ export const Footer = (props: IFooterProps) => {
             <div className="payment-links">
                 <p>We accept:</p>
                 <ul>
-                    <li><img src={iconPaymentMastercard} /></li>
-                    <li><img src={iconPaymentJcb} /></li>
-                    <li><img src={iconPaymentPaypal} /></li>
-                    <li><img src={iconPaymentVisa} /></li>
-                    <li><img src={iconPaymentAmazon} /></li>
+                    <li><img alt="Master Card Payment" src={iconPaymentMastercard} /></li>
+                    <li><img alt="JCB Payment" src={iconPaymentJcb} /></li>
+                    <li><img alt="Paypal Payment" src={iconPaymentPaypal} /></li>
+                    <li><img alt="Visa Payment" src={iconPaymentVisa} /></li>
+                    <li><img alt="Amazon Payment" src={iconPaymentAmazon} /></li>
                 </ul>
             </div>
             <div className="copyrights">
