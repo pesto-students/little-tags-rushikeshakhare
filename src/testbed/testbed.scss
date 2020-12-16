@@ -1,0 +1,30 @@
+.testbed {
+    .component-selection {
+        padding: 20px;
+        background-color: black;
+        color: white;
+        margin: 10px;
+    }
+
+    .testbed-component-info {
+        padding: 20px;
+    }
+
+    &-menu {
+        padding: 20px;
+        height: 80vh;
+        background-color: white;
+        z-index: 9999;
+
+        ul {
+            list-style-type: none;
+
+            li {
+                padding: 20px;
+                padding-left: 0;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
