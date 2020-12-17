@@ -3,6 +3,7 @@ import Menu from "./Menu";
 import Header from "./Header";
 import Footer from "./Footer";
 import Hero from "./Hero";
+import CategoryCard from "./CategoryCard";
 import ProductCard from "./ProductCard";
 
 const allFixtues = {
@@ -11,7 +12,8 @@ const allFixtues = {
   Header,
   Footer,
   Hero,
-  ProductCard
+  CategoryCard,
+  ProductCard,
 };
 
 export default allFixtues;

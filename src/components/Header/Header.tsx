@@ -14,21 +14,40 @@ export enum HeaderType {
 
 interface IHeaderProps {
   type: HeaderType;
+  onMenuButtonClick: () => void;
 }
 
-export const Header = (props: IHeaderProps) => {
+export const Header = ({ onMenuButtonClick, type }: IHeaderProps) => {
   return (
-    <div className={`nav-header fixed ${props.type === HeaderType.BLACK ? 'theme-black' : 'theme-white'}`}>
-      <div className="hamburger-toggle-btn left pointer">
-        <img src={props.type === HeaderType.BLACK ? iconMenu : iconMenuWhite} alt="Menu Icon" />
-      </div>
+    <div
+      className={`nav-header fixed ${
+        type === HeaderType.BLACK ? "theme-black" : "theme-white"
+      }`}
+    >
+      <button
+        type="button"
+        className="btn hamburger-toggle-btn left pointer"
+        onClick={onMenuButtonClick}
+      >
+        <img
+          src={type === HeaderType.BLACK ? iconMenu : iconMenuWhite}
+          alt="Menu Icon"
+        />
+      </button>
+
       <div className="logo-container left pointer text-left">Little Tags</div>
 
       <div className="cart-btn-container right pointer">
-        <img src={props.type === HeaderType.BLACK ? iconCartBlack : iconCartBlackWhite} alt="Cart Icon" />
+        <img
+          src={type === HeaderType.BLACK ? iconCartBlack : iconCartBlackWhite}
+          alt="Cart Icon"
+        />
       </div>
       <div className="user-data right">
-        <img src={props.type === HeaderType.BLACK ? iconUserAvatar : iconUserAvatarWhite} alt="User Avatar Icon" />
+        <img
+          src={type === HeaderType.BLACK ? iconUserAvatar : iconUserAvatarWhite}
+          alt="User Avatar Icon"
+        />
         <div className="user-text right">Ashim Raj Konwar</div>
       </div>
 
