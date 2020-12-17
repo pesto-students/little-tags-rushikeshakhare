@@ -15,9 +15,10 @@ export enum HeaderType {
 interface IHeaderProps {
   type: HeaderType;
   onMenuButtonClick: () => void;
+  isAuthenticated: boolean;
 }
 
-export const Header = ({ onMenuButtonClick, type }: IHeaderProps) => {
+export const Header = ({ onMenuButtonClick, type, isAuthenticated }: IHeaderProps) => {
   return (
     <div
       className={`nav-header fixed ${
@@ -43,13 +44,24 @@ export const Header = ({ onMenuButtonClick, type }: IHeaderProps) => {
           alt="Cart Icon"
         />
       </div>
-      <div className="user-data right">
-        <img
-          src={type === HeaderType.BLACK ? iconUserAvatar : iconUserAvatarWhite}
-          alt="User Avatar Icon"
-        />
-        <div className="user-text right">Ashim Raj Konwar</div>
-      </div>
+      
+      {
+        isAuthenticated === true &&
+        <div className="user-data right">
+            <img
+            src={type === HeaderType.BLACK ? iconUserAvatar : iconUserAvatarWhite}
+            alt="User Avatar Icon"
+            />
+            <div className="user-text right">Ashim Raj Konwar</div>
+        </div>
+      }
+
+      {
+          isAuthenticated === false &&
+          <div className="user-auth-button right">
+            <a href="#" onClick={(e) => { e.preventDefault(); }} className="user-text right">Login / Signup</a>
+          </div>
+      }
 
       <div className="search-bar-container item-center pointer text-left">
         <div className="search-bar">Search bar (remove border once done)</div>
