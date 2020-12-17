@@ -15,7 +15,7 @@ interface IHeaderProps {
 
 export const Header = (props: IHeaderProps) => {
   return (
-    <div className="nav-header">
+    <div className="nav-header fixed">
       <div className="hamburger-toggle-btn left pointer">
         <img src={iconMenu} alt="Menu Icon" />
       </div>
