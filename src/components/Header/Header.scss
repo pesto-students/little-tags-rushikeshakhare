@@ -4,6 +4,7 @@
     width: 100%;
     top: 0;
     left: 0;
+    z-index: 100;
 
     .hamburger-toggle-btn {
         height: 44px;
@@ -62,4 +63,14 @@
             height: 100%;
         }
     }
+}
+
+.theme-white {
+    border-color: #fff;
+    color: #fff;
+}
+
+.theme-black {
+    border-color: #000;
+    color: #000;
 }
