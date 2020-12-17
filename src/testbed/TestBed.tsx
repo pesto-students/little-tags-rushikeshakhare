@@ -12,6 +12,7 @@ export const TestBed = () => {
     if (currentKey === "Login") return fixtures.Login;
     if (currentKey === "Menu") return fixtures.Menu;
     if (currentKey === "Header") return fixtures.Header;
+    if (currentKey === "Hero") return fixtures.Hero;
     return null;
   };
 
@@ -23,6 +24,8 @@ export const TestBed = () => {
       return <AllComponents.Header {...getFixture()} />;
     if (currentKey === "Footer")
       return <AllComponents.Footer {...getFixture()} />;
+    if (currentKey === "Hero")
+      return <AllComponents.Hero {...getFixture()} />;
     return <></>;
   };
 

@@ -1,0 +1,52 @@
+.hero {
+    width: 100%;
+    height: 100vh;
+    
+
+    &-background {
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: brightness(50%);
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+
+    &-content {
+        padding-top: 20%;
+        color: #fff;
+        filter: brightness(100%);
+
+        &-heading {
+            font-size: 70px;
+            font-weight: 300;
+        }
+
+        &-subheading {
+            font-size: 37px;
+            font-weight: 300;
+
+            &::before {
+                content: "";
+                width: 270px;
+                height: 2px;
+                background-color: #fff;
+                position: absolute;
+                margin-left: -290px;
+                margin-top: 21px;
+            }
+
+            &::after {
+                content: "";
+                width: 270px;
+                height: 2px;
+                background-color: #fff;
+                position: absolute;
+                margin-left: 17px;
+                margin-top: 21px;
+            }
+        }
+    }
+}
