@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import Hero from "./Hero";
 import CategoryCard from "./CategoryCard";
 import ProductCard from "./ProductCard";
+import Search from "./Search";
 
 const allFixtues = {
   Login,
@@ -14,6 +15,7 @@ const allFixtues = {
   Hero,
   CategoryCard,
   ProductCard,
+  Search,
 };
 
 export default allFixtues;
