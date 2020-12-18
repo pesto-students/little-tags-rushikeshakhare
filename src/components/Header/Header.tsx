@@ -1,10 +1,14 @@
-import React from "react";
+import * as React from "react";
+import { useState } from "react";
 import iconMenu from "../../assets/images/icons8-menu-48.svg";
 import iconMenuWhite from "../../assets/images/icons8-menu-48-white.svg";
 import iconUserAvatar from "../../assets/images/user-avatar.svg";
 import iconUserAvatarWhite from "../../assets/images/user-avatar-white.svg";
 import iconCartBlack from "../../assets/images/cart-black.svg";
 import iconCartBlackWhite from "../../assets/images/cart-white.svg";
+import { debounce } from "../../utilities";
+import { getData } from "../../mockData";
+import { Search } from "../../components";
 import "./Header.scss";
 
 export enum HeaderType {
@@ -25,6 +29,39 @@ export const Header = ({
   isAuthenticated,
   onLoginClick,
 }: IHeaderProps) => {
+  const [searchResults, setSearchResults]: any = useState(null);
+
+  const onSearchQueryChange = (event: any) => {
+    const newSearchQuery = event.target.value;
+    setSearchResults(!newSearchQuery ? [] : searchResults);
+    initiateFetchSearchQueryResults(newSearchQuery);
+  };
+
+  const getResultsBySearchQuery = (
+    searchQuery: string,
+    successCb: any,
+    failureCb: any
+  ) => {
+    getData(searchQuery).then(successCb).catch(failureCb);
+  };
+
+  const onFetchSearchResultsSuccess = (newSearchResults: any[]) => {
+    setSearchResults(newSearchResults);
+  };
+
+  const onFetchSearchResultsError = (error: any) => console.log(error);
+
+  const initiateFetchSearchQueryResults = debounce((searchQuery: string) => {
+    if (searchQuery) {
+      setSearchResults([]);
+      getResultsBySearchQuery(
+        searchQuery,
+        onFetchSearchResultsSuccess,
+        onFetchSearchResultsError
+      );
+    }
+  }, 500);
+
   return (
     <div
       className={`nav-header fixed ${
@@ -78,7 +115,12 @@ export const Header = ({
       )}
 
       <div className="search-bar-container item-center pointer text-left">
-        <div className="search-bar">Search bar (remove border once done)</div>
+        <div className="search-bar">
+          <Search
+            onSearch={onSearchQueryChange}
+            searchResults={searchResults}
+          />
+        </div>
       </div>
     </div>
   );
