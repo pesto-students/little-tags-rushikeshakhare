@@ -82,11 +82,20 @@
             height: 100%;
         }
     }
+
+    .login-btn {
+        font-size: 30px;
+        background-color: transparent;
+        margin-top: 5px;
+    }
 }
 
 .theme-white {
     border-color: #fff;
-    color: #fff;
+
+    * {
+        color: #fff;
+    }
 }
 
 .theme-black {

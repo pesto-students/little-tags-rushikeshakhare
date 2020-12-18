@@ -9,6 +9,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
+
+
 
     &-card {
         width: 300px;
@@ -17,6 +20,19 @@
         border-radius: 5px;
         padding: 40px;
         box-shadow: 1px 1px 10px 0 rgba(255, 255, 255, 0.5);
+
+        &-close {
+            position: relative;
+
+            img {
+                width: 20px;
+                height: 20px;
+                float: right;
+                position: absolute;
+                right: -20px;
+                top: -20px;
+            }
+        }
 
         &-title,
         &-subtitle {

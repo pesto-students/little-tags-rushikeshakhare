@@ -1,6 +1,13 @@
 import * as React from "react";
 import { Component } from "react";
-import { Header, HeaderType, Hero, Footer, Menu } from "../../components";
+import {
+  Header,
+  HeaderType,
+  Hero,
+  Footer,
+  Menu,
+  Login,
+} from "../../components";
 import { categories, userMenuOptions } from "../../mockData";
 import { Categories } from "./Categories";
 import { throttle } from "../../utilities";
@@ -10,6 +17,7 @@ export class Home extends Component<any, any> {
   state = {
     headerType: HeaderType.WHITE,
     showMenu: false,
+    showLogin: false,
   };
 
   onContainerScroll = (e: any) => {
@@ -30,8 +38,15 @@ export class Home extends Component<any, any> {
 
   onMenuItemClick = () => {};
 
+  onLoginClick = () =>
+    this.setState(() => ({ showLogin: !this.state.showLogin }));
+
+  onFacebookAccountClick = () => {};
+
+  onGoogleAccountClick = () => {};
+
   render(): JSX.Element {
-    const { showMenu } = this.state;
+    const { showMenu, showLogin } = this.state;
     return (
       <div
         className="home-screen"
@@ -49,10 +64,19 @@ export class Home extends Component<any, any> {
           />
         )}
 
+        {showLogin && (
+          <Login
+            onFacebookAccountClick={this.onFacebookAccountClick}
+            onGoogleAccountClick={this.onGoogleAccountClick}
+            onClose={this.onLoginClick}
+          />
+        )}
+
         <Header
           type={this.state.headerType}
           onMenuButtonClick={this.toggleMenu}
           isAuthenticated={false}
+          onLoginClick={this.onLoginClick}
         />
         <Hero />
         <Categories />
