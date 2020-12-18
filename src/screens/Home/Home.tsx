@@ -52,6 +52,7 @@ export class Home extends Component<any, any> {
         <Header
           type={this.state.headerType}
           onMenuButtonClick={this.toggleMenu}
+          isAuthenticated={false}
         />
         <Hero />
         <Categories />
