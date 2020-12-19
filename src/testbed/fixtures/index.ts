@@ -21,7 +21,7 @@ const allFixtues = {
   ProductCard,
   Search,
   ImageCarousel,
-  ItemQuantity
+  ItemQuantity,
   RadioCard,
   RadioInput,
 };
