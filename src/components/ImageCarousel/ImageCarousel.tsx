@@ -10,7 +10,7 @@ interface IImageCarousel {
     width: number;      // width in pixels
     height: number;     // Height in pixels
 }
-export const ImageCarousel = (props: IImageCarousel) => {
+export const ImageCarousel = ({ images, width, height }: IImageCarousel) => {
 
     const [state, setState] = useState({ activeIndex: 0, translate: 0, transition: 0.45 });
     const { activeIndex, translate, transition } = state;
@@ -19,33 +19,33 @@ export const ImageCarousel = (props: IImageCarousel) => {
         
         let newIndex: number = activeIndex + 1;
 
-        if (activeIndex === props.images.length - 1) 
+        if (activeIndex === images.length - 1) 
             newIndex = 0;
         
         setState({
             ...state,
             activeIndex: newIndex,
-            translate: newIndex * props.width
+            translate: newIndex * width
         });
 
     }
 
     return (
-        <div className="carousel" style={{ width: `${props.width}px`, height: `${props.height}px` }}>
+        <div className="carousel" style={{ width: `${width}px`, height: `${height}px` }}>
             <CarouselContent
                 translate={translate}
                 transition={transition}
-                width={props.width * props.images.length}
+                width={width * images.length}
             >
-                {props.images.map((image, index) => (
-                    <CarouselItem key={image} content={image} />
+                {images.map((image, index) => (
+                    <CarouselItem key={`${index}-${image}`} content={image} />
                 ))}   
 
             </CarouselContent>
 
             <CarouselNavigation handleClick={next} />
 
-            <CarouselIndicators images={props.images} activeIndex={activeIndex} />
+            <CarouselIndicators images={images} activeIndex={activeIndex} />
 
         </div>
     )

@@ -6,16 +6,16 @@ interface ICarouselContent {
     width: number;
     children: ReactNode;
 }
-export const CarouselContent = (props: ICarouselContent) => {
+export const CarouselContent = ({ translate, transition, width, children }: ICarouselContent) => {
     return (
 
         <div className="carousel-frame">
             <div className="carousel-content"
-                style={{transform: `translateX(-${props.translate}px)`,
-                        transition: `transform ease-out ${props.transition}s`,
-                        width: `${props.width}px`}}
+                style={{transform: `translateX(-${translate}px)`,
+                        transition: `transform ease-out ${transition}s`,
+                        width: `${width}px`}}
             >
-                { props.children }
+                { children }
             </div>
         </div>
         

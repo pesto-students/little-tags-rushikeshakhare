@@ -5,10 +5,10 @@ interface ICarouselNavigation {
     handleClick: () => void;
 }
 
-export const CarouselNavigation = (props: ICarouselNavigation) => {
+export const CarouselNavigation = ({ handleClick }: ICarouselNavigation) => {
 
     return (
-        <button onClick={props.handleClick} className="carousel-next-btn btn-flat">
+        <button onClick={handleClick} className="carousel-next-btn btn-flat">
             <img src={arrowRight} />
         </button>
     )

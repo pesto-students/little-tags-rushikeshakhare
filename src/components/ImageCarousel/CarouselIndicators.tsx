@@ -6,11 +6,11 @@ interface ICarouselIndicators {
     activeIndex: number;
 }
 
-export const CarouselIndicators = (props: ICarouselIndicators) => (
+export const CarouselIndicators = ({ images, activeIndex }: ICarouselIndicators) => (
     <div className="carousel-indicators">
         {
-            props.images.map((image, index) => (
-                <CarouselIndicator key={`navigator-${image}`} active={index === props.activeIndex} />
+            images.map((image, index) => (
+                <CarouselIndicator key={`navigator-${image}`} active={index === activeIndex} />
             ))
         }
     </div>

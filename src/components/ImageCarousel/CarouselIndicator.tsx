@@ -4,9 +4,9 @@ interface ICarouselIndicator {
     active: boolean
 }
 
-export const CarouselIndicator = (props: ICarouselIndicator) => {
+export const CarouselIndicator = ({ active }: ICarouselIndicator) => {
     return (
-        <span className={`carousel-indicators-item pointer ${props.active ? 'active' : ''}`} />
+        <span className={`carousel-indicators-item pointer ${active ? 'active' : ''}`} />
             
     )
 }
