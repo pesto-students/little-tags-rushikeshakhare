@@ -76,3 +76,11 @@
 .fixed {
     position: fixed;
 }
+
+.btn-flat {
+    border: none;
+    
+    &:focus {
+        outline: none;
+    }
+}
