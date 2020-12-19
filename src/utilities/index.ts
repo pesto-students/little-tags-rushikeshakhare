@@ -9,3 +9,13 @@ export function throttle(fn: any, timeInMs: number) {
     }, timeInMs);
   };
 }
+
+export function debounce(fn: any, timeInMs: number) {
+  let timeout: any;
+  return (...args: any[]) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(function (this: any) {
+      fn.apply(this, args);
+    }, timeInMs);
+  };
+}
