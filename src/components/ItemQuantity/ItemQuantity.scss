@@ -1,0 +1,32 @@
+.quantity {
+    width: 124px;
+    border: solid 2px #424242;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 7px;
+    overflow: hidden;
+    font-size: 14px;
+
+    &-btn {
+        height: 34px;
+        width: 34px;
+        background-color: #fff;
+
+        &.left {
+            border-right: solid 2px #707070;
+        }
+
+        &.right {
+            border-left: solid 2px #707070;
+        }
+
+        img {
+            height: 8px;
+        }
+    }
+
+    &-value {
+        width: 80px;
+        margin: auto;
+    }
+}

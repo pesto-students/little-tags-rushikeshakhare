@@ -6,6 +6,8 @@ import Hero from "./Hero";
 import CategoryCard from "./CategoryCard";
 import ProductCard from "./ProductCard";
 import Search from "./Search";
+import ImageCarousel from "./ImageCarousel";
+import ItemQuantity from "./ItemQuantity";
 import RadioCard from "./RadioCard";
 import RadioInput from "./RadioInput";
 
@@ -18,6 +20,8 @@ const allFixtues = {
   CategoryCard,
   ProductCard,
   Search,
+  ImageCarousel,
+  ItemQuantity,
   RadioCard,
   RadioInput,
 };
