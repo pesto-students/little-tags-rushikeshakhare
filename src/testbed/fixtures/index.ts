@@ -6,6 +6,8 @@ import Hero from "./Hero";
 import CategoryCard from "./CategoryCard";
 import ProductCard from "./ProductCard";
 import Search from "./Search";
+import RadioCard from "./RadioCard";
+import RadioInput from "./RadioInput";
 
 const allFixtues = {
   Login,
@@ -16,6 +18,8 @@ const allFixtues = {
   CategoryCard,
   ProductCard,
   Search,
+  RadioCard,
+  RadioInput,
 };
 
 export default allFixtues;

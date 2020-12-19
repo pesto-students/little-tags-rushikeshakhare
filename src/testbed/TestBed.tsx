@@ -16,6 +16,8 @@ export const TestBed = () => {
     if (currentKey === "CategoryCard") return fixtures.CategoryCard;
     if (currentKey === "ProductCard") return fixtures.ProductCard;
     if (currentKey === "Search") return fixtures.Search;
+    if (currentKey === "RadioCard") return fixtures.RadioCard;
+    if (currentKey === "RadioInput") return fixtures.RadioInput;
     return null;
   };
 
@@ -34,6 +36,10 @@ export const TestBed = () => {
       return <AllComponents.ProductCard {...getFixture()} />;
     if (currentKey === "Search")
       return <AllComponents.Search {...getFixture()} />;
+    if (currentKey === "RadioCard")
+      return <AllComponents.RadioCard {...getFixture()} />;
+    if (currentKey === "RadioInput")
+      return <AllComponents.RadioInput {...getFixture()} />;
     return <></>;
   };
 
