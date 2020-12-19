@@ -27,3 +27,5 @@ export const userMenuOptions = [
     value: "add-address",
   },
 ];
+
+export { getData } from "./searchData";
