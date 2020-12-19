@@ -6,6 +6,7 @@ import Hero from "./Hero";
 import CategoryCard from "./CategoryCard";
 import ProductCard from "./ProductCard";
 import Search from "./Search";
+import ItemQuantity from "./ItemQuantity";
 
 const allFixtues = {
   Login,
@@ -16,6 +17,7 @@ const allFixtues = {
   CategoryCard,
   ProductCard,
   Search,
+  ItemQuantity
 };
 
 export default allFixtues;
