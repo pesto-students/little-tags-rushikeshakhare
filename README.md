@@ -10,6 +10,10 @@ https://cocky-pare-43b620.netlify.app/
 
 https://cocky-pare-43b620.netlify.app/#/testbed
 
+# Additional Implementations
+
+Keyboard Accessibility
+
 # MVP Requirement
 
 1. Show Login/Signup popup to user when he/she lands on the site for first time.

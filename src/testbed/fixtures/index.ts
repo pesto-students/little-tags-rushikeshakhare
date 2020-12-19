@@ -8,6 +8,8 @@ import ProductCard from "./ProductCard";
 import Search from "./Search";
 import ImageCarousel from "./ImageCarousel";
 import ItemQuantity from "./ItemQuantity";
+import RadioCard from "./RadioCard";
+import RadioInput from "./RadioInput";
 
 const allFixtues = {
   Login,
@@ -20,6 +22,8 @@ const allFixtues = {
   Search,
   ImageCarousel,
   ItemQuantity
+  RadioCard,
+  RadioInput,
 };
 
 export default allFixtues;
