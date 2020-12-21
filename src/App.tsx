@@ -1,13 +1,14 @@
 import * as React from "react";
 import { TestBed } from "./testbed";
 import { HashRouter, Route } from "react-router-dom";
-import { Home } from "./screens";
+import { Home, ProductDetails } from "./screens";
 import "./App.scss";
 
 const App = (props: any): JSX.Element => {
   return (
     <HashRouter>
-      <Route path="/" exact component={Home} />
+      <Route path="/" exact component={ Home } />
+      <Route path="/product-details" exact component={ProductDetails} />
       <Route path="/testbed" exact component={TestBed} />
     </HashRouter>
   );

@@ -84,3 +84,7 @@
         outline: none;
     }
 }
+
+button[disabled].btn-flat {
+    cursor: not-allowed;
+}

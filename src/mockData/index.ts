@@ -28,4 +28,26 @@ export const userMenuOptions = [
   },
 ];
 
+export const sizeList = [
+  {
+    name: "XS",
+    disabled: false,
+  },
+  {
+    name: "S",
+    disabled: false,
+  },
+  {
+    name: "M",
+    disabled: false,
+  },
+  {
+    name: "L",
+    disabled: true,
+  },
+  {
+    name: "XL",
+    disabled: false,
+  }
+]
 export { getData } from "./searchData";
