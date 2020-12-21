@@ -1,0 +1,41 @@
+.pagination {
+    width: 820px;
+    height: 80px;
+    line-height: 80px;
+
+    &-nav {
+        button {
+            background-color: transparent;
+            font-weight: 300;
+            font-size: 18px;
+        }
+    }
+
+    &-list {
+        width: 100%;
+        margin: auto;
+        list-style: none;
+
+        li {
+            display: inline-flex;
+
+            button {
+                margin: 0 10px;
+                width: 34px;
+                height: 34px;
+                border: solid 1px #707070;
+                background: transparent;
+                color: #707070;
+                border-radius: 4px;
+            }
+            
+            button.selected {
+                background: #707070;
+                color: #fff;
+            }
+        }
+    }
+    
+
+
+}

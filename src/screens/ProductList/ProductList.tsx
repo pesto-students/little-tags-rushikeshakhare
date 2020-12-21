@@ -6,6 +6,7 @@ import {
     Header,
     Footer,
     ProductCard,
+    Pagination,
 } from '../../components';
 import { throttle } from "../../utilities";
 import { categories, userMenuOptions, allProducts } from "../../mockData";
@@ -44,6 +45,10 @@ export class ProductList extends Component<any, any> {
     onFacebookAccountClick = () => {};
 
     onGoogleAccountClick = () => {};
+
+    onPageSelected = (page: number) => {
+        console.log("======> Page selected", page)
+    }
 
     render(): JSX.Element {
         const { showMenu, showLogin } = this.state;
@@ -96,6 +101,10 @@ export class ProductList extends Component<any, any> {
                         }
                         
                     </div>
+                </div>
+
+                <div className="pagination-container">
+                    <Pagination totalPages={20} onPageSelected={this.onPageSelected} />
                 </div>
 
                 <Footer />
