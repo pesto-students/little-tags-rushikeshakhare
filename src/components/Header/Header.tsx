@@ -62,21 +62,38 @@ export const Header = ({
     }
   }, 500);
 
+  const getHeaderTheme = () => {
+    if (window.location.hash === "#/")
+      return type === HeaderType.BLACK ? "theme-black" : "theme-white";
+    else return "theme-black";
+  };
+
+  const getMenuIcon = () => {
+    if (window.location.hash === "#/")
+      return type === HeaderType.BLACK ? iconMenu : iconMenuWhite;
+    else return iconMenu;
+  };
+
+  const getUserIcon = () => {
+    if (window.location.hash === "#/")
+      return type === HeaderType.BLACK ? iconUserAvatar : iconUserAvatarWhite;
+    else return iconUserAvatar;
+  };
+
+  const getCartIcon = () => {
+    if (window.location.hash === "#/")
+      return type === HeaderType.BLACK ? iconCartBlack : iconCartBlackWhite;
+    else return iconCartBlack;
+  };
+
   return (
-    <div
-      className={`nav-header fixed ${
-        type === HeaderType.BLACK ? "theme-black" : "theme-white"
-      }`}
-    >
+    <div className={`nav-header fixed ${getHeaderTheme()}`}>
       <button
         type="button"
         className="btn hamburger-toggle-btn left pointer"
         onClick={onMenuButtonClick}
       >
-        <img
-          src={type === HeaderType.BLACK ? iconMenu : iconMenuWhite}
-          alt="Menu Icon"
-        />
+        <img src={getMenuIcon()} alt="Menu Icon" />
       </button>
 
       <div className="logo-container left pointer text-left">Little Tags</div>
@@ -84,20 +101,10 @@ export const Header = ({
       {isAuthenticated === true && (
         <>
           <div className="cart-btn-container right pointer">
-            <img
-              src={
-                type === HeaderType.BLACK ? iconCartBlack : iconCartBlackWhite
-              }
-              alt="Cart Icon"
-            />
+            <img src={getCartIcon()} alt="Cart Icon" />
           </div>
           <div className="user-data right">
-            <img
-              src={
-                type === HeaderType.BLACK ? iconUserAvatar : iconUserAvatarWhite
-              }
-              alt="User Avatar Icon"
-            />
+            <img src={getUserIcon()} alt="User Avatar Icon" />
             <div className="user-text right">Ashim Raj Konwar</div>
           </div>
         </>
