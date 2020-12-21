@@ -18,8 +18,8 @@ export const CategoryCard = ({
   background,
   title,
 }: ICategoryCardProps) => (
-  <div
-    className={`category-card ${size}`}
+  <button
+    className={`btn category-card ${size}`}
     style={{
       backgroundImage: `url(${background})`,
       backgroundSize: "cover",
@@ -28,5 +28,5 @@ export const CategoryCard = ({
     <div className="category-card-title d-flex">
       <h3>{title}</h3>
     </div>
-  </div>
+  </button>
 );
