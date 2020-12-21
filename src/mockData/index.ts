@@ -1,3 +1,9 @@
+import imgProduct1 from "../assets/images/product-4.jpg";
+import imgProduct2 from "../assets/images/product-1.jpg";
+import imgProduct3 from "../assets/images/product-2.jpg";
+import imgProduct4 from "../assets/images/product-3.jpg";
+import imgProduct5 from "../assets/images/product-5.jpg";
+
 export const categories = [
   {
     label: "Accessories",
@@ -27,6 +33,57 @@ export const userMenuOptions = [
     value: "add-address",
   },
 ];
+
+export const sizeList = [
+  {
+    name: "XS",
+    disabled: false,
+  },
+  {
+    name: "S",
+    disabled: false,
+  },
+  {
+    name: "M",
+    disabled: false,
+  },
+  {
+    name: "L",
+    disabled: true,
+  },
+  {
+    name: "XL",
+    disabled: false,
+  }
+]
+
+export const allProducts = [
+  {
+    name: "Faux Leather Jacket",
+    price: "1200.00",
+    image: imgProduct1,
+  },
+  {
+    name: "Red BN Cap",
+    price: "400.00",
+    image: imgProduct2,
+  },
+  {
+    name: "Hello Worl",
+    price: "4000.00",
+    image: imgProduct3,
+  },
+  {
+    name: "Poorani Jeans",
+    price: "500.00",
+    image: imgProduct4,
+  },
+  {
+    name: "T-Shirt",
+    price: "800.00",
+    image: imgProduct5,
+  }
+]
 
 export { getData } from "./searchData";
 const states = [

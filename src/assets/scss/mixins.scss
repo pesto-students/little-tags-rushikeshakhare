@@ -87,8 +87,13 @@
 
 .btn-flat {
     border: none;
+    cursor: pointer;
 
     &:focus {
         outline: none;
     }
+}
+
+button[disabled].btn-flat {
+    cursor: not-allowed;
 }
