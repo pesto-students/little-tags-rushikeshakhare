@@ -10,6 +10,7 @@ import ImageCarousel from "./ImageCarousel";
 import ItemQuantity from "./ItemQuantity";
 import RadioCard from "./RadioCard";
 import RadioInput from "./RadioInput";
+import Pagination from "./Pagination";
 
 const allFixtues = {
   Login,
@@ -24,6 +25,7 @@ const allFixtues = {
   ItemQuantity,
   RadioCard,
   RadioInput,
+  Pagination,
 };
 
 export default allFixtues;
