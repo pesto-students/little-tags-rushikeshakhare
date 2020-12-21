@@ -3,11 +3,15 @@ import { Hero } from "../../components";
 import { Categories } from "./Categories";
 import "./home.scss";
 
-export const Home = () => {
+interface IHomeProps {
+  history: any;
+}
+
+export const Home = ({ history }: IHomeProps) => {
   return (
     <>
       <Hero />
-      <Categories />
+      <Categories navigateToCategory={history.push} />
     </>
   );
 };
