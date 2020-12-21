@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { range } from '../../utilities/index';
 import './Pagination.scss';
 
 interface IPagination {
@@ -14,10 +15,6 @@ export const Pagination = ({ totalPages, onPageSelected, navigationSize = 5 }: I
     const handleNavigation = (delta: number) => {
         if (offset + delta < 0 || offset + navigationSize + delta > totalPages) return;
         setOffset(offset + delta);
-    }
-
-    const range = (limit: number) => {
-        return [...Array.from(Array(limit).keys())];
     }
 
     const handlePageSelect = (page: number) => {

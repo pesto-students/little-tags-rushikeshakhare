@@ -19,3 +19,7 @@ export function debounce(fn: any, timeInMs: number) {
     }, timeInMs);
   };
 }
+
+export function range(limit: number) {
+  return [...Array.from(Array(limit).keys())];
+}
