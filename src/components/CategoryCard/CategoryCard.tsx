@@ -11,22 +11,25 @@ interface ICategoryCardProps {
   size: CategoryCardSizes;
   background: any;
   title: string;
+  onClick?: any;
 }
 
 export const CategoryCard = ({
   size,
   background,
   title,
+  onClick,
 }: ICategoryCardProps) => (
-  <div
-    className={`category-card ${size}`}
+  <button
+    className={`btn category-card ${size}`}
     style={{
       backgroundImage: `url(${background})`,
       backgroundSize: "cover",
     }}
+    onClick={() => onClick && onClick("/product-list")}
   >
     <div className="category-card-title d-flex">
       <h3>{title}</h3>
     </div>
-  </div>
+  </button>
 );

@@ -37,10 +37,18 @@
     align-items: center;
 }
 
+.input-label {
+    font-size: 15px;
+    color: grey;
+    margin-bottom: 5px;
+    display: block;
+}
+
 .input-control {
     padding: 10px;
     width: 100%;
     border-radius: 5px;
+    border: 1px solid grey;
 }
 
 .gap-5 {
@@ -80,7 +88,7 @@
 .btn-flat {
     border: none;
     cursor: pointer;
-    
+
     &:focus {
         outline: none;
     }

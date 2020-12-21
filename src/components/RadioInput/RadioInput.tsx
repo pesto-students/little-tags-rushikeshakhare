@@ -4,7 +4,7 @@ import "./radioInput.scss";
 
 interface IRadioInputProps {
   label: any;
-  checked: boolean;
+  checked?: boolean;
   value: string;
   onClick?: any;
 }
@@ -20,7 +20,7 @@ export const RadioInput = ({
       className="btn radio-input d-flex"
       onClick={() => onClick && onClick(value)}
     >
-      <RadioInputIcon checked={checked} />
+      <RadioInputIcon checked={!!checked} />
       <div className="radio-input-label">{label}</div>
     </button>
   );

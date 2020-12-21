@@ -4,7 +4,7 @@ import "./radioCard.scss";
 
 interface IRadioInputProps {
   label: JSX.Element;
-  checked: boolean;
+  checked?: boolean;
   value: string;
   onClick?: any;
 }
@@ -17,10 +17,10 @@ export const RadioCard = ({
 }: IRadioInputProps) => {
   return (
     <button
-      className="btn radio-card"
+      className="btn radio-card d-flex"
       onClick={() => onClick && onClick(value)}
     >
-      <RadioInputIcon checked={checked} />
+      <RadioInputIcon checked={!!checked} />
       <div className="radio-card-label">{label}</div>
     </button>
   );
