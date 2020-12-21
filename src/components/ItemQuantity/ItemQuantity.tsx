@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import iconMinus from '../../assets/images/minus-solid.svg'
 import iconPlus from '../../assets/images/plus-solid.svg';
 import './ItemQuantity.scss';
@@ -10,11 +10,14 @@ interface IItemQuantity {
 }
 export const ItemQuantity = ({ quantity, itemsAvailable, handleChange }: IItemQuantity) => {
     
+    const [quantityValue, setQualtityValue] = useState(1);
+
     const changeQuantity = (value: number)  =>{
-        const result = quantity + value;
+        const result = quantityValue + value;
         if (result < 1 || (itemsAvailable && result > itemsAvailable))
             return;
 
+        setQualtityValue(result);
         handleChange(result);
     }
 
@@ -29,7 +32,7 @@ export const ItemQuantity = ({ quantity, itemsAvailable, handleChange }: IItemQu
             </button>
 
             <div className="quantity-value text-center">
-                {quantity}
+                {quantityValue}
             </div>
         </div>
     )

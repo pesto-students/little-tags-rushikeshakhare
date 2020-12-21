@@ -11,3 +11,4 @@ export { ItemQuantity } from "./ItemQuantity/ItemQuantity";
 export { RadioInput } from "./RadioInput";
 export { RadioGroup } from "./RadioGroup";
 export { RadioCard } from "./RadioCard";
+export { Pagination } from "./Pagination/Pagination";
