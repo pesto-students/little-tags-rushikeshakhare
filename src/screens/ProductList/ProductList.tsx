@@ -1,13 +1,14 @@
 import React from "react";
 import { ProductCard, Pagination } from "../../components";
 import { allProducts } from "../../mockData";
+import { withContainer } from "../../hocs/withContainer";
 import "./ProductList.scss";
 
 interface IProductListProps {
   history: any;
 }
 
-export const ProductList = ({ history }: IProductListProps) => {
+export const ProductList = withContainer(({ history }: IProductListProps) => {
   return (
     <>
       <div className="product-list-container">
@@ -38,4 +39,4 @@ export const ProductList = ({ history }: IProductListProps) => {
       </div>
     </>
   );
-};
+});
