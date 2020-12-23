@@ -21,6 +21,7 @@ export const TestBed = () => {
     if (currentKey === "RadioCard") return fixtures.RadioCard;
     if (currentKey === "RadioInput") return fixtures.RadioInput;
     if (currentKey === "Pagination") return fixtures.Pagination;
+    if (currentKey === "CartItem") return fixtures.CartItem;
     return null;
   };
 
@@ -49,6 +50,8 @@ export const TestBed = () => {
       return <AllComponents.RadioInput {...getFixture()} />;
     if (currentKey === "Pagination")
       return <AllComponents.Pagination {...getFixture()} />;
+    if (currentKey === "CartItem")
+      return <AllComponents.CartItem {...getFixture()} />;
     return <></>;
   };
 

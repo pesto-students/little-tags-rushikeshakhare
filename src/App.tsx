@@ -9,6 +9,7 @@ import {
   AddAddress,
   ProductDetails,
   ProductList,
+  Cart,
 } from "./screens";
 import "./App.scss";
 
@@ -27,6 +28,7 @@ const App = (props: any): JSX.Element => {
           <Route path="/select-address" exact component={SelectAddress} />
           <Route path="/product-list" exact component={ProductList} />
           <Route path="/product-details" exact component={ProductDetails} />
+          <Route path="/my-cart" exact component={ Cart } />
           <Route path="/testbed" exact component={TestBed} />
         </HashRouter>
       </AppContainer>
