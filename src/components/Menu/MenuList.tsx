@@ -2,7 +2,7 @@ import * as React from "react";
 
 interface IMenuListProps {
   options: any[];
-  onListItemClick?: () => void;
+  onListItemClick?: (route: string) => void;
 }
 
 export const MenuList = ({
@@ -16,7 +16,7 @@ export const MenuList = ({
           <button
             type="button"
             className="btn list-item"
-            onClick={onListItemClick}
+            onClick={() => onListItemClick && onListItemClick(value)}
           >
             {label}
           </button>

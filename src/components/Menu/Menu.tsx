@@ -9,7 +9,7 @@ interface IMenuProps {
   onClose: () => void;
   categories: any[];
   userMenuOptions: any[];
-  onMenuItemClick: () => void;
+  onMenuItemClick: (route: string) => void;
   onLogoutClick: () => void;
 }
 

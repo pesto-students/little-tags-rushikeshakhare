@@ -21,6 +21,7 @@ interface IHeaderProps {
   onMenuButtonClick: () => void;
   isAuthenticated: boolean;
   onLoginClick: () => void;
+  onCartIconClick: () => void;
 }
 
 export const Header = ({
@@ -28,6 +29,7 @@ export const Header = ({
   type,
   isAuthenticated,
   onLoginClick,
+  onCartIconClick,
 }: IHeaderProps) => {
   const [searchResults, setSearchResults]: any = useState(null);
 
@@ -100,9 +102,12 @@ export const Header = ({
 
       {isAuthenticated === true && (
         <>
-          <div className="cart-btn-container right pointer">
+          <button
+            className="btn cart-btn-container right pointer"
+            onClick={onCartIconClick}
+          >
             <img src={getCartIcon()} alt="Cart Icon" />
-          </div>
+          </button>
           <div className="user-data right">
             <img src={getUserIcon()} alt="User Avatar Icon" />
             <div className="user-text right">Ashim Raj Konwar</div>
