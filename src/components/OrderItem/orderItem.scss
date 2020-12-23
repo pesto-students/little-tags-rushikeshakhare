@@ -1,0 +1,46 @@
+.order-item {
+    position: relative;
+    background-color: #fff;
+    border-radius: 2px;
+    height: 150px;
+    width: 100%;
+    border-radius: 20px;
+
+    &-image {
+        width: 150px;
+        height: 150px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 11px;
+    }
+
+    &-details {
+        padding: 20px 50px;
+        flex: 2;
+
+        .product-name,
+        .product-price {
+            margin-bottom: 10px;
+        }
+
+        .product-date {
+            font-weight: 300;
+        }
+    }
+
+    &-action {
+        align-items: center;
+        flex: 1;
+
+        .order-again-btn {
+            width: 100%;
+            padding: 12px 25px;
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            font-weight: 300;
+        }
+    }
+
+}

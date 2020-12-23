@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FormGroup, Dropdown } from "../../components";
 import { states } from "../../mockData";
+import { withContainer } from "../../hocs/withContainer";
 import { useState } from "react";
 import "./addAddress.scss";
 
@@ -8,7 +9,7 @@ interface IAddAddressProps {
   history: any;
 }
 
-export const AddAddress = ({ history }: IAddAddressProps) => {
+export const AddAddress = withContainer(({ history }: IAddAddressProps) => {
   const [state, setState] = useState("Maharashtra");
 
   return (
@@ -76,4 +77,4 @@ export const AddAddress = ({ history }: IAddAddressProps) => {
       </button>
     </div>
   );
-};
+});

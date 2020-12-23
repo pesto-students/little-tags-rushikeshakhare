@@ -54,8 +54,8 @@ export const sizeList = [
   {
     name: "XL",
     disabled: false,
-  }
-]
+  },
+];
 
 export const allProducts = [
   {
@@ -82,8 +82,8 @@ export const allProducts = [
     name: "T-Shirt",
     price: "800.00",
     image: imgProduct5,
-  }
-]
+  },
+];
 
 export { getData } from "./searchData";
 const states = [
@@ -126,3 +126,18 @@ const states = [
   "Uttarakhand",
 ];
 export { states };
+
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];

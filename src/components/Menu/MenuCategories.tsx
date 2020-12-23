@@ -3,7 +3,7 @@ import { MenuList } from "./MenuList";
 
 interface IMenuCategoriesProps {
   categories: any[];
-  onMenuClick: () => void;
+  onMenuClick: (route: string) => void;
 }
 
 export const MenuCategories = ({

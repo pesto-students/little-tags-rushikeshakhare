@@ -4,7 +4,6 @@ import {
   Menu,
   Login,
   Header,
-  Footer,
   ImageCarousel,
   ItemQuantity,
 } from "../../components";
@@ -16,9 +15,10 @@ import imgCarousel3 from "../../assets/images/carousel-3.jpg";
 import imgCarousel4 from "../../assets/images/carousel-4.jpg";
 import { SizeSelect } from "./SizeSelect";
 import imgCart from "../../assets/images/cart-white.svg";
+import { withContainer } from "../../hocs/withContainer";
 import "./ProductDetails.scss";
 
-export class ProductDetails extends Component<any, any> {
+class ProductDetails extends Component<any, any> {
   state = {
     headerType: HeaderType.BLACK,
     showMenu: false,
@@ -92,6 +92,7 @@ export class ProductDetails extends Component<any, any> {
           onMenuButtonClick={this.toggleMenu}
           isAuthenticated={false}
           onLoginClick={this.onLoginClick}
+          onCartIconClick={() => this.props.history.push("/cart")}
         />
 
         <div className="product-details-container">
@@ -147,3 +148,6 @@ export class ProductDetails extends Component<any, any> {
     );
   }
 }
+
+const containerProductDetails = withContainer(ProductDetails);
+export { containerProductDetails as ProductDetails };
