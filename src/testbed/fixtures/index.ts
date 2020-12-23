@@ -11,6 +11,7 @@ import ItemQuantity from "./ItemQuantity";
 import RadioCard from "./RadioCard";
 import RadioInput from "./RadioInput";
 import Pagination from "./Pagination";
+import CartItem from "./CartItem";
 
 const allFixtues = {
   Login,
@@ -26,6 +27,7 @@ const allFixtues = {
   RadioCard,
   RadioInput,
   Pagination,
+  CartItem,
 };
 
 export default allFixtues;
