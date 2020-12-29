@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { AppLoader } from "../components";
 import { auth } from "../services/firebase";
 import { Application } from "../Application";
+import { showToast } from "../utilities";
 
 export const withAuth = (AppComponent: any) => {
   return class AuthWrapper extends Component<any, any> {
@@ -13,6 +14,7 @@ export const withAuth = (AppComponent: any) => {
     componentDidMount() {
       auth().onAuthStateChanged((user) => {
         if (user) {
+          showToast(`Logged In as ${user.displayName}`);
           Application.getInstance().UserData = {
             name: user.displayName,
             email: user.email,
@@ -38,6 +40,7 @@ export const withAuth = (AppComponent: any) => {
       const { loading } = this.state;
       return (
         <>
+          <div id="toast" />
           {loading ? (
             <AppLoader />
           ) : (

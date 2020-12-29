@@ -12,7 +12,7 @@ export const MenuList = ({
   return (
     <ul className="list">
       {options.map(({ label, value }) => (
-        <li key={value}>
+        <li key={`${value}${label}`}>
           <button
             type="button"
             className="btn list-item"

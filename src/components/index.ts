@@ -20,3 +20,4 @@ export { OrderItem } from "./OrderItem";
 export { Modal } from "./Modal";
 export { ConfirmationPopup, PopupType } from "./ConfirmationPopup";
 export { AppLoader } from "./AppLoader";
+export { Toast } from "./Toast";

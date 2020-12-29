@@ -1,4 +1,5 @@
 import { auth } from "./services/firebase";
+import { showToast } from "./utilities";
 
 export const signInWithGoogle = () => {
   const provider = new auth.GoogleAuthProvider();
@@ -32,5 +33,6 @@ export const signInWithPhoneNumber = (phoneNumber: string) => {
 };
 
 export const signOut = () => {
+  showToast(`Logged Out Successfully`);
   return auth().signOut();
 };
