@@ -1,153 +1,99 @@
-import React, { Component } from "react";
-import {
-  HeaderType,
-  Menu,
-  Login,
-  Header,
-  ImageCarousel,
-  ItemQuantity,
-} from "../../components";
-import { throttle } from "../../utilities";
-import { categories, userMenuOptions, sizeList } from "../../mockData";
-import imgCarousel1 from "../../assets/images/carousel-1.jpg";
-import imgCarousel2 from "../../assets/images/carousel-2.jpg";
-import imgCarousel3 from "../../assets/images/carousel-3.jpg";
-import imgCarousel4 from "../../assets/images/carousel-4.jpg";
-import { SizeSelect } from "./SizeSelect";
-import imgCart from "../../assets/images/cart-white.svg";
+import React, { useState, useEffect } from "react";
+import { ImageCarousel, ItemQuantity } from "../../components";
+import { connect } from "../../store";
+import { fetchProductDetails } from "../../store/actions";
 import { withContainer } from "../../hocs/withContainer";
+import { Cart } from "../../Cart";
+import imgCart from "../../assets/images/cart-white.svg";
 import "./ProductDetails.scss";
 
-class ProductDetails extends Component<any, any> {
-  state = {
-    headerType: HeaderType.BLACK,
-    showMenu: false,
-    showLogin: false,
-    selectedSize: null,
-  };
+export const ProductDetails = connect((state: any) => ({
+  productDetails: state?.products?.productDetails,
+}))(
+  withContainer((props: any) => {
+    const { productDetails } = props;
 
-  onContainerScroll = (e: any) => {
-    console.log(1);
-    if (e.target.scrollTop > 50)
-      this.setState(() => ({
-        headerType: HeaderType.BLACK,
-      }));
-    else
-      this.setState(() => ({
-        headerType: HeaderType.WHITE,
-      }));
-  };
+    const [productQuantity, setProductQuantity] = useState(1);
 
-  toggleMenu = () => this.setState(() => ({ showMenu: !this.state.showMenu }));
+    const handleQuantityChange = (value: number) => {
+      setProductQuantity(value);
+    };
 
-  onLogoutClick = () => {};
+    // const [selectedSize, setSelectedSize]: any = useState(null);
 
-  onMenuItemClick = () => {};
+    // const selectProductSize = (size: string) => {
+    //   setSelectedSize(size);
+    // };
 
-  onLoginClick = () =>
-    this.setState(() => ({ showLogin: !this.state.showLogin }));
-
-  onFacebookAccountClick = () => {};
-
-  onGoogleAccountClick = () => {};
-
-  handleQuantityChange = (value: number) => {
-    console.log(value);
-  };
-
-  selectProductSize = (size: string) => {
-    this.setState({ selectedSize: size });
-  };
-
-  render(): JSX.Element {
-    const { showMenu, showLogin, selectedSize } = this.state;
+    useEffect(() => {
+      fetchProductDetails(props.match.params.id);
+    }, [props.match.params.id]);
 
     return (
-      <div
-        className="product-details"
-        onScroll={(e: React.SyntheticEvent) =>
-          throttle(this.onContainerScroll, 100)(e)
-        }
-      >
-        {showMenu && (
-          <Menu
-            categories={categories}
-            userMenuOptions={userMenuOptions}
-            onLogoutClick={this.onLogoutClick}
-            onClose={this.toggleMenu}
-            onMenuItemClick={this.onMenuItemClick}
+      <div className="product-details-container">
+        <div className="carousel-holder left">
+          <ImageCarousel
+            images={[productDetails?.image]}
+            width={360}
+            height={480}
           />
-        )}
+        </div>
+        <div className="content-holder left">
+          <div className="product-details-content">
+            <div className="title">{productDetails?.title}</div>
+            <div className="price">₹ {productDetails?.price}</div>
+            <div className="details">{productDetails?.description}</div>
 
-        {showLogin && (
-          <Login
-            onFacebookAccountClick={this.onFacebookAccountClick}
-            onGoogleAccountClick={this.onGoogleAccountClick}
-            onClose={this.onLoginClick}
-          />
-        )}
+            {/* <div className="size-selection">
+              <div className="selection-title">Size</div>
+              <SizeSelect
+                sizes={sizeList}
+                handleSizeSelect={selectProductSize}
+              />
+            </div> */}
 
-        <Header
-          type={this.state.headerType}
-          onMenuButtonClick={this.toggleMenu}
-          isAuthenticated={false}
-          onLoginClick={this.onLoginClick}
-          onCartIconClick={() => this.props.history.push("/cart")}
-        />
-
-        <div className="product-details-container">
-          <div className="carousel-holder left">
-            <ImageCarousel
-              images={[imgCarousel3, imgCarousel2, imgCarousel1, imgCarousel4]}
-              width={360}
-              height={480}
-            />
-          </div>
-          <div className="content-holder left">
-            <div className="product-details-content">
-              <div className="title">Faux Leather Jacket</div>
-              <div className="price">₹ 1200.00</div>
-
-              <div className="details">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua
-                <br />
-                <br />
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed
-              </div>
-
-              <div className="size-selection">
-                <div className="selection-title">Size</div>
-                <SizeSelect
-                  sizes={sizeList}
-                  handleSizeSelect={this.selectProductSize}
-                />
-              </div>
-
+            {!Cart.isProductAlreadyInCart(productDetails?.id) && (
               <div className="quantity-selection">
                 <div className="quantity-selection-title">Quantity</div>
                 <ItemQuantity
-                  quantity={1}
-                  handleChange={this.handleQuantityChange}
+                  quantity={productQuantity}
+                  handleChange={handleQuantityChange}
                 />
               </div>
+            )}
+            {!!Cart.isProductAlreadyInCart(productDetails?.id) && (
+              <>Added to cart</>
+            )}
+            <br />
+            <br />
+            {props.authenticated && (
               <button
-                disabled={selectedSize === null}
-                className="add-to-cart btn-flat pointer"
+                disabled={false}
+                className="add-to-cart btn-flat pointer d-flex"
+                onClick={() => {
+                  if (productDetails) {
+                    if (!!Cart.isProductAlreadyInCart(productDetails?.id)) {
+                      Cart.removeItemFromCart(productDetails?.id);
+                      return;
+                    }
+                    Cart.addItemToCart({
+                      product: productDetails,
+                      quantity: productQuantity,
+                    });
+                  }
+                }}
               >
-                <img src={imgCart} alt="CArt Icon" />
-                ADD TO CART
+                <img src={imgCart} alt="Cart Icon" />
+                <div className="cart-text">
+                  {!!Cart.isProductAlreadyInCart(productDetails?.id)
+                    ? "REMOVE FROM CART"
+                    : "ADD TO CART"}
+                </div>
               </button>
-            </div>
+            )}
           </div>
         </div>
       </div>
     );
-  }
-}
-
-const containerProductDetails = withContainer(ProductDetails);
-export { containerProductDetails as ProductDetails };
+  })
+);

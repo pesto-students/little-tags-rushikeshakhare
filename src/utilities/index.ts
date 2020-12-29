@@ -23,3 +23,5 @@ export function debounce(fn: any, timeInMs: number) {
 export function range(limit: number) {
   return [...Array.from(Array(limit).keys())];
 }
+
+export { PopupUtility } from "./PopupUtility";

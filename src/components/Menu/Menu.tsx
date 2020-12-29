@@ -4,6 +4,7 @@ import { MenuList } from "./MenuList";
 import { MenuCategories } from "./MenuCategories";
 import closeIcon from "../../assets/images/close.svg";
 import "./menu.scss";
+import { Application } from "../../Application";
 
 interface IMenuProps {
   onClose: () => void;
@@ -11,6 +12,7 @@ interface IMenuProps {
   userMenuOptions: any[];
   onMenuItemClick: (route: string) => void;
   onLogoutClick: () => void;
+  isAuthenticated: boolean;
 }
 
 export const Menu = ({
@@ -19,6 +21,7 @@ export const Menu = ({
   userMenuOptions,
   onMenuItemClick,
   onLogoutClick,
+  isAuthenticated,
 }: IMenuProps): JSX.Element => {
   return (
     <div className="menu">
@@ -32,21 +35,35 @@ export const Menu = ({
           </button>
         </div>
       </div>
-      <MenuUserDetails />
+      {isAuthenticated && (
+        <MenuUserDetails name={Application.getInstance().UserData?.name} />
+      )}
+
       <MenuCategories categories={categories} onMenuClick={onMenuItemClick} />
-      <div className="menu-separator">
-        <hr />
-      </div>
-      <MenuList options={userMenuOptions} onListItemClick={onMenuItemClick} />
-      <div className="menu-logout">
-        <button
-          type="button"
-          className="btn menu-logout-btn"
-          onClick={onLogoutClick}
-        >
-          Logout
-        </button>
-      </div>
+
+      {isAuthenticated && (
+        <>
+          <div className="menu-separator">
+            <hr />
+          </div>
+          <MenuList
+            options={userMenuOptions}
+            onListItemClick={onMenuItemClick}
+          />
+        </>
+      )}
+
+      {isAuthenticated && (
+        <div className="menu-logout">
+          <button
+            type="button"
+            className="btn menu-logout-btn"
+            onClick={onLogoutClick}
+          >
+            Logout
+          </button>
+        </div>
+      )}
     </div>
   );
 };

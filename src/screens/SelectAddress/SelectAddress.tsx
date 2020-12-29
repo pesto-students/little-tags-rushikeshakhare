@@ -3,6 +3,7 @@ import { useState } from "react";
 import { RadioCard, RadioGroup } from "../../components";
 import { withContainer } from "../../hocs/withContainer";
 import "./selectAddress.scss";
+import { connect } from "../../store";
 
 const addresses = [
   {
@@ -31,8 +32,8 @@ interface ISelectPaymentMethodProps {
   history: any;
 }
 
-export const SelectAddress = withContainer(
-  ({ history }: ISelectPaymentMethodProps) => {
+export const SelectAddress = connect()(
+  withContainer(({ history }: ISelectPaymentMethodProps) => {
     const [defaultAddress, setDefaultAddress]: any = useState(
       addresses[0].value
     );
@@ -67,5 +68,5 @@ export const SelectAddress = withContainer(
         </button>
       </div>
     );
-  }
+  })
 );

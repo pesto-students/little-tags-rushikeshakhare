@@ -1,18 +1,23 @@
-import React from 'react';
+import React from "react";
 import "./ProductCard.scss";
 
 interface IProductCard {
-    image: string;
-    name: string;
-    price: string;
-} 
-
-export const ProductCard = (props: IProductCard) => {
-    return (
-        <div className="product-card item-center">
-            <div className="product-card-image left" style={{ backgroundImage: `url(${props.image})` }}></div>
-            <div className="product-card-text left">{props.name}</div>
-            <div className="product-card-price right text-right"> ₹ {props.price} </div>
-        </div>
-    )
+  image: string;
+  name: string;
+  price: string;
 }
+
+export const ProductCard = ({ name, image, price }: IProductCard) => {
+  return (
+    <div className="product-card item-center d-flex">
+      <img
+        src={image}
+        alt={`Product - ${name}`}
+        className="product-card-image d-flex"
+      />
+
+      <div className="product-card-text left">{name}</div>
+      <div className="product-card-price right text-right"> ₹ {price} </div>
+    </div>
+  );
+};

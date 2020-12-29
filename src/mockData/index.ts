@@ -7,30 +7,30 @@ import imgProduct5 from "../assets/images/product-5.jpg";
 export const categories = [
   {
     label: "Accessories",
-    value: "accessories",
+    value: "/product-list",
   },
   {
     label: "Shirts",
-    value: "shirts",
+    value: "/product-list",
   },
   {
     label: "Pants",
-    value: "pants",
+    value: "/product-list",
   },
   {
     label: "Jackets",
-    value: "jackets",
+    value: "/product-list",
   },
 ];
 
 export const userMenuOptions = [
   {
     label: "Past Orders",
-    value: "past-orders",
+    value: "/past-orders",
   },
   {
     label: "Add Address",
-    value: "add-address",
+    value: "/add-address",
   },
 ];
 

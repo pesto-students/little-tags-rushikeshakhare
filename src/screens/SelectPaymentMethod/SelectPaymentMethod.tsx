@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Card, RadioGroup, RadioInput } from "../../components";
 import { withContainer } from "../../hocs/withContainer";
+import { connect } from "../../store";
 import "./selectPaymentMethod.scss";
 
 enum paymentMethods {
@@ -14,8 +15,8 @@ interface ISelectPaymentMethodProps {
   history: any;
 }
 
-export const SelectPaymentMethod = withContainer(
-  ({ history }: ISelectPaymentMethodProps) => {
+export const SelectPaymentMethod = connect()(
+  withContainer(({ history }: ISelectPaymentMethodProps) => {
     const [defaultPaymentMethod, setDefaultPaymentMethod]: any = useState(
       paymentMethods.razorpay
     );
@@ -63,5 +64,5 @@ export const SelectPaymentMethod = withContainer(
         </button>
       </div>
     );
-  }
+  })
 );

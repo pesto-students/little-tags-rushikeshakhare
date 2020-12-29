@@ -5,7 +5,7 @@ import imgCart1 from "../../assets/images/product-1.jpg";
 import imgCart2 from "../../assets/images/product-2.jpg";
 import imgCart3 from "../../assets/images/product-3.jpg";
 import imgCart4 from "../../assets/images/product-4.jpg";
-
+import { connect } from "../../store";
 import "./orders.scss";
 
 export const products = [
@@ -15,13 +15,15 @@ export const products = [
   { image: imgCart4, name: "Product 4", price: 1000, date: new Date() },
 ];
 
-export const Orders = withContainer(() => {
-  return (
-    <div className="orders">
-      <h1 className="orders-title">Your Orders</h1>
-      {products.map((product: any) => (
-        <OrderItem {...product} />
-      ))}
-    </div>
-  );
-});
+export const Orders = connect()(
+  withContainer(() => {
+    return (
+      <div className="orders">
+        <h1 className="orders-title">Your Orders</h1>
+        {products.map((product: any) => (
+          <OrderItem {...product} />
+        ))}
+      </div>
+    );
+  })
+);
