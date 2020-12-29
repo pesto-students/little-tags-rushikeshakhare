@@ -17,3 +17,6 @@ export { Dropdown } from "./Dropdown";
 export { Pagination } from "./Pagination/Pagination";
 export { CartItem } from "./CartItem";
 export { OrderItem } from "./OrderItem";
+export { Modal } from "./Modal";
+export { ConfirmationPopup, PopupType } from "./ConfirmationPopup";
+export { AppLoader } from "./AppLoader";

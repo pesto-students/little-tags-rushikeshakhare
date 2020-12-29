@@ -1,4 +1,6 @@
-import * as React from "react";
+import React, { useEffect } from "react";
+import { fetchCategories } from "../../store/actions";
+import { connect } from "../../store";
 import { Hero } from "../../components";
 import { Categories } from "./Categories";
 import { withContainer } from "../../hocs/withContainer";
@@ -8,11 +10,17 @@ interface IHomeProps {
   history: any;
 }
 
-export const Home = withContainer(({ history }: IHomeProps) => {
-  return (
-    <>
-      <Hero />
-      <Categories navigateToCategory={history.push} />
-    </>
-  );
-});
+export const Home = connect()(
+  withContainer(({ history }: IHomeProps) => {
+    React.useEffect(() => {
+      fetchCategories();
+    }, []);
+
+    return (
+      <>
+        <Hero />
+        <Categories navigateToCategory={history.push} />
+      </>
+    );
+  })
+);

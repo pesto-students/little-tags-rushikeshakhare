@@ -6,15 +6,22 @@ import "./search.scss";
 interface ISearchProps {
   searchResults: any[];
   onSearch: any;
+  searchInProgress: any;
+  onSearchOptionClick: (id: number) => void;
 }
 
-export const Search = ({ searchResults, onSearch }: ISearchProps) => {
+export const Search = ({
+  searchResults,
+  onSearch,
+  searchInProgress,
+  onSearchOptionClick,
+}: ISearchProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearchResults, setShowSearchResults] = useState(false);
 
   useEffect(() => {
-    setShowSearchResults(true);
-  }, [searchResults]);
+    if (searchInProgress) setShowSearchResults(true);
+  }, [searchResults, searchInProgress]);
 
   return (
     <div className="search">
@@ -31,27 +38,26 @@ export const Search = ({ searchResults, onSearch }: ISearchProps) => {
           value={searchQuery}
         />
       </div>
-      {showSearchResults && searchResults && (
+      {!searchInProgress && showSearchResults && searchQuery && (
         <div className="search-results">
           {searchResults.length ? (
             <>
               <div className="results">
-                {searchResults.map((searchResult: string, index: number) => (
-                  <button
-                    className="btn search-results-item"
-                    key={index}
-                    onClick={() => {
-                      setSearchQuery(searchResult);
-                      setShowSearchResults(false);
-                    }}
-                  >
-                    <h5>{searchResult}</h5>
-                    <h6>Category {index}</h6>
-                  </button>
-                ))}
-              </div>
-              <div className="results-all d-flex">
-                <button className="btn">View All Results</button>
+                {searchResults.map(
+                  ({ title, category, id }: any, index: number) => (
+                    <button
+                      className="btn search-results-item"
+                      key={index}
+                      onClick={() => {
+                        onSearchOptionClick(id);
+                        setShowSearchResults(false);
+                      }}
+                    >
+                      <h5>{title}</h5>
+                      <h6>{category}</h6>
+                    </button>
+                  )
+                )}
               </div>
             </>
           ) : (

@@ -13,7 +13,7 @@ export const ItemQuantity = ({
   itemsAvailable,
   handleChange,
 }: IItemQuantity) => {
-  const [quantityValue, setQualtityValue] = useState(1);
+  const [quantityValue, setQualtityValue] = useState(quantity);
 
   const changeQuantity = (value: number) => {
     const result = quantityValue + value;

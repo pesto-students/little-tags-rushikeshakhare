@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { Application } from "../../Application";
 import iconMenu from "../../assets/images/icons8-menu-48.svg";
 import iconMenuWhite from "../../assets/images/icons8-menu-48-white.svg";
 import iconUserAvatar from "../../assets/images/user-avatar.svg";
@@ -7,7 +8,6 @@ import iconUserAvatarWhite from "../../assets/images/user-avatar-white.svg";
 import iconCartBlack from "../../assets/images/cart-black.svg";
 import iconCartBlackWhite from "../../assets/images/cart-white.svg";
 import { debounce } from "../../utilities";
-import { getData } from "../../mockData";
 import { Search } from "../../components";
 import "./Header.scss";
 
@@ -22,6 +22,9 @@ interface IHeaderProps {
   isAuthenticated: boolean;
   onLoginClick: () => void;
   onCartIconClick: () => void;
+  allProducts: any[];
+  cartItemCount?: number;
+  onSearchOptionClick: any;
 }
 
 export const Header = ({
@@ -30,21 +33,50 @@ export const Header = ({
   isAuthenticated,
   onLoginClick,
   onCartIconClick,
+  allProducts,
+  cartItemCount = 0,
+  onSearchOptionClick,
 }: IHeaderProps) => {
-  const [searchResults, setSearchResults]: any = useState(null);
+  const [searchResults, setSearchResults]: any = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchInProgress, setSearchInProgress]: any = useState(false);
 
   const onSearchQueryChange = (event: any) => {
     const newSearchQuery = event.target.value;
-    setSearchResults(!newSearchQuery ? [] : searchResults);
-    initiateFetchSearchQueryResults(newSearchQuery);
+    setSearchQuery(newSearchQuery);
+    if (!newSearchQuery) {
+      setSearchResults([]);
+      return;
+    }
+    setSearchInProgress(true);
   };
+
+  useEffect(() => {
+    if (searchInProgress && searchQuery) {
+      initiateFetchSearchQueryResults(searchQuery);
+    }
+  }, [searchInProgress, searchQuery]);
 
   const getResultsBySearchQuery = (
     searchQuery: string,
     successCb: any,
     failureCb: any
   ) => {
-    getData(searchQuery).then(successCb).catch(failureCb);
+    Promise.resolve(
+      allProducts.filter(
+        (product: any) =>
+          product.title.includes(searchQuery) ||
+          product.description.includes(searchQuery)
+      )
+    )
+      .then((data: any) => {
+        successCb(data);
+        setSearchInProgress(false);
+      })
+      .catch((error: any) => {
+        failureCb(error);
+        setSearchInProgress(false);
+      });
   };
 
   const onFetchSearchResultsSuccess = (newSearchResults: any[]) => {
@@ -53,16 +85,19 @@ export const Header = ({
 
   const onFetchSearchResultsError = (error: any) => console.log(error);
 
-  const initiateFetchSearchQueryResults = debounce((searchQuery: string) => {
-    if (searchQuery) {
-      setSearchResults([]);
-      getResultsBySearchQuery(
-        searchQuery,
-        onFetchSearchResultsSuccess,
-        onFetchSearchResultsError
-      );
-    }
-  }, 500);
+  const initiateFetchSearchQueryResults = useCallback(
+    debounce((searchQuery: string) => {
+      if (searchQuery) {
+        setSearchResults([]);
+        getResultsBySearchQuery(
+          searchQuery,
+          onFetchSearchResultsSuccess,
+          onFetchSearchResultsError
+        );
+      }
+    }, 500),
+    [searchInProgress]
+  );
 
   const getHeaderTheme = () => {
     if (window.location.hash === "#/")
@@ -106,11 +141,14 @@ export const Header = ({
             className="btn cart-btn-container right pointer"
             onClick={onCartIconClick}
           >
+            <span className="cart-item-count d-flex">{cartItemCount}</span>
             <img src={getCartIcon()} alt="Cart Icon" />
           </button>
           <div className="user-data right">
             <img src={getUserIcon()} alt="User Avatar Icon" />
-            <div className="user-text right">Ashim Raj Konwar</div>
+            <div className="user-text right">
+              {Application.getInstance().UserData.name}
+            </div>
           </div>
         </>
       )}
@@ -131,6 +169,8 @@ export const Header = ({
           <Search
             onSearch={onSearchQueryChange}
             searchResults={searchResults}
+            searchInProgress={searchInProgress}
+            onSearchOptionClick={onSearchOptionClick}
           />
         </div>
       </div>
