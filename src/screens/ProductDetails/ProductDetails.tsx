@@ -6,6 +6,7 @@ import { withContainer } from "../../hocs/withContainer";
 import { Cart } from "../../Cart";
 import imgCart from "../../assets/images/cart-white.svg";
 import "./ProductDetails.scss";
+import { showToast } from "../../utilities";
 
 export const ProductDetails = connect((state: any) => ({
   productDetails: state?.products?.productDetails,
@@ -61,11 +62,14 @@ export const ProductDetails = connect((state: any) => ({
                 />
               </div>
             )}
-            {!!Cart.isProductAlreadyInCart(productDetails?.id) && (
-              <>Added to cart</>
-            )}
-            <br />
-            <br />
+            {!!Cart.isProductAlreadyInCart(productDetails?.id) &&
+              props.authenticated && (
+                <>
+                  Added to cart <br />
+                  <br />
+                </>
+              )}
+
             {props.authenticated && (
               <button
                 disabled={false}
@@ -73,13 +77,17 @@ export const ProductDetails = connect((state: any) => ({
                 onClick={() => {
                   if (productDetails) {
                     if (!!Cart.isProductAlreadyInCart(productDetails?.id)) {
-                      Cart.removeItemFromCart(productDetails?.id);
+                      const { message } = Cart.removeItemFromCart(
+                        productDetails?.id
+                      );
+                      showToast(message);
                       return;
                     }
-                    Cart.addItemToCart({
+                    const { message } = Cart.addItemToCart({
                       product: productDetails,
                       quantity: productQuantity,
                     });
+                    showToast(message);
                   }
                 }}
               >

@@ -130,7 +130,7 @@ export const withContainer = (ScreenComponent: any) => {
           onCartIconClick={() => props.history.push("/cart")}
           allProducts={props?.productList || []}
           cartItemCount={props.cart.length}
-          onSearchOptionClick={onSearchOptionClick}
+          navigateToRoute={props.history.push}
         />
         <ScreenComponent {...props} />
         <Footer />

@@ -42,7 +42,7 @@ class Cart {
       });
       this.setCart(allCartProducts);
 
-      return { status: true, message: "Product Updated" };
+      return { status: true, message: "Product Quantity Updated" };
     }
 
     return { status: false, message: "Product Does not exist in Cart" };

@@ -24,7 +24,7 @@ interface IHeaderProps {
   onCartIconClick: () => void;
   allProducts: any[];
   cartItemCount?: number;
-  onSearchOptionClick: any;
+  navigateToRoute: any;
 }
 
 export const Header = ({
@@ -35,7 +35,7 @@ export const Header = ({
   onCartIconClick,
   allProducts,
   cartItemCount = 0,
-  onSearchOptionClick,
+  navigateToRoute,
 }: IHeaderProps) => {
   const [searchResults, setSearchResults]: any = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -123,6 +123,12 @@ export const Header = ({
     else return iconCartBlack;
   };
 
+  const onSearchOptionClick = (id: number) => {
+    navigateToRoute(`/product-details/${id}`);
+  };
+
+  const onTitleClick = () => navigateToRoute(`/`);
+
   return (
     <div className={`nav-header fixed ${getHeaderTheme()}`}>
       <button
@@ -133,7 +139,12 @@ export const Header = ({
         <img src={getMenuIcon()} alt="Menu Icon" />
       </button>
 
-      <div className="logo-container left pointer text-left">Little Tags</div>
+      <div
+        className="logo-container left pointer text-left"
+        onClick={onTitleClick}
+      >
+        Little Tags
+      </div>
 
       {isAuthenticated === true && (
         <>

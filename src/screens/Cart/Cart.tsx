@@ -4,22 +4,18 @@ import { Cart as CartModel } from "../../Cart";
 import { withContainer } from "../../hocs/withContainer";
 import { connect } from "../../store";
 import "./Cart.scss";
+import { showToast } from "../../utilities";
 
 export const Cart = connect()(
   withContainer(({ cart }: any) => {
-    const [refresh, setRefresh] = useState(false);
-
     const handleQuantityChange = (productID: any, quantity: any) => {
       CartModel.updateItemInCart(productID, quantity);
     };
 
     const onRemoveButtonClick = (productID: number) => {
-      CartModel.removeItemFromCart(productID);
+      const { message } = CartModel.removeItemFromCart(productID);
+      showToast(message);
     };
-
-    useEffect(() => {
-      setRefresh(!refresh);
-    }, [cart]);
 
     return (
       <div className="cart">
