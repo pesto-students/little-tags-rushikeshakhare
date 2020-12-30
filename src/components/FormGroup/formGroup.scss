@@ -1,3 +1,11 @@
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 24px;
+
+    .error {
+        position: relative;
+        color: red;
+        margin-top: 2px;
+        font-size: 13px;
+        float: left;
+    }
 }

@@ -24,5 +24,6 @@ export function range(limit: number) {
   return [...Array.from(Array(limit).keys())];
 }
 
+export { validEmailRegex } from "./FormUtility";
 export { PopupUtility } from "./PopupUtility";
 export { showToast } from "./ToastUtil";
