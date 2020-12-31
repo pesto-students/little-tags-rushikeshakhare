@@ -4,7 +4,7 @@ import "./orderItem.scss";
 
 export const OrderItem = ({ image, price, name, date }: any) => {
   const getDate = () => {
-    const [month, day, year] = date.toLocaleDateString("en-US").split("/");
+    const [month, day, year]: any = new Date(date).toLocaleDateString("en-US").split("/");
     return `${day} ${months[month - 1]} ${year}`;
   };
 

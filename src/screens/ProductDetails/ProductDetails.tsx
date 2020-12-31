@@ -75,6 +75,8 @@ export const ProductDetails = connect((state: any) => ({
                 disabled={false}
                 className="add-to-cart btn-flat pointer d-flex"
                 onClick={() => {
+
+                  // TODO -- shift this declaraton level
                   if (productDetails) {
                     if (!!Cart.isProductAlreadyInCart(productDetails?.id)) {
                       const { message } = Cart.removeItemFromCart(
