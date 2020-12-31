@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 
 declare var window: any;
 
-function loadScript(src: any) {
+const loadScript = (src: any) => {
     return new Promise((resolve) => {
         const script = document.createElement("script");
         script.src = src;
