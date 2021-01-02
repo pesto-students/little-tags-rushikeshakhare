@@ -134,7 +134,7 @@ export const Header = ({
     <div className={`nav-header fixed ${getHeaderTheme()}`}>
       <button
         type="button"
-        className="btn hamburger-toggle-btn left pointer"
+        className="btn hamburger-toggle-btn left pointer btn-flat"
         onClick={onMenuButtonClick}
       >
         <img src={getMenuIcon()} alt="Menu Icon" />

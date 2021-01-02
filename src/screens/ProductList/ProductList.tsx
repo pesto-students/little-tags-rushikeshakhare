@@ -12,8 +12,16 @@ interface IProductListProps {
 
 export const ProductList = connect()(
   ({ history, productList }: IProductListProps) => {
+    productList = productList || [];
+    const newProductList = [
+      ...productList,
+      ...productList,
+      ...productList,
+      ...productList,
+    ];
+
     const { totalPages, currentRecords, setCurrentPage } = usePaginator(
-      productList || [],
+      newProductList,
       5
     );
 
@@ -27,7 +35,7 @@ export const ProductList = connect()(
               ({ title, image, price, id }: any, index: number) => (
                 <div
                   key={`${index}-${title}`}
-                  className="list-item"
+                  className="list-item item-center"
                   onClick={() => history.push(`/product-details/${id}`)}
                 >
                   <ProductCard image={image} name={title} price={price} />
@@ -39,7 +47,7 @@ export const ProductList = connect()(
 
         <div className="pagination-container">
           <Pagination
-            totalPages={totalPages}
+            totalPages={totalPages * 4}
             onPageSelected={(page: any) => setCurrentPage(page)}
           />
         </div>
