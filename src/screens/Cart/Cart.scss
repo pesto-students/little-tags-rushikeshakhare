@@ -21,4 +21,17 @@
         border-radius: 5px;
         margin: auto;
     }
+
+    .cart-empty-msg {
+        margin-top: 150px;
+        img {
+            height: 76px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-weight: 300;
+            font-size: 28px;
+        }
+    }
 }
