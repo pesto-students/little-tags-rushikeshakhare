@@ -6,6 +6,7 @@ import { connect } from "../../store";
 import { showToast } from "../../utilities";
 import { initPaymentRazorpay } from "../../services";
 import { Order } from "../../Order";
+import iconEmptyCart from "../../assets/images/luggage-cart-solid.svg";
 import "./Cart.scss";
 
 export const Cart = connect()(
@@ -49,7 +50,12 @@ export const Cart = connect()(
     return (
       <div className="cart">
         <h1 className="title">Your Cart</h1>
-        {!cart.length && <h2>No Items Added to Cart Yet</h2>}
+        { !cart.length &&
+          <div className="cart-empty-msg text-center">
+            <img src={iconEmptyCart} alt="cart empty image"/>
+            <h2 className="text-center">No Items Added to Cart Yet</h2>
+          </div>
+        }
 
         {cart.map(
           (
