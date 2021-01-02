@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { range } from "../../utilities/index";
+import iconPrevious from "../../assets/images/angle-double-left-solid.svg";
+import iconNext from "../../assets/images/angle-double-right-solid.svg";
 import "./Pagination.scss";
+
+const NAV_STEP: number = 1;
 
 interface IPagination {
   totalPages: number;
@@ -29,13 +33,13 @@ export const Pagination = ({
   return (
     <div className="pagination item-center">
       <div className="pagination-nav previous left">
-        <button onClick={() => handleNavigation(-1)} className="btn-flat">
-          {"<<"} Previous
+        <button onClick={() => handleNavigation(-NAV_STEP)} className="btn-flat">
+          <img src={iconPrevious} alt="previous icon" className="left" /> Previous
         </button>
       </div>
       <div className="pagination-nav next right">
-        <button onClick={() => handleNavigation(1)} className="btn-flat">
-          Next {">>"}
+        <button onClick={() => handleNavigation(NAV_STEP)} className="btn-flat">
+          Next <img src={iconNext} alt="next icon" className="right"/>
         </button>
       </div>
       <ul className="pagination-list text-center">

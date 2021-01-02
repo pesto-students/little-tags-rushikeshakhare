@@ -5,6 +5,10 @@ import { fetchProductDetails } from "../../store/actions";
 import { withContainer } from "../../hocs/withContainer";
 import { Cart } from "../../Cart";
 import imgCart from "../../assets/images/cart-white.svg";
+import imgCarousel1 from "../../assets/images/carousel-1.jpg";
+import imgCarousel2 from "../../assets/images/carousel-2.jpg";
+import imgCarousel3 from "../../assets/images/carousel-3.jpg";
+import imgCarousel4 from "../../assets/images/carousel-4.jpg";
 import "./ProductDetails.scss";
 import { showToast } from "../../utilities";
 
@@ -34,7 +38,7 @@ export const ProductDetails = connect((state: any) => ({
       <div className="product-details-container">
         <div className="carousel-holder left">
           <ImageCarousel
-            images={[productDetails?.image]}
+            images={[productDetails?.image, imgCarousel3, imgCarousel2, imgCarousel4, imgCarousel1]}
             width={360}
             height={480}
           />
