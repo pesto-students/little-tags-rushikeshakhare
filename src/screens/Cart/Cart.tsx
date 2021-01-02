@@ -3,11 +3,13 @@ import { CartItem } from "../../components";
 import { Cart as CartModel } from "../../Cart";
 import { withContainer } from "../../hocs/withContainer";
 import { connect } from "../../store";
-import "./Cart.scss";
 import { showToast } from "../../utilities";
+import { initPaymentRazorpay } from "../../services";
+import { Order } from "../../Order";
+import "./Cart.scss";
 
 export const Cart = connect()(
-  withContainer(({ cart }: any) => {
+  withContainer(({ cart, history }: any) => {
     const handleQuantityChange = (productID: any, quantity: any) => {
       CartModel.updateItemInCart(productID, quantity);
     };
@@ -16,6 +18,33 @@ export const Cart = connect()(
       const { message } = CartModel.removeItemFromCart(productID);
       showToast(message);
     };
+
+    const checkout = () => {
+
+      const totalPrice = cart.map(
+        (
+          { product: { price }, quantity }: any,
+        ) => (
+          price * quantity
+      )).reduce((a: number, b: number) => a + b, 0);
+
+      const description = "Order on " + Date.now().toLocaleString();
+
+      initPaymentRazorpay(totalPrice, description)
+      .then((res: any) => {
+        
+        console.log("in here!!");
+
+        // Adding items to my orders
+        Order.addItemsToPastOrders(cart);
+
+        // clearing cart
+        CartModel.setCart([]);
+
+        history.push("/cart");
+      })
+      
+    }
 
     return (
       <div className="cart">
@@ -41,7 +70,7 @@ export const Cart = connect()(
           )
         )}
         {!!cart.length && (
-          <button className="btn checkout-btn">Checkout</button>
+          <button onClick={checkout} className="btn checkout-btn">Checkout</button>
         )}
       </div>
     );

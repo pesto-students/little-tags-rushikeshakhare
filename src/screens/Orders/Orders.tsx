@@ -16,12 +16,24 @@ export const products = [
 ];
 
 export const Orders = connect()(
-  withContainer(() => {
+  withContainer(({ orders }: any) => {
+
+    if (!orders) orders = [];
+
+    const myOrders = orders.map(
+      (
+        { product: { image, price, title: name, date }, quantity }: any,
+      ) => {
+        const priceAndQuantity = `${price} x ${quantity}`;
+        return { image, price: priceAndQuantity, name, date};
+      }
+    )
+
     return (
       <div className="orders">
         <h1 className="orders-title">Your Orders</h1>
-        {products.map((product: any) => (
-          <OrderItem {...product} />
+        {myOrders.map((order: any) => (
+          <OrderItem {...order} />
         ))}
       </div>
     );
