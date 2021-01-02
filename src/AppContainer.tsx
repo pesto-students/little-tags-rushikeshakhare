@@ -1,53 +1,67 @@
 import React, { useState, useEffect } from "react";
 import {
-  Header,
   HeaderType,
-  Footer,
-  Menu,
-  Login,
-  Modal,
   ConfirmationPopup,
   AppLoader,
-} from "../components";
+  Menu,
+  Modal,
+  Login,
+  Header,
+  Footer,
+} from "./components";
+import { PopupUtility, throttle } from "./utilities";
+import { firebase } from "./services/firebase";
+import { fetchProducts } from "./store/actions";
+import { categories, userMenuOptions } from "./mockData";
+import { connect } from "./store";
+import { withRouter } from "react-router-dom";
 
-import { signOut } from "../Auth";
-import { fetchProducts } from "../store/actions";
-import { categories, userMenuOptions } from "../mockData";
-import {
-  signInWithGoogle,
-  signInWithFacebook,
-  signInWithPhoneNumber,
-} from "../Auth";
-import { throttle, PopupUtility } from "../utilities";
+interface IAppContainerProps {
+  children: JSX.Element | JSX.Element[];
+  authenticated: boolean;
+  history: any;
+  networkActivity: any;
+  cart: any;
+  productList: any;
+}
 
-export const withContainer = (ScreenComponent: any) => {
-  return function (props: any) {
-    const [headerType, setHeaderType] = useState(HeaderType.WHITE);
-    const [showMenu, setShowMenu] = useState(false);
-    const [showLogin, setShowLogin] = useState(false);
-    const [authError, setAuthError]: any = useState(null);
+export const AppContainer = withRouter<any, any>(
+  connect()<any>((props: IAppContainerProps) => {
+    const {
+      children,
+      authenticated,
+      history,
+      networkActivity,
+      cart,
+      productList,
+    } = props;
 
-    const onContainerScroll = (e: any) => {
+    const [headerType, setHeaderType] = useState<HeaderType>(HeaderType.WHITE);
+    const [showMenu, setShowMenu] = useState<boolean>(false);
+    const [showLogin, setShowLogin] = useState<boolean>(false);
+    const [authError, setAuthError] = useState<any>(null);
+
+    const onContainerScroll = (e: React.BaseSyntheticEvent) => {
       if (e.target.scrollTop > 50) setHeaderType(HeaderType.BLACK);
       else setHeaderType(HeaderType.WHITE);
     };
 
-    const toggleMenu = () => {
+    const toggleMenu = (): void => {
       setShowMenu(!showMenu);
     };
 
     const onLogoutClick = () => {
       PopupUtility(ConfirmationPopup, {
-        message: "Are you sure you want to Logout",
+        message: "Are you sure you want to Logout", //  put in constants
       }).then(() => {
-        signOut();
+        firebase.signOut();
         setShowMenu(false);
       });
     };
 
     const onMenuItemClick = (route: string) => {
-      if (props.history) {
-        props.history.push(route);
+      if (history) {
+        history.push(route);
       }
     };
 
@@ -59,7 +73,7 @@ export const withContainer = (ScreenComponent: any) => {
     const onFacebookAccountClick = async () => {
       setAuthError(null);
       try {
-        await signInWithFacebook();
+        await firebase.signInWithFacebook();
       } catch (e) {
         setAuthError(`${e.message} Email : ${e.email}`);
       }
@@ -68,14 +82,10 @@ export const withContainer = (ScreenComponent: any) => {
     const onGoogleAccountClick = async () => {
       setAuthError(null);
       try {
-        await signInWithGoogle();
+        await firebase.signInWithGoogle();
       } catch (error) {
         setAuthError(`${error.message}`);
       }
-    };
-
-    const onSearchOptionClick = (id: number) => {
-      props.history.push(`/product-details/${id}`);
     };
 
     useEffect(() => {
@@ -85,7 +95,7 @@ export const withContainer = (ScreenComponent: any) => {
         setShowLogin(true);
         localStorage.setItem("loginLoaded", "1");
       }
-    }, [props.authenticated]);
+    }, [authenticated]);
 
     useEffect(() => {
       if (!props?.productList) fetchProducts();
@@ -98,7 +108,7 @@ export const withContainer = (ScreenComponent: any) => {
           throttle(onContainerScroll, 100)(e)
         }
       >
-        {props.networkActivity.inProgress && <AppLoader />}
+        {networkActivity.inProgress && <AppLoader />}
         {showMenu && (
           <Menu
             categories={categories}
@@ -106,17 +116,19 @@ export const withContainer = (ScreenComponent: any) => {
             onLogoutClick={onLogoutClick}
             onClose={toggleMenu}
             onMenuItemClick={onMenuItemClick}
-            isAuthenticated={!!props.authenticated}
+            isAuthenticated={!!authenticated}
           />
         )}
 
-        {showLogin && !props.authenticated && (
+        {showLogin && !authenticated && (
           <Modal>
             <Login
               onFacebookAccountClick={onFacebookAccountClick}
               onGoogleAccountClick={onGoogleAccountClick}
               onClose={onLoginClick}
-              sendOtp={(phoneNumber: any) => signInWithPhoneNumber(phoneNumber)}
+              sendOtp={(phoneNumber: any) =>
+                firebase.signInWithPhoneNumber(phoneNumber)
+              }
               error={authError}
             />
           </Modal>
@@ -125,16 +137,16 @@ export const withContainer = (ScreenComponent: any) => {
         <Header
           type={headerType}
           onMenuButtonClick={toggleMenu}
-          isAuthenticated={props.authenticated}
+          isAuthenticated={authenticated}
           onLoginClick={onLoginClick}
-          onCartIconClick={() => props.history.push("/cart")}
-          allProducts={props?.productList || []}
-          cartItemCount={props.cart.length}
-          navigateToRoute={props.history.push}
+          onCartIconClick={() => history.push("/cart")}
+          allProducts={productList || []}
+          cartItemCount={cart.length}
+          navigateToRoute={history.push}
         />
-        <ScreenComponent {...props} />
+        {children}
         <Footer />
       </div>
     );
-  };
-};
+  })
+);

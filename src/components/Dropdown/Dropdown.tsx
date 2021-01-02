@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { DROPDOWN_ICON_PLACEHOLDER } from "../../AppConstants";
 import upIcon from "../../assets/images/up.svg";
 import downIcon from "../../assets/images/down.svg";
 import "./dropdown.scss";
@@ -21,7 +21,10 @@ export const Dropdown = ({ options, value, onChange }: IDropdownProps) => {
       >
         <div className="dropdown-button-label">{value}</div>
         <div className="dropdown-button-icon d-flex">
-          <img src={showDropdown ? upIcon : downIcon} alt="Dropdown Icon" />
+          <img
+            src={showDropdown ? upIcon : downIcon}
+            alt={DROPDOWN_ICON_PLACEHOLDER}
+          />
         </div>
       </button>
       {showDropdown && (

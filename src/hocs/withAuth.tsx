@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AppLoader } from "../components";
-import { auth } from "../services/firebase";
+import { firebase } from "../services/firebase";
 import { Application } from "../Application";
 import { showToast } from "../utilities";
 
@@ -12,7 +12,7 @@ export const withAuth = (AppComponent: any) => {
     };
 
     componentDidMount() {
-      auth().onAuthStateChanged((user) => {
+      firebase.firebaseAuth().onAuthStateChanged((user: any) => {
         if (user) {
           showToast(`Logged In as ${user.displayName}`);
           Application.getInstance().UserData = {

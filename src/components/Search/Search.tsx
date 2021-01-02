@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { SEARCH_NO_RESULTS_TEXT, SEARCH_PLACEHOLDER } from "../../AppConstants";
 import searchIcon from "../../assets/images/search.svg";
 import "./search.scss";
 
@@ -30,7 +31,7 @@ export const Search = ({
         <input
           type="text"
           className="input-control"
-          placeholder="Search..."
+          placeholder={SEARCH_PLACEHOLDER}
           onChange={(e: any) => {
             onSearch(e);
             setSearchQuery(e.target.value);
@@ -61,7 +62,9 @@ export const Search = ({
               </div>
             </>
           ) : (
-            searchQuery && <div className="no-results">No Results Found</div>
+            searchQuery && (
+              <div className="no-results">{SEARCH_NO_RESULTS_TEXT}</div>
+            )
           )}
         </div>
       )}

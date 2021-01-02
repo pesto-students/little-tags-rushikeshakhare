@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect, useCallback } from "react";
+import { LOGIN_SIGNUP_CONTROL_TEXT, APP_TITLE } from "../../AppConstants";
 import { Application } from "../../Application";
 import iconMenu from "../../assets/images/icons8-menu-48.svg";
 import iconMenuWhite from "../../assets/images/icons8-menu-48-white.svg";
@@ -143,7 +144,7 @@ export const Header = ({
         className="logo-container left pointer text-left"
         onClick={onTitleClick}
       >
-        Little Tags
+        {APP_TITLE}
       </div>
 
       {isAuthenticated === true && (
@@ -170,7 +171,7 @@ export const Header = ({
             className="user-text right btn login-btn"
             onClick={onLoginClick}
           >
-            Login / Signup
+            {LOGIN_SIGNUP_CONTROL_TEXT}
           </button>
         </div>
       )}
