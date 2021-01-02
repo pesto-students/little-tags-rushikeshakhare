@@ -1,4 +1,5 @@
 import React from "react";
+import { APP_LOADER_TEXT } from "../../AppConstants";
 import "./appLoader.scss";
 
 export const AppLoader = () => {
@@ -8,7 +9,7 @@ export const AppLoader = () => {
         <div className="loader-outer"></div>
         <div className="loader-inner"></div>
       </div>
-      <h1 className="app-loader-text">Getting Things Ready</h1>
+      <h1 className="app-loader-text">{APP_LOADER_TEXT}</h1>
     </div>
   );
 };

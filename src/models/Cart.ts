@@ -1,4 +1,4 @@
-import { updateCart } from "./store/actions";
+import { updateCart } from "../store/actions";
 
 class Cart {
   private static instance: Cart;

@@ -1,10 +1,11 @@
 import * as React from "react";
 import { MenuUserDetails } from "./MenuUserDetails";
+import { APP_TITLE } from "../../AppConstants";
 import { MenuList } from "./MenuList";
 import { MenuCategories } from "./MenuCategories";
 import closeIcon from "../../assets/images/close.svg";
-import "./menu.scss";
 import { Application } from "../../Application";
+import "./menu.scss";
 
 interface IMenuProps {
   onClose: () => void;
@@ -27,7 +28,7 @@ export const Menu = ({
     <div className="menu">
       <div className="menu-title d-flex">
         <div className="menu-title-text">
-          <h1>Little Tags</h1>
+          <h1>{APP_TITLE}</h1>
         </div>
         <div className="menu-title-action">
           <button type="button" className="btn d-flex" onClick={onClose}>
@@ -39,7 +40,13 @@ export const Menu = ({
         <MenuUserDetails name={Application.getInstance().UserData?.name} />
       )}
 
-      <MenuCategories categories={categories} onMenuClick={onMenuItemClick} />
+      <MenuCategories
+        categories={categories}
+        onMenuClick={(routeValue: string) => {
+          onMenuItemClick(routeValue);
+          onClose();
+        }}
+      />
 
       {isAuthenticated && (
         <>
@@ -48,7 +55,10 @@ export const Menu = ({
           </div>
           <MenuList
             options={userMenuOptions}
-            onListItemClick={onMenuItemClick}
+            onListItemClick={(routeValue: string) => {
+              onMenuItemClick(routeValue);
+              onClose();
+            }}
           />
         </>
       )}

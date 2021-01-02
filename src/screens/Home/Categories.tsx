@@ -1,5 +1,6 @@
 import * as React from "react";
 import { CategoryCard, CategoryCardSizes } from "../../components";
+import { HOME } from "../../AppConstants";
 import tshirtImage from "../../assets/images/tshirts.jpg";
 import jeans from "../../assets/images/jeans.jpg";
 import backpack from "../../assets/images/backpack.png";
@@ -9,7 +10,7 @@ export const Categories = ({ navigateToCategory }: any) => {
   return (
     <div className="home-screen-categories">
       <div className="home-screen-categories-title">
-        <h1>Most In Demand</h1>
+        <h1>{HOME.CATEGORIES_TTTLE}</h1>
       </div>
       <div className="home-screen-categories-grid">
         <div className="horizontal-categories">

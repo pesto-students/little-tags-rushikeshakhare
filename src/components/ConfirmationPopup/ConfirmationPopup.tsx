@@ -1,5 +1,9 @@
 import React from "react";
 import { Modal } from "../Modal";
+import {
+  CONFIRMATION_POPUP_SUCCESS_BUTTON_TEXT,
+  CONFIRMATION_POPUP_CANCEL_BUTTON_TEXT,
+} from "../../AppConstants";
 import "./confirmationPopup.scss";
 
 export enum PopupType {
@@ -18,8 +22,8 @@ interface IConfirmationPopupProps {
 
 export const ConfirmationPopup = ({
   type = PopupType.Cancellable,
-  successButtonText = "Proceed",
-  cancelButtonText = "Cancel",
+  successButtonText = CONFIRMATION_POPUP_SUCCESS_BUTTON_TEXT,
+  cancelButtonText = CONFIRMATION_POPUP_CANCEL_BUTTON_TEXT,
   onSuccessButtonClick = () => {},
   onCancelButtonClick = () => {},
   message,

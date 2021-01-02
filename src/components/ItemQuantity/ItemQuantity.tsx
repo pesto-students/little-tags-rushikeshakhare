@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import iconMinus from "../../assets/images/minus-solid.svg";
 import iconPlus from "../../assets/images/plus-solid.svg";
+import {
+  ITEM_QUANTITY_LEFT_BUTTON_PLACEHOLDER,
+  ITEM_QUANTITY_RIGHT_BUTTON_PLACEHOLDER,
+} from "../../AppConstants";
 import "./ItemQuantity.scss";
 
 interface IItemQuantity {
@@ -29,14 +33,14 @@ export const ItemQuantity = ({
         onClick={() => changeQuantity(-1)}
         className="quantity-btn btn-flat left pointer"
       >
-        <img alt="Decrease Item" src={iconMinus}></img>
+        <img alt={ITEM_QUANTITY_LEFT_BUTTON_PLACEHOLDER} src={iconMinus}></img>
       </button>
 
       <button
         onClick={() => changeQuantity(1)}
         className="quantity-btn btn-flat right pointer"
       >
-        <img alt="Increase Item" src={iconPlus}></img>
+        <img alt={ITEM_QUANTITY_RIGHT_BUTTON_PLACEHOLDER} src={iconPlus}></img>
       </button>
 
       <div className="quantity-value text-center">{quantityValue}</div>

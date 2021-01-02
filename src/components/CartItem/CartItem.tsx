@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ItemQuantity } from "../ItemQuantity/ItemQuantity";
+import { CART_ITEM_REMOVE_BUTTON_TEXT } from "../../AppConstants";
 import "./CartItem.scss";
 
 interface ICartItem {
@@ -10,6 +11,7 @@ interface ICartItem {
   onQuantityChange: (id: number, quantity: number) => void;
   defaultQuantity: number;
   onRemoveButtonClick: (id: number) => void;
+  onProductClick: (id: number) => void;
 }
 
 export const CartItem = ({
@@ -20,6 +22,7 @@ export const CartItem = ({
   onQuantityChange,
   defaultQuantity,
   onRemoveButtonClick,
+  onProductClick,
 }: ICartItem) => {
   const [quantity, setQuantity] = useState(defaultQuantity);
 
@@ -34,7 +37,12 @@ export const CartItem = ({
 
   return (
     <div className="cart-item item-center d-flex">
-      <img src={image} alt={`Product - ${name}`} className="cart-item-image" />
+      <img
+        src={image}
+        alt={`Product - ${name}`}
+        className="cart-item-image"
+        onClick={() => onProductClick(id)}
+      />
 
       <div className="cart-item-content left">
         <div className="cart-item-detail">
@@ -51,7 +59,7 @@ export const CartItem = ({
             className="btn remove-btn"
             onClick={() => onRemoveButtonClick(id)}
           >
-            Remove
+            {CART_ITEM_REMOVE_BUTTON_TEXT}
           </button>
         </div>
       </div>

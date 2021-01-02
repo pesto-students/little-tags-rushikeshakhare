@@ -1,4 +1,5 @@
 import React from "react";
+import Image, { Shimmer } from "react-shimmer";
 import "./ProductCard.scss";
 
 interface IProductCard {
@@ -10,11 +11,9 @@ interface IProductCard {
 export const ProductCard = ({ name, image, price }: IProductCard) => {
   return (
     <div className="product-card item-center d-flex">
-      <img
-        src={image}
-        alt={`Product - ${name}`}
-        className="product-card-image d-flex"
-      />
+      <div className="product-card-image d-flex">
+        <Image src={image} fallback={<Shimmer width={100} height={100} />} />
+      </div>
 
       <div className="product-card-text left">{name}</div>
       <div className="product-card-price right text-right"> ₹ {price} </div>

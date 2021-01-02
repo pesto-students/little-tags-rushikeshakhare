@@ -1,10 +1,13 @@
 import React from "react";
 import { months } from "../../mockData";
+import { ORDER_ITEM_ORDER_AGAIN_TEXT } from "../../AppConstants";
 import "./orderItem.scss";
 
 export const OrderItem = ({ image, price, name, date }: any) => {
   const getDate = () => {
-    const [month, day, year]: any = new Date(date).toLocaleDateString("en-US").split("/");
+    const [month, day, year]: any = new Date(date)
+      .toLocaleDateString("en-US")
+      .split("/");
     return `${day} ${months[month - 1]} ${year}`;
   };
 
@@ -20,7 +23,9 @@ export const OrderItem = ({ image, price, name, date }: any) => {
         <h4 className="product-date">{getDate()}</h4>
       </div>
       <div className="order-item-action d-flex">
-        <button className="btn order-again-btn">ORDER AGAIN</button>
+        <button className="btn order-again-btn">
+          {ORDER_ITEM_ORDER_AGAIN_TEXT}
+        </button>
       </div>
     </div>
   );

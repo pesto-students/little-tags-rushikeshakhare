@@ -1,7 +1,7 @@
 import React from "react";
 import { ProductCard, Pagination } from "../../components";
+import { PRODUCT_LIST } from "../../AppConstants";
 import { usePaginator } from "../../hooks/usePaginator";
-import { withContainer } from "../../hocs/withContainer";
 import { connect } from "../../store";
 import "./ProductList.scss";
 
@@ -11,7 +11,7 @@ interface IProductListProps {
 }
 
 export const ProductList = connect()(
-  withContainer(({ history, productList }: IProductListProps) => {
+  ({ history, productList }: IProductListProps) => {
     const { totalPages, currentRecords, setCurrentPage } = usePaginator(
       productList || [],
       5
@@ -20,7 +20,7 @@ export const ProductList = connect()(
     return (
       <>
         <div className="product-list-container">
-          <div className="title text-center">All Products</div>
+          <div className="title text-center">{PRODUCT_LIST.SCREEN_TITLE}</div>
 
           <div className="list">
             {currentRecords.map(
@@ -45,5 +45,5 @@ export const ProductList = connect()(
         </div>
       </>
     );
-  })
+  }
 );

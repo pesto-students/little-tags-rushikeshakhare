@@ -1,78 +1,43 @@
 import React from "react";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { PublicRoute } from "./PublicRoute";
 import { Route, HashRouter, Switch } from "react-router-dom";
-import {
-  Home,
-  SelectPaymentMethod,
-  SelectAddress,
-  AddAddress,
-  ProductDetails,
-  ProductList,
-  Cart,
-  Orders,
-} from "../screens";
-import { TestBed } from "../testbed";
+import { AppContainer } from "../AppContainer";
+import { RouteMappings, IRoute } from "./RouteMappings";
 
-export const AppRouter = ({ authenticated }: any) => {
+interface IAppRouterProps {
+  authenticated: boolean;
+}
+
+export const AppRouter = ({ authenticated }: IAppRouterProps) => {
   return (
     <HashRouter>
-      <Switch>
-        <PublicRoute
-          path="/"
-          exact
-          component={Home}
-          authenticated={authenticated} // add from props
-        />
-        <ProtectedRoute
-          path="/add-address"
-          exact
-          component={AddAddress}
-          authenticated={authenticated} // add from props
-        />
-        <ProtectedRoute
-          path="/select-payment-method"
-          exact
-          component={SelectPaymentMethod}
-          authenticated={authenticated} // add from props
-        />
-        <ProtectedRoute
-          path="/select-address"
-          exact
-          component={SelectAddress}
-          authenticated={authenticated} // add from props
-        />
-        <PublicRoute
-          path="/product-list"
-          exact
-          component={ProductList}
-          authenticated={authenticated} // add from props
-        />
-        <PublicRoute
-          path="/product-details/:id"
-          exact
-          component={ProductDetails}
-          authenticated={authenticated}
-        />
-        <ProtectedRoute
-          path="/cart"
-          exact
-          component={Cart}
-          authenticated={authenticated}
-        />
-        <PublicRoute
-          path="/past-orders"
-          exact
-          component={Orders}
-          authenticated={authenticated}
-        />
-        <PublicRoute
-          path="/testbed"
-          exact
-          component={TestBed}
-          authenticated={authenticated}
-        />
-      </Switch>
+      <AppContainer authenticated={authenticated}>
+        <Switch>
+          {RouteMappings.map(
+            ({ isUserAuthenticated, component: Component, path }: IRoute) => {
+              if (isUserAuthenticated)
+                return (
+                  <ProtectedRoute
+                    path={path}
+                    exact
+                    component={Component}
+                    authenticated={authenticated}
+                  />
+                );
+              else
+                return (
+                  <Route
+                    path={path}
+                    exact
+                    render={(props) => (
+                      <Component authenticated={authenticated} {...props} />
+                    )}
+                  />
+                );
+            }
+          )}
+        </Switch>
+      </AppContainer>
     </HashRouter>
   );
 };
