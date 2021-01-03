@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { DEFAULT_USER_UNAUTHORIZED_ROUTE } from "../AppConstants";
+import { DEFAULT_USER_UNAUTHORIZED_ROUTE } from "../AppConfig";
 
 export const ProtectedRoute = ({
   component: Component,

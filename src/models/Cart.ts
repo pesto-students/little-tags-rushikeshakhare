@@ -1,10 +1,11 @@
 import { updateCart } from "../store/actions";
-
+import { StorageManager } from "../utilities";
+import { USER_CART_STORAGE_KEY } from "../AppConfig";
 class Cart {
   private static instance: Cart;
 
   constructor() {
-    if (!localStorage.getItem("userCart")) {
+    if (!StorageManager.get(USER_CART_STORAGE_KEY)) {
       this.setCart([]);
     }
   }
@@ -15,12 +16,12 @@ class Cart {
   }
 
   getCart = () => {
-    return JSON.parse(localStorage.getItem("userCart") || "");
+    return StorageManager.get(USER_CART_STORAGE_KEY);
   };
 
   setCart = (newCart: any[]) => {
     updateCart(newCart);
-    return localStorage.setItem("userCart", JSON.stringify(newCart));
+    return StorageManager.set(USER_CART_STORAGE_KEY, newCart);
   };
 
   isProductAlreadyInCart = (productID: number) => {

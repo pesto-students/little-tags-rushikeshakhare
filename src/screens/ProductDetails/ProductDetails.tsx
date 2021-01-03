@@ -8,10 +8,16 @@ import imgCart from "../../assets/images/cart-white.svg";
 import { showToast } from "../../utilities";
 import "./ProductDetails.scss";
 
+interface IProductDetailsProps {
+  productDetails: any;
+  match: any;
+  authenticated: any;
+}
+
 export const ProductDetails = connect((state: any) => ({
   productDetails: state?.products?.productDetails,
-}))((props: any) => {
-  const { productDetails } = props;
+}))((props: IProductDetailsProps) => {
+  const { productDetails, match, authenticated } = props;
 
   const [productQuantity, setProductQuantity] = useState(1);
 
@@ -20,8 +26,8 @@ export const ProductDetails = connect((state: any) => ({
   };
 
   useEffect(() => {
-    fetchProductDetails(props.match.params.id);
-  }, [props.match.params.id]);
+    fetchProductDetails(match.params.id);
+  }, [match.params.id]);
 
   return (
     <div className="product-details-container">
@@ -49,15 +55,14 @@ export const ProductDetails = connect((state: any) => ({
               />
             </div>
           )}
-          {!!Cart.isProductAlreadyInCart(productDetails?.id) &&
-            props.authenticated && (
-              <>
-                {PRODUCT_DETAILS.ADDED_TO_CART_MESSAGE} <br />
-                <br />
-              </>
-            )}
+          {!!Cart.isProductAlreadyInCart(productDetails?.id) && authenticated && (
+            <>
+              {PRODUCT_DETAILS.ADDED_TO_CART_MESSAGE} <br />
+              <br />
+            </>
+          )}
 
-          {props.authenticated && (
+          {authenticated && (
             <button
               disabled={false}
               className="add-to-cart btn-flat pointer d-flex"

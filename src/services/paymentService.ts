@@ -34,7 +34,10 @@ export function initPaymentRazorpay(
     // creating a new order
     const result: any = await NetworkManager.post(
       "https://glacial-hollows-06272.herokuapp.com/payment",
-      { amount: totalAmount * 100, receipt: "receipt-" + Date.now().toString() }
+      {
+        amount: Number((totalAmount * 100).toFixed(0)),
+        receipt: "receipt-" + Date.now().toString(),
+      }
     );
 
     if (!result) {

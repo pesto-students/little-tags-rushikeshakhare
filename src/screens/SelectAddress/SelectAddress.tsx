@@ -1,9 +1,11 @@
 import * as React from "react";
 import { RadioCard, RadioGroup } from "../../components";
+import { SELECT_ADDRESS } from "../../AppConstants";
 import { connect } from "../../store";
 import { useAddress } from "../../hooks/useAddress";
 import { IAddress } from "../../models/address";
 import "./selectAddress.scss";
+import { ROUTES } from "../../AppConfig";
 
 interface ISelectPaymentMethodProps {
   history: any;
@@ -33,12 +35,12 @@ export const SelectAddress = connect()((props: ISelectPaymentMethodProps) => {
   });
 
   const defaultAddress = addresses.find(
-    (address: IAddress) => address.isDefault === true
+    (address: IAddress) => address.isDefault
   );
 
   return (
     <div className="select-address">
-      <h2 className="select-address-title">Delivering To</h2>
+      <h2 className="select-address-title">{SELECT_ADDRESS.SCREEN_TITLE}</h2>
       <div className="select-address-options">
         <RadioGroup
           value={defaultAddress?.id}
@@ -51,18 +53,18 @@ export const SelectAddress = connect()((props: ISelectPaymentMethodProps) => {
       </div>
       <button
         className="btn select-address-action-add d-flex"
-        onClick={() => history.push("/add-address")}
+        onClick={() => history.push(ROUTES.ADD_ADDRESS)}
       >
         <div className="plus-icon">
           <span>+</span>
         </div>
-        <div className="title">Add NEW ADDRESS</div>
+        <div className="title">{SELECT_ADDRESS.ADD_ADDRESS_BUTTON_TEXT}</div>
       </button>
       <button
         className="btn select-address-action-proceed"
-        onClick={() => history.push("/select-payment-method")}
+        onClick={() => history.push(ROUTES.SELECT_PAYMENT_METHOD)}
       >
-        PROCEED
+        {SELECT_ADDRESS.SUCCESS_BUTTON_TEXT}
       </button>
     </div>
   );

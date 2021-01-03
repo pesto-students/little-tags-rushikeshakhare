@@ -10,7 +10,7 @@ const appReducer = combineReducers({
   products,
   networkActivity,
   cart,
-  orders
+  orders,
 });
 
 const rootReducer = (state: any, action: any) => appReducer(state, action);

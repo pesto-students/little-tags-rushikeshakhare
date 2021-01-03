@@ -27,3 +27,4 @@ export function range(limit: number) {
 export { validEmailRegex } from "./FormUtility";
 export { PopupUtility } from "./PopupUtility";
 export { showToast } from "./ToastUtil";
+export { StorageManager } from "./StorageManager";

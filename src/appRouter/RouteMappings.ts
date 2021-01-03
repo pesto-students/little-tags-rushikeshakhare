@@ -10,6 +10,7 @@ import {
   ThankYou,
   Sorry,
 } from "../screens";
+import { ROUTES } from "../AppConfig";
 import { TestBed } from "../testbed";
 
 export interface IRoute {
@@ -20,57 +21,57 @@ export interface IRoute {
 
 export const RouteMappings: IRoute[] = [
   {
-    path: "/",
+    path: ROUTES.HOME,
     component: Home,
     isUserAuthenticated: false,
   },
   {
-    path: "/add-address",
+    path: ROUTES.ADD_ADDRESS,
     component: AddAddress,
     isUserAuthenticated: true,
   },
   {
-    path: "/select-payment-method",
+    path: ROUTES.SELECT_PAYMENT_METHOD,
     component: SelectPaymentMethod,
     isUserAuthenticated: true,
   },
   {
-    path: "/select-address",
+    path: ROUTES.SELECT_ADDRESS,
     component: SelectAddress,
     isUserAuthenticated: true,
   },
   {
-    path: "/product-list",
+    path: ROUTES.PRODUCT_LIST,
     component: ProductList,
     isUserAuthenticated: false,
   },
   {
-    path: "/product-details/:id",
+    path: ROUTES.PRODUCT_DETAILS(":id"),
     component: ProductDetails,
     isUserAuthenticated: false,
   },
   {
-    path: "/cart",
+    path: ROUTES.CART,
     component: Cart,
     isUserAuthenticated: true,
   },
   {
-    path: "/past-orders",
+    path: ROUTES.PAST_ORDERS,
     component: Orders,
     isUserAuthenticated: true,
   },
   {
-    path: "/testbed",
+    path: ROUTES.TESTBED,
     component: TestBed,
     isUserAuthenticated: false,
   },
   {
-    path: "/thank-you",
+    path: ROUTES.THANK_YOU,
     component: ThankYou,
     isUserAuthenticated: true,
   },
   {
-    path: "/sorry",
+    path: ROUTES.SORRY,
     component: Sorry,
     isUserAuthenticated: true,
   },

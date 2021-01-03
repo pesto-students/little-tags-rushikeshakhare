@@ -23,7 +23,6 @@ export class Firebase {
   };
 
   signOut = () => {
-    showToast(`Logged Out Successfully`);
     return this.firebaseAuth().signOut();
   };
 

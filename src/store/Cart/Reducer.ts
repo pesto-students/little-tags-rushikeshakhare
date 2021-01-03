@@ -1,13 +1,13 @@
 import { UPDATE_CART } from "./Types";
+import { StorageManager } from "../../utilities";
+import { USER_CART_STORAGE_KEY } from "../../AppConfig";
 
 interface ICategoriesState {
   cart: any;
 }
 
 const initialState = {
-  cart: localStorage.getItem("userCart")
-    ? JSON.parse(localStorage.getItem("userCart") || "")
-    : [],
+  cart: StorageManager.get(USER_CART_STORAGE_KEY) || [],
 };
 
 interface ICategoriesReducerAction {

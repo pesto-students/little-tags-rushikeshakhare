@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { SELECT_PAYMENT_METHOD } from "../../AppConstants";
+import { ROUTES, USER_ADDRESSES_STORAGE_KEY } from "../../AppConfig";
 import { Card, RadioGroup, RadioInput } from "../../components";
 import { Cart as CartModel } from "../../models/Cart";
 import { connect } from "../../store";
-import { showToast } from "../../utilities";
+import { showToast, StorageManager } from "../../utilities";
 import { initPaymentRazorpay } from "../../services";
 import { Order } from "../../Order";
 import "./selectPaymentMethod.scss";
@@ -19,106 +20,111 @@ interface ISelectPaymentMethodProps {
   cart: any;
 }
 
-export const SelectPaymentMethod = connect((state: any) => ({
-  cart: state.cart.cart,
-}))(({ history, cart }: ISelectPaymentMethodProps) => {
-  const [defaultPaymentMethod, setDefaultPaymentMethod]: any = useState(
-    paymentMethods.razorpay
-  );
-  const [defaultAddress, setDefaultAddress] = useState<any>(null);
+export const SelectPaymentMethod = connect()(
+  ({ history, cart }: ISelectPaymentMethodProps) => {
+    const [defaultPaymentMethod, setDefaultPaymentMethod]: any = useState(
+      paymentMethods.razorpay
+    );
+    const [defaultAddress, setDefaultAddress] = useState<any>(null);
 
-  const validateAtleastOneOrder = () => {
-    showToast("Please add atleast one address to proceed");
-    history.push("/add-address");
-  };
+    const validateAtleastOneOrder = () => {
+      showToast(SELECT_PAYMENT_METHOD.ADDRESS_VALIDATION_MESSAGE);
+      history.push(ROUTES.ADD_ADDRESS);
+    };
 
-  const validateAtleastOneProduct = () => {
-    showToast("Please add atleast one product to cart");
-    history.push("/product-list");
-  };
+    const validateAtleastOneProduct = () => {
+      showToast(SELECT_PAYMENT_METHOD.PRODUCT_VALIDATION_MESSAGE);
+      history.push(ROUTES.PRODUCT_LIST);
+    };
 
-  const getDefaultAddress = () => {
-    if (!cart.length) return validateAtleastOneProduct();
-    const allAddresses = localStorage && localStorage.getItem("ADDRESS");
-    if (allAddresses) {
-      const parsedAddresses = JSON.parse(localStorage.getItem("ADDRESS") || "");
-      if (Array.isArray(parsedAddresses) && parsedAddresses.length) {
-        let defaultAddress = parsedAddresses.find(
-          (address: any) => address.isDefault
-        );
-        if (!defaultAddress) {
-          defaultAddress = parsedAddresses[0];
-        }
-        setDefaultAddress(defaultAddress);
-      } else return validateAtleastOneOrder();
-    } else return validateAtleastOneOrder();
-  };
-
-  useEffect(() => {
-    getDefaultAddress();
-  }, []);
-
-  const onPaymentMethodSelect = () => {
-    const totalPrice = cart
-      .map(({ product: { price }, quantity }: any) => price * quantity)
-      .reduce((a: number, b: number) => a + b, 0);
-    const description = "Order on " + Date.now().toLocaleString();
-    initPaymentRazorpay(totalPrice, description, {
-      name: `${defaultAddress.firstName} ${defaultAddress.lastName}`,
-      email: defaultAddress.email,
-      contact: defaultAddress.mobile,
-    }).then(() => {
-      Order.addItemsToPastOrders(cart);
-      CartModel.setCart([]);
-      history.push("/thank-you");
-    });
-  };
-
-  return (
-    <div className="select-payment-method">
-      <h2 className="select-payment-method-title">Delivering To</h2>
-      <div
-        className="select-payment-method-address"
-        onClick={() => history.push("/select-address")}
-      >
-        {defaultAddress && (
-          <Card>
-            <>
-              <h3>
-                {defaultAddress.firstName} {defaultAddress.lastName}
-              </h3>
-              <p>
-                {defaultAddress.addressLine1}, {defaultAddress.addressLine2},{" "}
-                {defaultAddress.pincode}, {defaultAddress.state}
-              </p>
-              <p>(+91) {defaultAddress.mobile}</p>
-            </>
-          </Card>
-        )}
-      </div>
-      <div className="select-payment-method-options">
-        <h2 className="select-payment-method-options-title">
-          Method of Payment
-        </h2>
-        <RadioGroup
-          value={defaultPaymentMethod}
-          onChange={(paymentMethod: string) =>
-            setDefaultPaymentMethod(paymentMethod)
+    const getDefaultAddress = () => {
+      if (!cart.length) return validateAtleastOneProduct();
+      const allAddresses = StorageManager.get(USER_ADDRESSES_STORAGE_KEY);
+      if (allAddresses) {
+        const parsedAddresses = StorageManager.get(USER_ADDRESSES_STORAGE_KEY);
+        if (Array.isArray(parsedAddresses) && parsedAddresses.length) {
+          let defaultAddress = parsedAddresses.find(
+            (address: any) => address.isDefault
+          );
+          if (!defaultAddress) {
+            defaultAddress = parsedAddresses[0];
           }
+          setDefaultAddress(defaultAddress);
+        } else return validateAtleastOneOrder();
+      } else return validateAtleastOneOrder();
+    };
+
+    useEffect(() => {
+      getDefaultAddress();
+    }, []);
+
+    const onPaymentMethodSelect = () => {
+      const totalPrice = cart
+        .map(({ product: { price }, quantity }: any) => price * quantity)
+        .reduce((a: number, b: number) => a + b, 0);
+
+      const description = "Order on " + Date.now().toLocaleString();
+      const finalPrice = Number(Number(totalPrice).toFixed(2));
+      console.log(finalPrice);
+      initPaymentRazorpay(finalPrice, description, {
+        name: `${defaultAddress.firstName} ${defaultAddress.lastName}`,
+        email: defaultAddress.email,
+        contact: defaultAddress.mobile,
+      }).then(() => {
+        Order.addItemsToPastOrders(cart);
+        CartModel.setCart([]);
+        history.push(ROUTES.THANK_YOU);
+      });
+    };
+
+    return (
+      <div className="select-payment-method">
+        <h2 className="select-payment-method-title">
+          {SELECT_PAYMENT_METHOD.SCREEN_TITLE}
+        </h2>
+        <div
+          className="select-payment-method-address"
+          onClick={() => history.push(ROUTES.SELECT_ADDRESS)}
         >
-          <RadioInput
-            value={paymentMethods.razorpay}
-            label={paymentMethods.razorpay}
-          />
-          <></>
-        </RadioGroup>
+          {defaultAddress && (
+            <Card>
+              <>
+                <h3>
+                  {defaultAddress.firstName} {defaultAddress.lastName}
+                </h3>
+                <p>
+                  {defaultAddress.addressLine1}, {defaultAddress.addressLine2},{" "}
+                  {defaultAddress.pincode}, {defaultAddress.state}
+                </p>
+                <p>(+91) {defaultAddress.mobile}</p>
+              </>
+            </Card>
+          )}
+        </div>
+        <div className="select-payment-method-options">
+          <h2 className="select-payment-method-options-title">
+            {SELECT_PAYMENT_METHOD.PAYMENT_METHOD_TITLE}
+          </h2>
+          <RadioGroup
+            value={defaultPaymentMethod}
+            onChange={(paymentMethod: string) =>
+              setDefaultPaymentMethod(paymentMethod)
+            }
+          >
+            <RadioInput
+              value={paymentMethods.razorpay}
+              label={paymentMethods.razorpay}
+            />
+            <></>
+          </RadioGroup>
+        </div>
+        <button
+          className="btn select-payment-method-action"
+          onClick={onPaymentMethodSelect}
+        >
+          {SELECT_PAYMENT_METHOD.SUCCESS_BUTTON_TEXT}
+        </button>
       </div>
-      <button
-        className="btn select-payment-method-action"
-        onClick={onPaymentMethodSelect}
-      >
-        PROCEED TO PAYMENT
-      </button>
-    </div>
-  );
-});
+    );
+  }
+);

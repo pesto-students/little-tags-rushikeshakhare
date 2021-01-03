@@ -3,7 +3,7 @@ import { ItemQuantity } from "../ItemQuantity/ItemQuantity";
 import { CART_ITEM_REMOVE_BUTTON_TEXT } from "../../AppConstants";
 import "./CartItem.scss";
 
-interface ICartItem {
+interface ICartItemProps {
   id: number;
   image: string;
   name: string;
@@ -23,7 +23,7 @@ export const CartItem = ({
   defaultQuantity,
   onRemoveButtonClick,
   onProductClick,
-}: ICartItem) => {
+}: ICartItemProps) => {
   const [quantity, setQuantity] = useState(defaultQuantity);
 
   const handleQuantityChange = (value: number) => {

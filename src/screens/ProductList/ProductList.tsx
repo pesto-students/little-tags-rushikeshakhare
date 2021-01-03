@@ -4,6 +4,7 @@ import { PRODUCT_LIST } from "../../AppConstants";
 import { usePaginator } from "../../hooks/usePaginator";
 import { connect } from "../../store";
 import "./ProductList.scss";
+import { ROUTES } from "../../AppConfig";
 
 interface IProductListProps {
   history: any;
@@ -36,7 +37,7 @@ export const ProductList = connect()(
                 <div
                   key={`${index}-${title}`}
                   className="list-item item-center"
-                  onClick={() => history.push(`/product-details/${id}`)}
+                  onClick={() => history.push(ROUTES.PRODUCT_DETAILS(id))}
                 >
                   <ProductCard image={image} name={title} price={price} />
                 </div>

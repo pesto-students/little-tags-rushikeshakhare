@@ -26,7 +26,7 @@ export const CategoryCard = ({
       backgroundImage: `url(${background})`,
       backgroundSize: "cover",
     }}
-    onClick={() => onClick && onClick("/product-list")}
+    onClick={() => onClick && onClick()}
   >
     <div className="category-card-title d-flex">
       <h3>{title}</h3>
