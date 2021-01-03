@@ -9,6 +9,7 @@ import {
   PAYMENT_STATUS_SUCCESS_ACTION_TEXT,
   PAYMENT_STATUS_FAILURE_ACTION_TEXT,
 } from "../../AppConstants";
+import { ROUTES } from "../../AppConfig";
 import "./paymentStatus.scss";
 
 export enum PaymentStatusTypes {
@@ -43,8 +44,8 @@ export const PaymentStatus = ({ type, history }: IPaymentStatusProps) => {
         className="payment-status-action"
         onClick={() => {
           type === PaymentStatusTypes.success
-            ? history.push("/product-list")
-            : history.push("/select-payment-method");
+            ? history.push(ROUTES.PRODUCT_LIST)
+            : history.push(ROUTES.SELECT_PAYMENT_METHOD);
         }}
       >
         {type === PaymentStatusTypes.success

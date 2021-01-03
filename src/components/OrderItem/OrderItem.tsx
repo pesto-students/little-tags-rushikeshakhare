@@ -1,9 +1,22 @@
 import React from "react";
 import { months } from "../../mockData";
-import { ORDER_ITEM_ORDER_AGAIN_TEXT } from "../../AppConstants";
+import {
+  ORDER_ITEM_ORDER_AGAIN_TEXT,
+  PRODUCT_DETAILS,
+} from "../../AppConstants";
+import Image, { Shimmer } from "react-shimmer";
 import "./orderItem.scss";
 
-export const OrderItem = ({ image, price, name, date }: any) => {
+export const OrderItem = ({
+  product,
+  image,
+  price,
+  name,
+  date,
+  productAlreadyInCart,
+  onOrderAgainClick,
+  onProductImageClick,
+}: any) => {
   const getDate = () => {
     const [month, day, year]: any = new Date(date)
       .toLocaleDateString("en-US")
@@ -13,19 +26,26 @@ export const OrderItem = ({ image, price, name, date }: any) => {
 
   return (
     <div className="order-item d-flex">
-      <div
-        className="order-item-image"
-        style={{ backgroundImage: `url(${image})` }}
-      ></div>
+      <div className="order-item-image">
+        <Image src={image} fallback={<Shimmer width={150} height={150} />} />
+      </div>
+
       <div className="order-item-details">
         <h2 className="product-name">{name}</h2>
         <h4 className="product-price"> ₹ {price}</h4>
         <h4 className="product-date">{getDate()}</h4>
       </div>
       <div className="order-item-action d-flex">
-        <button className="btn order-again-btn">
-          {ORDER_ITEM_ORDER_AGAIN_TEXT}
-        </button>
+        {productAlreadyInCart ? (
+          PRODUCT_DETAILS.ADDED_TO_CART_MESSAGE
+        ) : (
+          <button
+            className="btn order-again-btn"
+            onClick={() => onOrderAgainClick(product)}
+          >
+            {ORDER_ITEM_ORDER_AGAIN_TEXT}
+          </button>
+        )}
       </div>
     </div>
   );

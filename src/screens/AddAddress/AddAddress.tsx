@@ -8,6 +8,7 @@ import { Address, IAddress } from "../../models/address";
 import { useAddress } from "../../hooks/useAddress";
 import { validEmailRegex, showToast } from "../../utilities";
 import "./addAddress.scss";
+import { ROUTES } from "../../AppConfig";
 
 interface IAddAddressProps {
   history: any;
@@ -130,7 +131,7 @@ export const AddAddress = connect()(({ history }: IAddAddressProps) => {
     address = { ...address, ...addressObj };
     addAddress(address);
     showToast(ADD_ADDRESS.ADDRESS_ADDED_MESSAGE);
-    history.push("/select-address");
+    history.push(ROUTES.SELECT_ADDRESS);
   };
 
   return (

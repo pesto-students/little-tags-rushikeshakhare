@@ -1,4 +1,3 @@
-export const DEFAULT_USER_UNAUTHORIZED_ROUTE = "/";
 export const APP_TITLE = "Little Tags";
 
 // App Loader
@@ -105,3 +104,24 @@ export const PRODUCT_DETAILS = {
 export const PRODUCT_LIST = {
   SCREEN_TITLE: "All Products",
 };
+
+// Select Address Screen
+export const SELECT_ADDRESS = {
+  SCREEN_TITLE: "Delivering To",
+  ADD_ADDRESS_BUTTON_TEXT: "ADD NEW ADDRESS",
+  SUCCESS_BUTTON_TEXT: "PROCEED",
+};
+
+// Select Payment Method Screen
+export const SELECT_PAYMENT_METHOD = {
+  SCREEN_TITLE: "Delivering To",
+  PAYMENT_METHOD_TITLE: "Method of Payment",
+  SUCCESS_BUTTON_TEXT: "PROCEED TO PAYMENT",
+  ADDRESS_VALIDATION_MESSAGE: "Please add atleast one address to proceed",
+  PRODUCT_VALIDATION_MESSAGE: "Please add atleast one product to cart",
+};
+
+// Toast Messages
+export const LOGGED_IN_MESSAGE = (name: string) => `Logged in as ${name}`;
+export const LOGGED_OUT_MESSAGE = "Logged Out Successfully";
+export const LOGOUT_CONFIRMATION_MESSAGE = "Are you sure you want to Logout";

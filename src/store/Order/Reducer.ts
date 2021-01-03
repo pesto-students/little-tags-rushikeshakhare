@@ -1,13 +1,13 @@
 import { UPDATE_ORDER } from "./Types";
+import { StorageManager } from "../../utilities";
+import { USER_ORDERS_STORAGE_KEY } from "../../AppConfig";
 
 interface ICategoriesState {
   orders: any;
 }
 
 const initialState = {
-  orders: localStorage.getItem("userOrder")
-    ? JSON.parse(localStorage.getItem("userOrder") || "")
-    : [],
+  orders: StorageManager.get(USER_ORDERS_STORAGE_KEY) || [],
 };
 
 interface ICategoriesReducerAction {

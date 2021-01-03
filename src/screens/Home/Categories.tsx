@@ -1,12 +1,17 @@
-import * as React from "react";
+import React from "react";
 import { CategoryCard, CategoryCardSizes } from "../../components";
 import { HOME } from "../../AppConstants";
+import { ROUTES } from "../../AppConfig";
 import tshirtImage from "../../assets/images/tshirts.jpg";
 import jeans from "../../assets/images/jeans.jpg";
 import backpack from "../../assets/images/backpack.png";
 import necklace from "../../assets/images/necklace.jpg";
 
 export const Categories = ({ navigateToCategory }: any) => {
+  const navigateToProductList = () => {
+    navigateToCategory(ROUTES.PRODUCT_LIST);
+  };
+
   return (
     <div className="home-screen-categories">
       <div className="home-screen-categories-title">
@@ -18,13 +23,13 @@ export const Categories = ({ navigateToCategory }: any) => {
             size={CategoryCardSizes.H}
             background={tshirtImage}
             title="T Shirt"
-            onClick={navigateToCategory}
+            onClick={navigateToProductList}
           />
           <CategoryCard
             size={CategoryCardSizes.H2}
             background={jeans}
             title="Jeans"
-            onClick={navigateToCategory}
+            onClick={navigateToProductList}
           />
         </div>
         <div className="vertical-categories d-flex">
@@ -32,13 +37,13 @@ export const Categories = ({ navigateToCategory }: any) => {
             size={CategoryCardSizes.V}
             background={backpack}
             title="Backpack"
-            onClick={navigateToCategory}
+            onClick={navigateToProductList}
           />
           <CategoryCard
             size={CategoryCardSizes.V}
             background={necklace}
             title="Charm Necklace"
-            onClick={navigateToCategory}
+            onClick={navigateToProductList}
           />
         </div>
       </div>

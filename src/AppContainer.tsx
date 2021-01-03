@@ -9,7 +9,17 @@ import {
   Header,
   Footer,
 } from "./components";
-import { PopupUtility, throttle } from "./utilities";
+import {
+  LOGGED_OUT_MESSAGE,
+  LOGOUT_CONFIRMATION_MESSAGE,
+} from "./AppConstants";
+import {
+  CONTAINER_SCROLL_THROTTLE_TIME,
+  HEADER_SCROLL_THRESHOLD,
+  ROUTES,
+  LOGIN_LOADED_STORAGE_KEY,
+} from "./AppConfig";
+import { PopupUtility, throttle, showToast, StorageManager } from "./utilities";
 import { firebase } from "./services/firebase";
 import { fetchProducts } from "./store/actions";
 import { categories, userMenuOptions } from "./mockData";
@@ -42,7 +52,8 @@ export const AppContainer = withRouter<any, any>(
     const [authError, setAuthError] = useState<any>(null);
 
     const onContainerScroll = (e: React.BaseSyntheticEvent) => {
-      if (e.target.scrollTop > 50) setHeaderType(HeaderType.BLACK);
+      if (e.target.scrollTop > HEADER_SCROLL_THRESHOLD)
+        setHeaderType(HeaderType.BLACK);
       else setHeaderType(HeaderType.WHITE);
     };
 
@@ -52,8 +63,9 @@ export const AppContainer = withRouter<any, any>(
 
     const onLogoutClick = () => {
       PopupUtility(ConfirmationPopup, {
-        message: "Are you sure you want to Logout", //  put in constants
+        message: LOGOUT_CONFIRMATION_MESSAGE,
       }).then(() => {
+        showToast(LOGGED_OUT_MESSAGE);
         firebase.signOut();
         setShowMenu(false);
       });
@@ -89,11 +101,10 @@ export const AppContainer = withRouter<any, any>(
     };
 
     useEffect(() => {
-      if (localStorage && localStorage.getItem("loginLoaded"))
-        setShowLogin(false);
+      if (StorageManager.get(LOGIN_LOADED_STORAGE_KEY)) setShowLogin(false);
       else {
         setShowLogin(true);
-        localStorage.setItem("loginLoaded", "1");
+        StorageManager.set(LOGIN_LOADED_STORAGE_KEY, "1");
       }
     }, [authenticated]);
 
@@ -105,7 +116,7 @@ export const AppContainer = withRouter<any, any>(
       <div
         className="home-screen"
         onScroll={(e: React.SyntheticEvent) =>
-          throttle(onContainerScroll, 100)(e)
+          throttle(onContainerScroll, CONTAINER_SCROLL_THROTTLE_TIME)(e)
         }
       >
         {networkActivity.inProgress && <AppLoader />}
@@ -139,7 +150,7 @@ export const AppContainer = withRouter<any, any>(
           onMenuButtonClick={toggleMenu}
           isAuthenticated={authenticated}
           onLoginClick={onLoginClick}
-          onCartIconClick={() => history.push("/cart")}
+          onCartIconClick={() => history.push(ROUTES.CART)}
           allProducts={productList || []}
           cartItemCount={cart.length}
           navigateToRoute={history.push}

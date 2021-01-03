@@ -1,30 +1,16 @@
 import { useState } from "react";
+import { StorageManager } from "../utilities";
 
-export const useLocalStorage =  (key: string, defaultValue: any) => {
+export const useLocalStorage = (key: string, defaultValue: any) => {
+  const [storedValue, setStoredValue] = useState(() => {
+    const item = StorageManager.get(key);
+    return item || defaultValue;
+  });
 
-    const [storedValue, setStoredValue] = useState(() => {
+  const setValue = (value: any) => {
+    StorageManager.set(key, value);
+    setStoredValue(value);
+  };
 
-        try {
-            const item = window.localStorage.getItem(key);
-
-            if (item) return JSON.parse(item);
-            return defaultValue;
-        } catch (exception) {
-            return defaultValue;
-        }
-    });
-
-    const setValue = (value: any) => {
-        
-        try {
-            window.localStorage.setItem(key, JSON.stringify(value));
-            setStoredValue(value);
-        } catch (error) {
-            console.log("===> Unable to set storage item!!!");
-        }
-
-    }
-
-    return [storedValue, setValue];
-
-}
+  return [storedValue, setValue];
+};

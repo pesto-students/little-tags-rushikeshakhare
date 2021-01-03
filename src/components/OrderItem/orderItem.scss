@@ -7,12 +7,11 @@
     border-radius: 20px;
 
     &-image {
-        width: 150px;
-        height: 150px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        border-radius: 11px;
+        img {
+            height: 150px;
+            width: 150px;
+            border-radius: 11px;
+        }
     }
 
     &-details {

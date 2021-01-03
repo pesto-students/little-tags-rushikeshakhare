@@ -4,6 +4,7 @@ import { CART } from "../../AppConstants";
 import { Cart as CartModel } from "../../models/Cart";
 import { connect } from "../../store";
 import { showToast } from "../../utilities";
+import { ROUTES } from "../../AppConfig";
 import "./Cart.scss";
 
 interface ICartProps {
@@ -20,14 +21,13 @@ export const Cart = connect()(({ cart, history }: ICartProps) => {
     const { message } = CartModel.removeItemFromCart(productID);
     showToast(message);
   };
-  console.log(JSON.parse(localStorage.getItem("ADDRESS") || ""));
 
   const checkout = () => {
-    history.push("/select-payment-method");
+    history.push(ROUTES.SELECT_PAYMENT_METHOD);
   };
 
   const onProductClick = (id: number) => {
-    history.push(`/product-details/${id}`);
+    history.push(ROUTES.PRODUCT_DETAILS(id));
   };
 
   return (
