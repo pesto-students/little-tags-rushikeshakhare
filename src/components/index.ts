@@ -6,6 +6,7 @@ export { Hero } from "./Hero/Hero";
 export { CategoryCard, CategoryCardSizes } from "./CategoryCard";
 export { ProductCard } from "./ProductCard/ProductCard";
 export { ImageCarousel } from "./ImageCarousel";
+export { ProductCarousel } from "./ProductCarousel";
 export { Search } from "./Search";
 export { ItemQuantity } from "./ItemQuantity/ItemQuantity";
 export { RadioInput } from "./RadioInput";
