@@ -40,13 +40,14 @@ export const ProductDetails = connect((state: any) => ({
 
   const options = {
     includeScore: true,
-    keys: ['title', 'description']
+    threshold: 1.0,
+    keys: ['title']
   }
 
   const suggestedProducts = (list: any[], target: string): any[] => {
     let results = new Fuse(list, options).search(target);
 
-    results = results.sort((a: any, b: any) => (a.score > b.score) ? -1 : 1);
+    results = results.sort((a: any, b: any) => (a.score < b.score) ? -1 : 1);
     results = results.map((r: any) => r.item).filter((r: any) => r.id != productDetails.id);
     return results;
   }
