@@ -1,12 +1,16 @@
 .product-details-container {
-    min-height: 100vh;
     padding-top: 120px;
     padding: 120px 111px 10px 111px;
 
+    .carousel-holder {
+        display: inline-block;
+    }
     .content-holder {
         width: 600px;
         padding-left: 90px;
         padding-top: 15px;
+        vertical-align: top;
+        display: inline-block;
 
         .title {
             font-size: 29px;
@@ -85,4 +89,17 @@
             }
         }
     }
+}
+
+
+.suggestions {
+    margin-top: 50px;
+    padding-bottom: 120px;
+    .header {
+        font-weight: 300;
+    }
+}
+
+.details-section {
+    min-height: 100vh;
 }

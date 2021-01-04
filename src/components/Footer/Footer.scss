@@ -21,7 +21,7 @@
 
         .contact-info {
 
-            width: 24%;
+            width: 250px;
             
             p {
                 font-weight: 300;
@@ -41,7 +41,7 @@
         .stay-in-touch {
             float: right;
             margin-right: 3%;
-            width: 22%;
+            width: 260px;
 
             p {
                 font-weight: 300;
@@ -127,5 +127,83 @@
         height: 22px;
         color: rgba(255, 255, 255, 0.71);
         font-weight: 300;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .footer-container {
+        .content {
+            .contact-info {
+                width: 250px;
+                min-width: 50%;
+            }
+
+            .categories {
+                width: 140px;
+            }
+            .stay-in-touch {
+                float: left;
+                margin-top: 17px;
+                margin-bottom: 17px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+
+
+@media only screen and (max-width: 430px) {
+
+    .footer-container {
+
+        .content {
+            padding-top: 0px;
+    
+            .content-head {
+                font-size: 14px;
+                margin-bottom: 7px;
+            }
+            .content-body {
+                font-size: 12px;
+                
+                p {
+                    line-height: 16px;
+                }
+            }
+
+            .categories {
+                margin-top: 17px;
+                li {
+                    line-height: 16px;
+                }
+            }
+
+            .stay-in-touch {
+
+                input {
+                    font-size: 12px;
+                }
+
+                button {
+                    font-size: 13px;
+                }
+            }
+
+        }
+
+        
+        .copyrights {
+            font-size: 13px;
+            height: 14px;
+        }
+
+        .payment-links {
+            p {
+                font-size: 13px;
+            }
+        }
     }
 }

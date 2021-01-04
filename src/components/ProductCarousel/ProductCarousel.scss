@@ -1,0 +1,133 @@
+.product-carousel {
+    position: relative;
+    // border: solid 1px;
+    overflow: hidden;
+    // height: 100vh;
+    // width: 100vw;
+    margin: 0;
+
+    .carousel-frame {
+        width: 100%;
+        height: calc(100% - 32px);
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    .carousel-content {
+        height: 100%;
+        display: flex;
+
+        .carousel-item {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0px 16px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+            cursor: pointer;
+
+            .title {
+                position: relative;
+                bottom: 0px;
+                vertical-align: bottom;
+                background: #0000007a;
+                color: #fff;
+                font-weight: 300;
+                height: 20px;
+                padding: 14px 9px;
+                text-align: center;
+                vertical-align: middle;
+                top: calc(100% - 47px);
+            }
+        }
+
+        
+    }
+
+    .carousel-next-btn {
+        display: flex;
+        position: absolute;
+        top: 46%;
+        height: 22px;
+        width: 22px;
+        justify-content: center;
+        background-color: #000;
+        border-radius: 50%;
+        align-items: center;
+        cursor: pointer;
+        transition: transform ease-in 0.1s;
+        right: 6px;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+        img {
+            height: 11px;
+            margin-left: -3px;
+            transform: translateX(2px);
+
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+
+    .carousel-previous-btn {
+        display: flex;
+        position: absolute;
+        top: 46%;
+        height: 22px;
+        width: 22px;
+        justify-content: center;
+        background-color: #000;
+        border-radius: 50%;
+        align-items: center;
+        cursor: pointer;
+        transition: transform ease-in 0.1s;
+        left: 6px;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+        img {
+            height: 11px;
+            margin-left: -3px;
+            transform: translateX(2px);
+            transform: rotateZ(180deg);
+
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+
+
+
+    .carousel-indicators {
+        position: absolute;
+        bottom: 5px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-indicators-item {
+        padding: 5px;
+        margin-right: 5px;
+        border-radius: 50%;
+        background: #a0a0a0;
+        
+
+        &.active {
+            background: #000;
+        }
+    }
+
+    
+
+    
+}
