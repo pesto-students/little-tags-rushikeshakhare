@@ -2,14 +2,21 @@ import React from 'react';
 import arrowRight from '../../assets/images/arrow-right-white.svg';
 
 interface ICarouselNavigation {
-    handleClick: () => void;
+    handlePrevious: () => void;
+    handleNext: () => void;
 }
 
-export const CarouselNavigation = ({ handleClick }: ICarouselNavigation) => {
+export const CarouselNavigation = ({ handleNext, handlePrevious }: ICarouselNavigation) => {
 
     return (
-        <button onClick={handleClick} className="carousel-next-btn btn-flat">
-            <img src={arrowRight} />
-        </button>
+        <div className="navigation-container">
+            <button onClick={handlePrevious} className="carousel-previous-btn btn-flat">
+                <img src={arrowRight} />
+            </button>
+
+            <button onClick={handleNext} className="carousel-next-btn btn-flat">
+                <img src={arrowRight} />
+            </button>
+        </div>
     )
 }

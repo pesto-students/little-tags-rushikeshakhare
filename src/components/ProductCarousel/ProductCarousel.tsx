@@ -10,18 +10,21 @@ interface IImageCarousel {
     width: number;      // width in pixels
     height: number;     // Height in pixels
     history: any;
+    showIndicators?: boolean;
 }
-export const ProductCarousel = ({ products, width, height, history }: IImageCarousel) => {
+export const ProductCarousel = ({ products, width, height, history, showIndicators = false }: IImageCarousel) => {
 
     const [state, setState] = useState({ activeIndex: 0, translate: 0, transition: 0.45 });
     const { activeIndex, translate, transition } = state;
 
-    const next = () => {
-        
-        let newIndex: number = activeIndex + 1;
+    const itemsOnScreen = Math.floor(window.innerWidth / width);
 
-        if (activeIndex === products.length - 1) 
-            newIndex = 0;
+    const next = () => {
+
+        if (activeIndex > products.length - 1 - itemsOnScreen) 
+            return;
+
+        let newIndex: number = activeIndex + 1;
         
         setState({
             ...state,
@@ -29,6 +32,19 @@ export const ProductCarousel = ({ products, width, height, history }: IImageCaro
             translate: newIndex * width
         });
 
+    }
+
+    const previous = () => {
+        let newIndex: number = activeIndex - 1;
+
+        if (activeIndex === 0) 
+            newIndex = 0;
+        
+        setState({
+            ...state,
+            activeIndex: newIndex,
+            translate: newIndex * width
+        });
     }
 
     return (
@@ -44,9 +60,12 @@ export const ProductCarousel = ({ products, width, height, history }: IImageCaro
 
             </CarouselContent>
 
-            <CarouselNavigation handleClick={next} />
+            <CarouselNavigation handlePrevious={previous} handleNext={next} />
 
-            <CarouselIndicators images={products} activeIndex={activeIndex} />
+            {
+                showIndicators &&
+                <CarouselIndicators images={products} activeIndex={activeIndex} />
+            }
 
         </div>
     )
