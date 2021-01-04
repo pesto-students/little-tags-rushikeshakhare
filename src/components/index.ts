@@ -23,3 +23,5 @@ export { ConfirmationPopup, PopupType } from "./ConfirmationPopup";
 export { AppLoader } from "./AppLoader";
 export { Toast } from "./Toast";
 export { PaymentStatus, PaymentStatusTypes } from "./PaymentStatus";
+export { PhoneAuthPopup } from "./PhoneAuthPopup";
+export { SetUserNamePopup } from "./SetUserNamePopup";

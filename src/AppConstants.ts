@@ -1,5 +1,6 @@
 export const APP_TITLE = "Little Tags";
-
+export const USER_SET_NAME_MESSAGE =
+  "Logged In Successfully, Please update your name";
 // App Loader
 export const APP_LOADER_TEXT = "Getting Things Ready...";
 
@@ -8,7 +9,7 @@ export const CART_ITEM_REMOVE_BUTTON_TEXT = "Remove";
 
 // Confirmation Popup
 export const CONFIRMATION_POPUP_SUCCESS_BUTTON_TEXT = "Proceed";
-export const CONFIRMATION_POPUP_CANCEL_BUTTON_TEXT = "Proceed";
+export const CONFIRMATION_POPUP_CANCEL_BUTTON_TEXT = "Cancel";
 
 // Dropdown
 export const DROPDOWN_ICON_PLACEHOLDER = "Dropdown Icon";
@@ -31,6 +32,7 @@ export const LOGIN_WITH_GOOGLE_PLACEHOLDER = "Google Sign In";
 export const LOGIN_WITH_FACEBOOK_PLACEHOLDER = "Facebook Sign In";
 export const LOGIN_WITH_GOOGLE_TEXT = "Google Account";
 export const LOGIN_WITH_FACEBOOK_TEXT = "Facebook Account";
+export const LOGIN_WITH_PHONE_TEXT = "Phone Number";
 
 // Menu
 export const MENU_CATEGORIES_TITLE = "CATEGORIES";
@@ -50,6 +52,21 @@ export const PAYMENT_STATUS_FAILURE_ACTION_TEXT = "Retry Payment";
 // Search
 export const SEARCH_PLACEHOLDER = "Search...";
 export const SEARCH_NO_RESULTS_TEXT = "No Results Found";
+
+// Phone Auth Popup
+export const PHONE_AUTH_OTP_SENT_MESSAGE = "OTP Sent to your phone number";
+export const PHONE_AUTH_ENTER_OTP_LABEL = "Enter OTP";
+export const PHONE_AUTH_ENTER_PHONE_LABEL = "Enter Phone Number";
+export const PHONE_AUTH_OTP_LENGTH = 6;
+export const PHONE_AUTH_PHONE_NUMBER_LENGTH = 10;
+export const PHONE_AUTH_BUTTON_TEXT_LOADING = "Loading..";
+export const PHONE_AUTH_BUTTON_TEXT_VERIFY_OTP = "Verify OTP";
+export const PHONE_AUTH_BUTTON_TEXT_REQUEST_OTP = "Request OTP";
+
+// Select User Name Popup
+export const SELECT_USER_NAME_ACTION_BUTTON_TEXT = "Save";
+export const SELECT_USER_NAME_INPUT_LABEL = "Enter Your Name";
+export const SELECT_USER_NAME_SUCCESS_MESSAGE = "User's name set successfuly";
 
 // Add Address Screen
 export const ADD_ADDRESS = {
