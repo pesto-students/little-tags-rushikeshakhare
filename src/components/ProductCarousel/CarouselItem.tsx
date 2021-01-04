@@ -1,7 +1,7 @@
 import React from 'react';
 import { ROUTES } from '../../AppConfig';
 
-const TRUNCATE_LENGTH = 25;
+const TRUNCATE_LENGTH = 20;
 
 interface ICarouselItem {
     id: any;
