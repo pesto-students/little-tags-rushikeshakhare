@@ -5,6 +5,7 @@ import { Cart as CartModel } from "../../models/Cart";
 import { connect } from "../../store";
 import { showToast } from "../../utilities";
 import { ROUTES } from "../../AppConfig";
+import iconEmptyCart from "../../assets/images/luggage-cart-solid.svg";
 import "./Cart.scss";
 
 interface ICartProps {
@@ -33,7 +34,13 @@ export const Cart = connect()(({ cart, history }: ICartProps) => {
   return (
     <div className="cart">
       <h1 className="title">{CART.SCREEN_TITLE}</h1>
-      {!cart.length && <h2>{CART.EMPTY_CART_MESSAGE}</h2>}
+
+      { !cart.length &&
+          <div className="cart-empty-msg text-center">
+            <img src={iconEmptyCart} alt="cart empty image"/>
+            <h2 className="text-center">{CART.EMPTY_CART_MESSAGE}</h2>
+          </div>
+      }
 
       {cart.map(
         (
