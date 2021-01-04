@@ -50,3 +50,92 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 972px) {
+    .hero {
+        &-content {
+            &-heading {
+                font-size: 50px;
+            }
+    
+            &-subheading {
+                font-size:27px;
+    
+                &::before {
+                    width: 170px;
+                    margin-left: -180px;
+                    margin-top: 15px;
+                }
+    
+                &::after {
+                    width: 170px;
+                    margin-left: 16px;
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+    
+}
+
+
+@media only screen and (max-width: 768px) {
+    .hero {
+        &-content {
+            padding-top: 40vh;
+
+            &-heading {
+                font-size: 30px;
+            }
+    
+            &-subheading {
+                font-size:17px;
+    
+                &::before {
+                    width: 100px;
+                    margin-left: -112px;
+                    margin-top: 10px;
+                }
+    
+                &::after {
+                    width: 100px;
+                    margin-left: 11px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 425px) {
+    .hero {
+        height: 50vh;
+
+        &-content {
+            padding-top: 27vh;
+
+            &-heading {
+                font-size: 20px;
+            }
+    
+            &-subheading {
+                font-size:15px;
+    
+                &::before {
+                    width: 60px;
+                    margin-left: -65px;
+                    margin-top: 8px;
+                }
+    
+                &::after {
+                    width: 60px;
+                    margin-left: 6px;
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+    
+}
