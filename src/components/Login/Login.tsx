@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import googleLogo from "../../assets/images/google.svg";
 import facebookLogo from "../../assets/images/facebook.svg";
 import closeIcon from "../../assets/images/close.svg";
+import phoneIcon from "../../assets/images/phone-solid.svg";
 import {
   LOGIN_TITLE,
   LOGIN_SUBTITLE,
@@ -9,15 +10,18 @@ import {
   LOGIN_WITH_GOOGLE_TEXT,
   LOGIN_WITH_FACEBOOK_PLACEHOLDER,
   LOGIN_WITH_GOOGLE_PLACEHOLDER,
+  LOGIN_WITH_PHONE_TEXT,
 } from "../../AppConstants";
 import "./login.scss";
+import { FormGroup } from "../FormGroup";
+import { PopupUtility } from "../../utilities";
+import { PhoneAuthPopup } from "../PhoneAuthPopup";
 
 interface ILoginProps {
   onGoogleAccountClick: () => void;
   onFacebookAccountClick: () => void;
   onClose: () => void;
   error?: any;
-  sendOtp?: any;
 }
 
 export const Login = ({
@@ -26,6 +30,15 @@ export const Login = ({
   onClose,
   error,
 }: ILoginProps) => {
+  const [showPhoneAuth, setShowPhoneAuth] = useState(false);
+
+  const onPhoneNumberAuthClick = () => {
+    setShowPhoneAuth(true);
+    PopupUtility(PhoneAuthPopup, {})
+      .then(() => setShowPhoneAuth(false))
+      .catch(() => setShowPhoneAuth(false));
+  };
+  if (showPhoneAuth) return null;
   return (
     <div className="login-card">
       <div className="login-card-close">
@@ -39,22 +52,38 @@ export const Login = ({
       <div className="login-card-subtitle">
         <h4>{LOGIN_SUBTITLE}</h4>
       </div>
-      <button
-        type="button"
-        className="btn d-flex btn-auth-provider"
-        onClick={onGoogleAccountClick}
-      >
-        <img src={googleLogo} alt={LOGIN_WITH_GOOGLE_PLACEHOLDER} />
-        <h4>{LOGIN_WITH_GOOGLE_TEXT}</h4>
-      </button>
-      <button
-        type="button"
-        className="btn d-flex btn-auth-provider"
-        onClick={onFacebookAccountClick}
-      >
-        <img src={facebookLogo} alt={LOGIN_WITH_FACEBOOK_PLACEHOLDER} />
-        <h4>{LOGIN_WITH_FACEBOOK_TEXT}</h4>
-      </button>
+      <FormGroup>
+        <button
+          type="button"
+          className="btn d-flex btn-auth-provider"
+          onClick={onGoogleAccountClick}
+        >
+          <img src={googleLogo} alt={LOGIN_WITH_GOOGLE_PLACEHOLDER} />
+          <h4>{LOGIN_WITH_GOOGLE_TEXT}</h4>
+        </button>
+      </FormGroup>
+      <FormGroup>
+        <button
+          type="button"
+          className="btn d-flex btn-auth-provider"
+          onClick={onFacebookAccountClick}
+        >
+          <img src={facebookLogo} alt={LOGIN_WITH_FACEBOOK_PLACEHOLDER} />
+          <h4>{LOGIN_WITH_FACEBOOK_TEXT}</h4>
+        </button>
+      </FormGroup>
+
+      <FormGroup>
+        <button
+          type="button"
+          className="btn d-flex btn-auth-provider"
+          onClick={onPhoneNumberAuthClick}
+        >
+          <img src={phoneIcon} alt={LOGIN_WITH_FACEBOOK_PLACEHOLDER} />
+          <h4>{LOGIN_WITH_PHONE_TEXT}</h4>
+        </button>
+      </FormGroup>
+
       {error && <div className="login-card-error">{error}</div>}
     </div>
   );

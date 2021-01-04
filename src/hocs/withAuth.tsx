@@ -1,30 +1,45 @@
 import React, { Component } from "react";
-import { AppLoader } from "../components";
+import { AppLoader, SetUserNamePopup } from "../components";
 import { firebase } from "../services/firebase";
 import { Application } from "../Application";
-import { showToast } from "../utilities";
-import { TOAST_CONTAINER_ID } from "../AppConfig";
-import { LOGGED_IN_MESSAGE } from "../AppConstants";
+import { showToast, PopupUtility } from "../utilities";
+import { TOAST_CONTAINER_ID, POPUP_CONTAINER_ID } from "../AppConfig";
+import { LOGGED_IN_MESSAGE, USER_SET_NAME_MESSAGE } from "../AppConstants";
 
 export const withAuth = (AppComponent: any) => {
   return class AuthWrapper extends Component<any, any> {
     state = {
       authenticated: false,
       loading: true,
+      userNameStatus: false,
     };
 
-    onAuthSuccess = (user: any) => {
-      showToast(LOGGED_IN_MESSAGE(user.displayName));
-
+    setUserData = (user: any) => {
       Application.getInstance().UserData = {
         name: user.displayName,
         email: user.email,
         phone: user.phoneNumber,
       };
+    };
 
+    setAuthStatusSuccess = () =>
+      this.setState({
+        userNameStatus: true,
+      });
+
+    onAuthSuccess = (user: any) => {
+      this.setUserData(user);
       if (!user.displayName) {
-        user.updateProfile({ displayName: "Rushikesh Akhare" });
-      }
+        showToast(USER_SET_NAME_MESSAGE);
+        PopupUtility(SetUserNamePopup, {
+          setUserName: (name: string) =>
+            user.updateProfile({ displayName: name }),
+        }).then(() => {
+          this.setUserData(user);
+          this.setAuthStatusSuccess();
+        });
+      } else showToast(LOGGED_IN_MESSAGE(user.displayName));
+      this.setAuthStatusSuccess();
       this.setState({
         authenticated: true,
         loading: false,
@@ -49,11 +64,13 @@ export const withAuth = (AppComponent: any) => {
       return (
         <>
           <div id={TOAST_CONTAINER_ID} />
+
           {loading ? (
             <AppLoader />
           ) : (
             <AppComponent {...this.state} {...this.props} />
           )}
+          <div id={POPUP_CONTAINER_ID} />
         </>
       );
     }

@@ -23,3 +23,6 @@ export const LOGIN_LOADED_STORAGE_KEY = "loginLoaded";
 export const USER_ORDERS_STORAGE_KEY = "userOrder";
 export const USER_CART_STORAGE_KEY = "userCart";
 export const USER_ADDRESSES_STORAGE_KEY = "addresses";
+export const PHONE_NUMBER_WITH_COUNTRY_CODE = (phoneNumber: any) =>
+  `+91${phoneNumber}`;
+export const CAPTCHA_CONTAINER_ID = "sign-in-button";

@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import firebaseConfig from "./firebase.config";
-import { showToast } from "../utilities";
+import { CAPTCHA_CONTAINER_ID } from "../AppConfig";
 
 export class Firebase {
   public firebaseAuth: any = null;
@@ -26,10 +26,14 @@ export class Firebase {
     return this.firebaseAuth().signOut();
   };
 
-  signInWithPhoneNumber = (phoneNumber: string) => {
+  signInWithPhoneNumber = (
+    phoneNumber: string,
+    successCallback: any,
+    errorCallback: any
+  ) => {
     const globalWindow: any = window;
-    globalWindow.recaptchaVerifier = new this.firebaseAuth().RecaptchaVerifier(
-      "sign-in-button",
+    globalWindow.recaptchaVerifier = new this.firebaseAuth.RecaptchaVerifier(
+      CAPTCHA_CONTAINER_ID,
       {
         size: "invisible",
       }
@@ -37,14 +41,8 @@ export class Firebase {
     const appVerifier = globalWindow.recaptchaVerifier;
     this.firebaseAuth()
       .signInWithPhoneNumber(phoneNumber, appVerifier)
-      .then((confirmationResult: any) => {
-        confirmationResult
-          .confirm("123456")
-          .then((data: any) => console.log(data));
-      })
-      .catch((error: any) => {
-        console.log(error);
-      });
+      .then(successCallback)
+      .catch(errorCallback);
   };
 }
 const firebaseInstance = new Firebase(firebaseConfig);

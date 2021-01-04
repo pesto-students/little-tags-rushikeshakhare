@@ -137,9 +137,6 @@ export const AppContainer = withRouter<any, any>(
               onFacebookAccountClick={onFacebookAccountClick}
               onGoogleAccountClick={onGoogleAccountClick}
               onClose={onLoginClick}
-              sendOtp={(phoneNumber: any) =>
-                firebase.signInWithPhoneNumber(phoneNumber)
-              }
               error={authError}
             />
           </Modal>

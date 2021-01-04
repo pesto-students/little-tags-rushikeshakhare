@@ -65,7 +65,7 @@ export const SelectPaymentMethod = connect()(
 
       const description = "Order on " + Date.now().toLocaleString();
       const finalPrice = Number(Number(totalPrice).toFixed(2));
-      console.log(finalPrice);
+
       initPaymentRazorpay(finalPrice, description, {
         name: `${defaultAddress.firstName} ${defaultAddress.lastName}`,
         email: defaultAddress.email,

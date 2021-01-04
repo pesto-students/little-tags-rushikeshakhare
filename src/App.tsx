@@ -9,7 +9,6 @@ const App = (props: any): JSX.Element => {
   return (
     <Provider store={appStore}>
       <AppRouter authenticated={props.authenticated} />
-      <div id="popup-container" />
     </Provider>
   );
 };

@@ -1,0 +1,78 @@
+.user-name-popup {
+    width: 300px;
+    min-height: 40px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 1px 1px 10px 0 rgba(255, 255, 255, 0.5);
+    animation-name: popup;
+    animation-duration: 300ms;
+    animation-iteration-count: initial;
+
+    .user-name {
+        box-sizing: border-box;
+    }
+
+    &-text {
+        text-align: center;
+        font-weight: 300;
+    }
+
+    &-error {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 15px;
+        background-color: rgba(255, 0, 0, 0.3);
+        border-radius: 5px;
+    }
+
+    &-actions {
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+
+        .cancel-btn,
+        .success-btn {
+            background-color: black;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+        }
+
+        .success-btn:disabled {
+            background-color: grey;
+            color: rgba(255, 255, 255, 0.486);
+            cursor: not-allowed;
+        }
+
+        .cancel-btn {
+            background-color: grey;
+        }
+
+        .success-btn {
+            margin-right: 10px;
+        }
+    }
+
+    @keyframes popup {
+        0% {
+            transform: scale(0);
+        }
+
+        25% {
+            transform: scale(1.2);
+        }
+
+        50% {
+            transform: scale(0.8);
+        }
+
+        75% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+}
