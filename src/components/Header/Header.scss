@@ -95,6 +95,8 @@
         margin-top: 5px;
         font-weight: 300;
     }
+
+    
 }
 
 .theme-white {
@@ -113,4 +115,115 @@
     * {
         color: black;
     }
+}
+
+
+@media only screen and (max-width: 1147px) {
+    .nav-header {
+
+        .search-bar-container {
+            width: 37%;
+            margin-left: 25%;
+            padding-top: 9px;
+        }
+
+        .hamburger-toggle-btn {
+            height: 36px;
+        }
+    
+        .logo-container {
+            font-size: 25px;
+            line-height: 36px;
+        }
+    
+        .user-data {
+    
+            img {
+                height: 36px;
+            }
+    
+            .user-text {
+                line-height: 36px;
+                font-size: 17px;
+            }
+        }
+    
+        .user-auth-button {
+    
+            a {
+                line-height: 36px;
+            }
+        }
+    
+        .cart-btn-container {
+            height: 36px;
+        }
+    
+        .login-btn {
+            font-size: 25px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-header {
+        height: 100px;
+        padding-top: 3px;
+
+        .search-bar-container {
+            width: 94%;
+            display: inline-block;
+            padding-left: 0px;
+            position: relative;
+            left: 3%;
+            top: 8px;
+            padding-top: 0px;
+            margin-left: 0px;
+        }
+
+        .hamburger-toggle-btn {
+            height: 30px;
+        }
+    
+        .logo-container {
+            font-size: 26px;
+            line-height: 30px;
+        }
+    
+        .user-data {
+    
+            img {
+                height: 30px;
+            }
+    
+            .user-text {
+                line-height: 30px;
+                font-size: 16px;
+            }
+        }
+    
+        .user-auth-button {
+    
+            a {
+                line-height: 30px;
+                font-size: 18px;
+            }
+        }
+    
+        .cart-btn-container {
+            height: 30px;
+        }
+    
+        .login-btn {
+            font-size: 18px;
+        }
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .nav-header {
+        .user-data {
+            display: none;
+        }
+    } 
 }
