@@ -8,3 +8,4 @@ export { Cart } from "./Cart/Cart";
 export { Orders } from "./Orders/Orders";
 export { ThankYou } from "./ThankYou/ThankYou";
 export { Sorry } from "./Sorry/Sorry";
+export { WishList } from "./WishList/WishList";

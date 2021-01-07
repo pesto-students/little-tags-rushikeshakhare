@@ -76,6 +76,7 @@
             border-radius: 7px;
             padding: 10px 25px;
             align-items: center;
+            display: inline-flex;
 
             .cart-text {
                 flex: 1;
@@ -84,6 +85,17 @@
 
             img {
                 height: 20px;
+            }
+        }
+
+        .add-to-wishlist-btn {
+            height: 20px;
+            width: 20px;
+            margin-top: 8px;
+            margin-right: 2px;
+
+            img {
+                height: 100%;
             }
         }
     }
