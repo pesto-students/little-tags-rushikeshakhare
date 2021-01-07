@@ -4,11 +4,14 @@ import { PRODUCT_DETAILS } from "../../AppConstants";
 import { connect } from "../../store";
 import { fetchProductDetails, fetchProducts } from "../../store/actions";
 import { Cart } from "../../models/Cart";
+import { WishList } from "../../models/WishList";
 import imgCart from "../../assets/images/cart-white.svg";
 import imgCarousel1 from "../../assets/images/carousel-1.jpg";
 import imgCarousel2 from "../../assets/images/carousel-2.jpg";
 import imgCarousel3 from "../../assets/images/carousel-3.jpg";
 import imgCarousel4 from "../../assets/images/carousel-4.jpg";
+import imgHeartRegular from "../../assets/images/heart-regular.svg";
+import imgHeartSolid from "../../assets/images/heart-solid.svg";
 import { showToast } from "../../utilities";
 import Fuse from 'fuse.js';
 import "./ProductDetails.scss";
@@ -51,6 +54,40 @@ export const ProductDetails = connect((state: any) => ({
     results = results.map((r: any) => r.item).filter((r: any) => r.id != productDetails.id);
     return results;
   }
+
+  const handleCartAddRemove = () => {
+    if (productDetails) {
+      if (!!Cart.isProductAlreadyInCart(productDetails?.id)) {
+        const { message } = Cart.removeItemFromCart(
+          productDetails?.id
+        );
+        showToast(message);
+        return;
+      }
+      const { message } = Cart.addItemToCart({
+        product: productDetails,
+        quantity: productQuantity,
+      });
+      showToast(message);
+    }
+  }
+
+  const handleWishListAddRemove = () => {
+    if (productDetails) {
+      if (!!WishList.isProductAlreadyInWishList(productDetails?.id)) {
+        const { message } = WishList.removeItemFromWishList(
+          productDetails?.id
+        );
+        showToast(message);
+        return;
+      }
+      const { message } = WishList.addItemToWishList({
+        product: productDetails,
+        quantity: productQuantity,
+      });
+      showToast(message);
+    }
+  }
   
 
   return (
@@ -81,6 +118,7 @@ export const ProductDetails = connect((state: any) => ({
                 />
               </div>
             )}
+
             {!!Cart.isProductAlreadyInCart(productDetails?.id) && authenticated && (
               <>
                 {PRODUCT_DETAILS.ADDED_TO_CART_MESSAGE} <br />
@@ -92,23 +130,7 @@ export const ProductDetails = connect((state: any) => ({
               <button
                 disabled={false}
                 className="add-to-cart btn-flat pointer d-flex"
-                onClick={() => {
-                  // TODO -- shift this declaraton level
-                  if (productDetails) {
-                    if (!!Cart.isProductAlreadyInCart(productDetails?.id)) {
-                      const { message } = Cart.removeItemFromCart(
-                        productDetails?.id
-                      );
-                      showToast(message);
-                      return;
-                    }
-                    const { message } = Cart.addItemToCart({
-                      product: productDetails,
-                      quantity: productQuantity,
-                    });
-                    showToast(message);
-                  }
-                }}
+                onClick={handleCartAddRemove}
               >
                 <img src={imgCart} alt="Cart Icon" />
                 <div className="cart-text">
@@ -116,6 +138,15 @@ export const ProductDetails = connect((state: any) => ({
                     ? PRODUCT_DETAILS.REMOVE_FROM_CART_TEXT
                     : PRODUCT_DETAILS.ADD_TO_CART_TEXT}
                 </div>
+              </button>
+            )}
+
+            {authenticated && (
+              <button
+                className="btn-flat right add-to-wishlist-btn"
+                onClick={handleWishListAddRemove}
+              >
+                <img src={ !!WishList.isProductAlreadyInWishList(productDetails?.id) ? imgHeartSolid : imgHeartRegular} alt="Add to wishlist button" />
               </button>
             )}
           </div>

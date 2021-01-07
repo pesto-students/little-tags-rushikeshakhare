@@ -9,6 +9,7 @@ import {
   Orders,
   ThankYou,
   Sorry,
+  WishList,
 } from "../screens";
 import { ROUTES } from "../AppConfig";
 import { TestBed } from "../testbed";
@@ -73,6 +74,11 @@ export const RouteMappings: IRoute[] = [
   {
     path: ROUTES.SORRY,
     component: Sorry,
+    isUserAuthenticated: true,
+  },
+  {
+    path: ROUTES.WISH_LIST,
+    component: WishList,
     isUserAuthenticated: true,
   },
 ];
