@@ -25,7 +25,8 @@
         font-size: 37px;
         font-weight: 300;
         line-height: 44px;
-        margin-top: 11px;
+        margin-top: 10px;  
+    
     }
 
     .search-bar-container {
@@ -51,14 +52,14 @@
     }
 
     .user-auth-button {
-        margin-right: 126px;
-        margin-top: 11px;
+        margin-right: 20px;
+        margin-top: 12px;
 
         a {
             line-height: 44px;
             padding-left: 6px;
             font-weight: 300;
-            font-size: 22px;
+            font-size: 20px;
             color: inherit;
             text-decoration: none;
         }
@@ -167,7 +168,7 @@
 
 @media only screen and (max-width: 768px) {
     .nav-header {
-        height: 100px;
+        height: 120px;
         padding-top: 3px;
 
         .search-bar-container {
@@ -182,13 +183,17 @@
         }
 
         .hamburger-toggle-btn {
-            height: 30px;
+            height: 40px;
         }
     
         .logo-container {
             font-size: 26px;
             line-height: 30px;
+            margin-top: 5px;
+            margin-left: -10px;
         }
+
+      
     
         .user-data {
     
@@ -224,6 +229,23 @@
     .nav-header {
         .user-data {
             display: none;
+        }
+
+        .hamburger-toggle-btn {
+            height: 30px;
+        }
+
+        .app-logo-image{
+            height: 40px;
+            margin-top: 3px;
+        }
+
+        .user-auth-button {
+    
+            a {
+                line-height: 25px;
+                font-size: 13px;
+            }
         }
     } 
 }

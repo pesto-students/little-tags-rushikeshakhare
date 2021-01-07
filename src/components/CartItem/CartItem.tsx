@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { ItemQuantity } from "../ItemQuantity/ItemQuantity";
-import { CART_ITEM_REMOVE_BUTTON_TEXT } from "../../AppConstants";
-import "./CartItem.scss";
+import React, { useState, useEffect } from 'react';
+import { ItemQuantity } from '../ItemQuantity/ItemQuantity';
+import { CART_ITEM_REMOVE_BUTTON_TEXT } from '../../AppConstants';
+import Image, { Shimmer } from 'react-shimmer';
+import './CartItem.scss';
 
 interface ICartItemProps {
   id: number;
@@ -36,33 +37,23 @@ export const CartItem = ({
   }, [defaultQuantity]);
 
   return (
-    <div className="cart-item item-center d-flex">
-      <img
-        src={image}
-        alt={`Product - ${name}`}
-        className="cart-item-image"
-        onClick={() => onProductClick(id)}
-      />
-
-      <div className="cart-item-content left">
-        <div className="cart-item-detail">
-          <div className="cart-item-text left">{name}</div>
-          <div className="cart-item-price right text-right"> ₹ {price} </div>
+    <>
+      <div className='cart-item item-center d-flex'>
+        <div className='cart-item-image d-flex' onClick={() => onProductClick(id)}>
+          <Image src={image} fallback={<Shimmer width={100} height={100} />} />
         </div>
 
-        <div className="cart-item-quantity-edit">
-          <ItemQuantity
-            quantity={quantity}
-            handleChange={handleQuantityChange}
-          />
-          <button
-            className="btn remove-btn"
-            onClick={() => onRemoveButtonClick(id)}
-          >
+        <div className='cart-item-content left'>
+          <div className='cart-item-content-title'>{name}</div>
+          <ItemQuantity quantity={quantity} handleChange={handleQuantityChange} />
+          <button className='btn remove-btn' onClick={() => onRemoveButtonClick(id)}>
             {CART_ITEM_REMOVE_BUTTON_TEXT}
           </button>
         </div>
+        <div className='cart-item-price right text-right'>
+          <span> {`₹ ${price}`}</span>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

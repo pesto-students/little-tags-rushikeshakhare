@@ -4,6 +4,7 @@ import { APP_TITLE } from "../../AppConstants";
 import { MenuList } from "./MenuList";
 import { MenuCategories } from "./MenuCategories";
 import closeIcon from "../../assets/images/close.svg";
+import appLogoBlack from '../../assets/images/app-logo-black.png'
 import { Application } from "../../Application";
 import "./menu.scss";
 
@@ -28,7 +29,7 @@ export const Menu = ({
     <div className="menu">
       <div className="menu-title d-flex">
         <div className="menu-title-text">
-          <h1>{APP_TITLE}</h1>
+         <img src={appLogoBlack} alt="App Logo" className="app-logo-image-lg"/>
         </div>
         <div className="menu-title-action">
           <button type="button" className="btn d-flex" onClick={onClose}>

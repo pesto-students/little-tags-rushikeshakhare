@@ -1,8 +1,8 @@
 .pagination {
-    width: 820px;
+    
     height: 80px;
-    line-height: 80px;
-
+    align-items: center;
+    
     &-nav {
         button {
             background-color: transparent;
@@ -20,8 +20,9 @@
 
     &-list {
         width: 100%;
-        margin: auto;
         list-style: none;
+        flex:1;
+        text-align: center;
 
         li {
             display: inline-flex;
@@ -43,6 +44,59 @@
         }
     }
     
+    @media only screen and (max-width: 768px) {
+       .pagination{
+           &-nav{
+                button {
+                    background-color: transparent;
+                    font-weight: 300;
+                    font-size: 15px;
+                    line-height: 20px;
+        
+                    img {
+                        height: 20px;
+                        margin-right: 8px;
+                        margin-left: 8px;
+                    }
+                }
+           }
+           &-list{
+            li {
+                display: inline-flex;
+    
+                button {
+                    margin: 0 4px;
+                    width: 25px;
+                    height: 25px;
+                    border: solid 1px #707070;
+                    background: transparent;
+                    color: #707070;
+                    border-radius: 4px;
+                }
+                
+                button.selected {
+                    background: #707070;
+                    color: #fff;
+                }
+            }
+           }
+       }
+    }
 
-
+    @media only screen and (max-width: 444px) {
+        .pagination{
+            &-nav{
+                 button {
+                     font-size: 12px;
+                 }
+            }
+            &-list{
+                li button {
+                        margin: 0 4px;
+                        width: 20px;
+                        height: 20px;
+                }
+            }
+        }
+    }
 }

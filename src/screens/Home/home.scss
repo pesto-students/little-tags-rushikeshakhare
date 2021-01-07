@@ -30,4 +30,29 @@
             }
         }
     }
+
+    @media only screen and (max-width: 768px) {
+        .home-screen-categories{
+            height: auto;
+        }
+        &-categories{
+            &-grid {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                margin: auto;
+                margin-top: 20px;
+
+                .horizontal-categories,.vertical-categories{
+                    flex-direction: column;
+                    padding: 0;
+                }
+
+                .category-card{
+                    height: 150px;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }

@@ -56,7 +56,7 @@ export const ProductDetails = connect((state: any) => ({
   return (
 
     <div className="details-section">
-      <div className="product-details-container">
+      <div className="product-details-container d-flex">
         <div className="carousel-holder">
           <ImageCarousel
             images={[productDetails?.image, imgCarousel3, imgCarousel4, imgCarousel2, imgCarousel1]}

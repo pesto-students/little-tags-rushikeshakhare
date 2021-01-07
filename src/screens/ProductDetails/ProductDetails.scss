@@ -6,7 +6,6 @@
         display: inline-block;
     }
     .content-holder {
-        width: 600px;
         padding-left: 90px;
         padding-top: 15px;
         vertical-align: top;
@@ -41,7 +40,6 @@
             }
 
             li {
-                // width: 30px;
                 margin-right: 11px;
                 padding: 4px 7px;
                 border: solid 1px transparent;
@@ -90,7 +88,32 @@
         }
     }
 }
+@media only screen and (max-width: 768px) {
+    .product-details-container{ 
+        padding: 0;
+        padding-top: 120px;
+        flex-direction: column;
 
+        .carousel-holder{
+            width: auto;
+            margin: auto;
+        }
+        .content-holder{
+            padding: 20px;
+        }  
+    }
+    .suggestions {
+           
+        .header {
+            text-align: left;
+            margin-left: 20px;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
 
 .suggestions {
     margin-top: 50px;

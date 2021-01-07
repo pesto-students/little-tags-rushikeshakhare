@@ -27,15 +27,16 @@ class Interceptor {
   }
 
   private apiUrl(config: any): string {
+    console.log( `${config.method}_${config.url}`)
     return `${config.method}_${config.url}`;
   }
 
-  private startAPIRequest(apiKey: string): void {
-    startActivity(apiKey);
+  private startAPIRequest(apiUrl: string): void {
+    startActivity(apiUrl);
   }
 
-  private finishAPIRequest(apiKey: string): void {
-    completeActivity(apiKey);
+  private finishAPIRequest(apiUrl: string): void {
+    completeActivity(apiUrl);
   }
 
   private requestInterceptor = async (config: AxiosRequestConfig) => {
@@ -49,8 +50,8 @@ class Interceptor {
   };
 
   private responseInterceptor = (response: AxiosResponse) => {
-    const apiKey = this.apiUrl(response.config);
-    this.finishAPIRequest(apiKey);
+    const apiUrl = this.apiUrl(response.config);
+    this.finishAPIRequest(apiUrl);
     return response;
   };
 
@@ -60,8 +61,8 @@ class Interceptor {
 
   private responseErrorInterceptor = (error: AxiosError) => {
     if (error && error.response) {
-      const apiKey = this.apiUrl(error.response.config);
-      this.finishAPIRequest(apiKey);
+      const apiUrl = this.apiUrl(error.response.config);
+      this.finishAPIRequest(apiUrl);
       return Promise.reject(error.response);
     }
   };

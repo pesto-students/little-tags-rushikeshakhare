@@ -1,7 +1,7 @@
 .cart {
     min-height: 100vh;
     padding-top: 120px;
-    width: 800px;
+   
     margin: auto;
     margin-bottom: 140px;
 
@@ -15,9 +15,10 @@
     }
 
     .checkout-btn {
-        padding: 10px 30px;
+        padding: 15px 50px;
         background-color: black;
         color: white;
+        font-size: 15px;
         border-radius: 5px;
         margin: auto;
     }
@@ -34,4 +35,23 @@
             font-size: 28px;
         }
     }
+
+    
+}
+@media only screen and (max-width: 768px) {
+    .cart{
+        width: 90%;
+        h1 {
+            font-weight: 300;
+            margin-bottom: 30px;
+            margin-left: 20px;
+            font-size: 25px;
+        }
+    } 
+}
+
+@media only screen and (min-width: 768px) {
+    .cart{
+        width: 60%;
+    } 
 }
