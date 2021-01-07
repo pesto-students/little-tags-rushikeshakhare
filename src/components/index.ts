@@ -21,6 +21,7 @@ export { OrderItem } from "./OrderItem";
 export { Modal } from "./Modal";
 export { ConfirmationPopup, PopupType } from "./ConfirmationPopup";
 export { AppLoader } from "./AppLoader";
+export { LoaderBar } from "./LoaderBar/LoaderBar";
 export { Toast } from "./Toast";
 export { PaymentStatus, PaymentStatusTypes } from "./PaymentStatus";
 export { PhoneAuthPopup } from "./PhoneAuthPopup";
