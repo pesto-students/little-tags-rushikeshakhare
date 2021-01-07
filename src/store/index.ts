@@ -32,6 +32,7 @@ const resolveMapStateToProps = (mapFn: any) => {
       networkActivity: state.networkActivity,
       productList: state.products.products,
       cart: state.cart.cart,
+      wishList: state.wishList.wishList
     };
     return { ...defaultMappedState, ...(mapFn && mapFn(state)) };
   };

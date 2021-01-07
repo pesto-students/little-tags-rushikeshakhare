@@ -32,6 +32,10 @@ export const userMenuOptions = [
     label: "Add Address",
     value: "/add-address",
   },
+  {
+    label: "Wish List",
+    value: "/wish-list",
+  },
 ];
 
 export const sizeList = [
