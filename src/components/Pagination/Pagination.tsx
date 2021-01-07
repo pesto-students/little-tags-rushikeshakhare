@@ -19,11 +19,29 @@ export const Pagination = ({
   const [selectedPage, setSelectedPage] = useState(1);
   const [offset, setOffset] = useState(0);
 
-  const handleNavigation = (delta: number) => {
+  const handleSlider = (delta: number) => {
     if (offset + delta < 0 || offset + navigationSize + delta > totalPages)
       return;
     setOffset(offset + delta);
   };
+
+  const handleNavigation = (delta: number) => {
+    const page = selectedPage + delta;
+
+
+    if ((page < 1) || (page >= totalPages)) return;
+    
+    const left = offset + 1;
+    const right = offset + navigationSize + 1;
+
+    if ((delta > 0 && page >= right) || (delta < 0 && page < left)) {
+        handleSlider(delta);
+    }
+
+    console.log(page, offset, selectedPage)
+
+    handlePageSelect(page);
+  }
 
   const handlePageSelect = (page: number) => {
     setSelectedPage(page);
