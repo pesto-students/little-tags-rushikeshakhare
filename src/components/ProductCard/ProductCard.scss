@@ -7,7 +7,7 @@
     transition: box-shadow .25s, -webkit-box-shadow .25s;
     border-radius: 2px;
     height: 120px;
-    width: 660px;
+    
     border-radius: 20px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -39,6 +39,33 @@
         font-weight: 300;
         margin-right: 12px;
     }
+    @media only screen and (max-width: 768px) {
+        .product-card-text{
+            font-size: 14px;
+            line-height: 20px;
+        } 
+        .product-card-price{
+            font-size: 17px;
+            line-height: 120px;
+        }
+    }
 
-
+    @media only screen and (max-width: 444px) {
+        &-image {
+            img {
+                height:70px;
+                width: 70px;
+                border-radius: 11px;
+            }
+        }
+        .product-card-text{
+            font-size: 14px;
+            line-height: 17px;
+        } 
+        .product-card-price{
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+    }
 }

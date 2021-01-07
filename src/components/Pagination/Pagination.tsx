@@ -49,15 +49,10 @@ export const Pagination = ({
   };
 
   return (
-    <div className="pagination item-center">
+    <div className="pagination item-center d-flex">
       <div className="pagination-nav previous left">
-        <button onClick={() => handleNavigation(-NAV_STEP)} className="btn-flat">
+        <button onClick={() => handleNavigation(-NAV_STEP)} className="btn-flat d-flex">
           <img src={iconPrevious} alt="previous icon" className="left" /> Previous
-        </button>
-      </div>
-      <div className="pagination-nav next right">
-        <button onClick={() => handleNavigation(NAV_STEP)} className="btn-flat">
-          Next <img src={iconNext} alt="next icon" className="right"/>
         </button>
       </div>
       <ul className="pagination-list text-center">
@@ -74,6 +69,11 @@ export const Pagination = ({
           </li>
         ))}
       </ul>
+      <div className="pagination-nav next right">
+        <button onClick={() => handleNavigation(NAV_STEP)} className="btn-flat">
+          Next <img src={iconNext} alt="next icon" className="right"/>
+        </button>
+      </div>
     </div>
   );
 };

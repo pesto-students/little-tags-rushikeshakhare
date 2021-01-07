@@ -3,8 +3,8 @@ import { ProductCard, Pagination } from "../../components";
 import { PRODUCT_LIST } from "../../AppConstants";
 import { usePaginator } from "../../hooks/usePaginator";
 import { connect } from "../../store";
-import "./ProductList.scss";
 import { ROUTES } from "../../AppConfig";
+import "./ProductList.scss";
 
 interface IProductListProps {
   history: any;

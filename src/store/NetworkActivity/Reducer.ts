@@ -10,7 +10,7 @@ const initialState: IActivityState = { inProgress: false, list: [] };
 export default function reducer(state = initialState, action: any) {
   switch (action.type) {
     case NETWORK_ACTIVITY_STARTED: {
-      const newState = { ...state, list: [...state.list, action.key] };
+      const newState = { ...state, list: [...state.list, action.apiUrl] };
       return {
         ...state,
         ...newState,
@@ -20,7 +20,7 @@ export default function reducer(state = initialState, action: any) {
     case NETWORK_ACTIVITY_COMPLETETD: {
       const newState = {
         ...state,
-        list: state.list.filter((apiKey: string) => apiKey !== action.key),
+        list: state.list.filter((apiKey: string) => apiKey !== action.apiUrl),
       };
       return {
         ...state,
