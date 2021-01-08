@@ -22,8 +22,8 @@ export const OrderItem = ({
 
   return (
     <div className='order-item d-flex'>
-      <div className='order-item-image'>
-        <Image src={image} fallback={<Shimmer width={150} height={150} />} />
+      <div className='order-item-image d-flex'>
+        <Image src={image} fallback={<Shimmer width={100} height={100} />} />
       </div>
 
       <div className='order-item-details'>

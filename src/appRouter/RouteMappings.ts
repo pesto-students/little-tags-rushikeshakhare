@@ -52,6 +52,11 @@ export const RouteMappings: IRoute[] = [
     isUserAuthenticated: false,
   },
   {
+    path: ROUTES.CATEGORY_PRODUCTS(":category"),
+    component: ProductList,
+    isUserAuthenticated: false,
+  },
+  {
     path: ROUTES.CART,
     component: Cart,
     isUserAuthenticated: true,

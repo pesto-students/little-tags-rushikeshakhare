@@ -13,6 +13,10 @@ https://cocky-pare-43b620.netlify.app/#/testbed
 # Additional Implementations
 
 Keyboard Accessibility
+Sandbox Payment Gateway
+Wishlist
+Phone Number Authentication
+Product Suggestion Engine
 
 # MVP Requirement
 

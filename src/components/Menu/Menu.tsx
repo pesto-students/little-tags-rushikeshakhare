@@ -1,12 +1,11 @@
-import * as React from "react";
-import { MenuUserDetails } from "./MenuUserDetails";
-import { APP_TITLE } from "../../AppConstants";
-import { MenuList } from "./MenuList";
-import { MenuCategories } from "./MenuCategories";
-import closeIcon from "../../assets/images/close.svg";
-import appLogoBlack from '../../assets/images/app-logo-black.png'
-import { Application } from "../../Application";
-import "./menu.scss";
+import * as React from 'react';
+import { MenuUserDetails } from './MenuUserDetails';
+import { MenuList } from './MenuList';
+import { MenuCategories } from './MenuCategories';
+import closeIcon from '../../assets/images/close.svg';
+import appLogoBlack from '../../assets/images/app-logo-black.png';
+import { Application } from '../../Application';
+import './menu.scss';
 
 interface IMenuProps {
   onClose: () => void;
@@ -26,20 +25,18 @@ export const Menu = ({
   isAuthenticated,
 }: IMenuProps): JSX.Element => {
   return (
-    <div className="menu">
-      <div className="menu-title d-flex">
-        <div className="menu-title-text">
-         <img src={appLogoBlack} alt="App Logo" className="app-logo-image-lg"/>
+    <div className='menu'>
+      <div className='menu-title d-flex'>
+        <div className='menu-title-text'>
+          <img src={appLogoBlack} alt='App Logo' className='app-logo-image-lg' />
         </div>
-        <div className="menu-title-action">
-          <button type="button" className="btn d-flex" onClick={onClose}>
-            <img src={closeIcon} alt="Close Button" />
+        <div className='menu-title-action'>
+          <button type='button' className='btn d-flex' onClick={onClose}>
+            <img src={closeIcon} alt='Close Button' />
           </button>
         </div>
       </div>
-      {isAuthenticated && (
-        <MenuUserDetails name={Application.getInstance().UserData?.name} />
-      )}
+      {isAuthenticated && <MenuUserDetails name={Application.getInstance().UserData?.name} />}
 
       <MenuCategories
         categories={categories}
@@ -51,7 +48,7 @@ export const Menu = ({
 
       {isAuthenticated && (
         <>
-          <div className="menu-separator">
+          <div className='menu-separator'>
             <hr />
           </div>
           <MenuList
@@ -65,12 +62,8 @@ export const Menu = ({
       )}
 
       {isAuthenticated && (
-        <div className="menu-logout">
-          <button
-            type="button"
-            className="btn menu-logout-btn"
-            onClick={onLogoutClick}
-          >
+        <div className='menu-logout'>
+          <button type='button' className='btn menu-logout-btn' onClick={onLogoutClick}>
             Logout
           </button>
         </div>

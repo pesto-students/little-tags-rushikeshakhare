@@ -6,6 +6,7 @@ import { Cart } from '../../models/Cart';
 import { showToast } from '../../utilities';
 import { ROUTES } from '../../AppConfig';
 import './orders.scss';
+
 interface IOrdersProps {
   orders: any;
   history: any;
@@ -34,7 +35,7 @@ export const Orders = connect((state: any) => ({
   const onProductImageClick = (productID: number) => {
     history.push(ROUTES.PRODUCT_DETAILS(productID));
   };
-  console.log(myOrders);
+
   return (
     <div className='orders'>
       <h1 className='orders-title'>{ORDERS.SCREEN_TITLE}</h1>

@@ -36,7 +36,7 @@ export const LOGIN_WITH_PHONE_TEXT = "Phone Number";
 
 // Menu
 export const MENU_CATEGORIES_TITLE = "CATEGORIES";
-export const MENU_GREETING_TEXT = "HEY";
+export const MENU_GREETING_TEXT = "Hey,";
 
 // Order Item
 export const ORDER_ITEM_ORDER_AGAIN_TEXT = "ORDER AGAIN";
