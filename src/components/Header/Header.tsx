@@ -12,6 +12,7 @@ import iconCartBlackWhite from '../../assets/images/cart-white.svg';
 import appLogoWhite from '../../assets/images/app-logo-white.png';
 import appLogoBlack from '../../assets/images/app-logo-black.png';
 import './Header.scss';
+import { AppLoader } from '../AppLoader';
 
 export enum HeaderType {
   BLACK,
@@ -152,7 +153,10 @@ export const Header = ({
             <img src={getCartIcon()} alt='Cart Icon' />
           </button>
           <div className='user-data right'>
-            <img src={getUserIcon()} alt='User Avatar Icon' />
+            <img
+              src={Application.getInstance().UserData.avatar || getUserIcon()}
+              alt='User Avatar Icon'
+            />
             <div className='user-text right'>{Application.getInstance().UserData.name}</div>
           </div>
         </>

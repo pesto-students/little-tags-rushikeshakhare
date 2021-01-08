@@ -25,13 +25,13 @@ class Order {
   };
 
   addItemsToPastOrders = (newOrderItems: any[]) => {
+
     const allOrderProducts = this.getOrder();
 
     newOrderItems = newOrderItems.map((item) => {
       item.product.date = Date.now();
       return item;
     });
-
     allOrderProducts.splice(0, 0, ...newOrderItems);
     this.setOrder(allOrderProducts);
 

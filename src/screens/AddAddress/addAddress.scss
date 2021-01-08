@@ -1,6 +1,5 @@
 .add-address {
     margin: auto;
-    margin-top: 100px;
     width: 70%;
     margin-bottom: 20px;
 
@@ -26,5 +25,31 @@
         color: white;
         padding: 15px 80px;
         border-radius: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .add-address{
+        margin-top: 150px;
+    }
+
+    .add-address-form{
+        flex-direction: column;
+    }
+
+    .add-address-form-section-right{
+        padding-left: 0;
+    }
+    .add-address-action{
+        padding: 15px 60px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .add-address{
+        margin-top: 100px;
+    }
+    .add-address-form{
+        flex-direction: row;
     }
 }
