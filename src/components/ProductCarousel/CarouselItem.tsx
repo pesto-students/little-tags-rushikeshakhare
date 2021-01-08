@@ -1,5 +1,4 @@
 import React from 'react';
-import { ROUTES } from '../../AppConfig';
 
 const TRUNCATE_LENGTH = 20;
 
@@ -7,9 +6,9 @@ interface ICarouselItem {
     id: any;
     content: any;
     title: string;
-    history: any;
+    onItemClicked: (id: any) => void;
 }
-export const CarouselItem = ({ id, content, title, history }: ICarouselItem) => {
+export const CarouselItem = ({ id, content, title, onItemClicked }: ICarouselItem) => {
 
     const truncateText = (text: string) => {
 
@@ -22,7 +21,7 @@ export const CarouselItem = ({ id, content, title, history }: ICarouselItem) => 
     }
 
     return (
-        <div onClick={() => history.push(ROUTES.PRODUCT_DETAILS(id))} className="carousel-item" style={{backgroundImage: `url(${content})`}}>
+        <div onClick={() => onItemClicked(id)} className="carousel-item" style={{backgroundImage: `url(${content})`}}>
 
             <div className="title">{truncateText(title)}</div>
         </div>

@@ -20,7 +20,9 @@ import imgHeartRegular from '../../assets/images/heart-regular.svg';
 import imgHeartSolid from '../../assets/images/heart-solid.svg';
 import { showToast } from '../../utilities';
 import Fuse from 'fuse.js';
-import './ProductDetails.scss';
+import Skeleton from 'react-loading-skeleton';
+import "./ProductDetails.scss";
+import { ROUTES } from "../../AppConfig";
 
 interface IProductDetailsProps {
   productDetails: any;
@@ -28,12 +30,15 @@ interface IProductDetailsProps {
   match: any;
   authenticated: any;
   history: any;
+  networkActivity: any;
 }
 
 export const ProductDetails = connect((state: any) => ({
   productDetails: state?.products?.productDetails,
+  networkActivity: state.networkActivity,
 }))((props: IProductDetailsProps) => {
-  const { productDetails, productList, match, authenticated, history } = props;
+  
+  const { productDetails, productList, match, authenticated, history, networkActivity } = props;
 
   const [productQuantity, setProductQuantity] = useState(1);
   const [size, setSize] = useState(null);
@@ -90,20 +95,46 @@ export const ProductDetails = connect((state: any) => ({
       });
       showToast(message);
     }
-  };
+  }
+
+  const handleRoutingEvent = (id: any) => {
+    history.push(ROUTES.PRODUCT_DETAILS(id));
+
+    // Here Pleasee handle yhis
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  
 
   return (
     <div className='details-section'>
       <div className='product-details-container d-flex'>
         <div className='carousel-holder'>
-          <ImageCarousel
-            images={[productDetails?.image, imgCarousel3, imgCarousel4, imgCarousel2, imgCarousel1]}
-            width={360}
-            height={480}
-          />
+          {
+            networkActivity?.inProgress &&
+            <Skeleton width={360} height={480}/>
+          }
+          {
+            !networkActivity.inProgress && 
+            <ImageCarousel
+              images={[productDetails?.image, imgCarousel3, imgCarousel4, imgCarousel2, imgCarousel1]}
+              width={360}
+              height={480}
+            />
+          }
         </div>
         <div className='content-holder'>
-          <div className='product-details-content'>
+
+          {
+            networkActivity?.inProgress &&
+            <div className="product-details-content">
+              <h3 className="title"><Skeleton height={30}/></h3>
+              <div className="details shimmer-details">Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday</div>
+              <p className="details-shimmer"><Skeleton count={12}/></p>
+            </div>
+          }
+          
+          { !networkActivity?.inProgress &&
+            <div className='product-details-content'>
             <div className='title'>{productDetails?.title}</div>
             <div className='price'>₹ {productDetails?.price}</div>
             <div className='details'>{productDetails?.description}</div>
@@ -171,7 +202,8 @@ export const ProductDetails = connect((state: any) => ({
                 />
               </button>
             )}
-          </div>
+            </div>
+          }
         </div>
       </div>
 
@@ -188,10 +220,11 @@ export const ProductDetails = connect((state: any) => ({
                     ? suggestedProducts(productList, productDetails.title)
                     : []
                 }
-                history={history}
+                routingEvent={handleRoutingEvent}
                 width={270}
                 height={380}
               />
+             
             </div>
           </div>
         )}
