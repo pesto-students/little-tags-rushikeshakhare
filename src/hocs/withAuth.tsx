@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppLoader, SetUserNamePopup } from "../components";
+import { AppLoader, LoaderBar, SetUserNamePopup } from "../components";
 import { firebase } from "../services/firebase";
 import { Application } from "../Application";
 import { showToast, PopupUtility } from "../utilities";
@@ -66,7 +66,8 @@ export const withAuth = (AppComponent: any) => {
           <div id={TOAST_CONTAINER_ID} />
 
           {loading ? (
-            <AppLoader />
+            // <AppLoader />
+            <LoaderBar />
           ) : (
             <AppComponent {...this.state} {...this.props} />
           )}
