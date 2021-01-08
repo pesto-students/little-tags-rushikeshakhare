@@ -99,6 +99,14 @@
             }
         }
     }
+
+    .details-shimmer {
+        width: 90%;
+    }
+    .shimmer-details {
+        height: 0px;
+        overflow: hidden;
+    }
 }
 @media only screen and (max-width: 768px) {
     .product-details-container{ 

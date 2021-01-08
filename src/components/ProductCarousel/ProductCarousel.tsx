@@ -5,14 +5,14 @@ import { CarouselNavigation } from './CarouselNavigation';
 import { CarouselIndicators } from './CarouselIndicators';
 import './ProductCarousel.scss';
 
-interface IImageCarousel {
+interface IProductCarousel {
     products: any[];
     width: number;      // width in pixels
     height: number;     // Height in pixels
-    history: any;
     showIndicators?: boolean;
+    routingEvent: (id: any) => void;
 }
-export const ProductCarousel = ({ products, width, height, history, showIndicators = false }: IImageCarousel) => {
+export const ProductCarousel = ({ products, width, height, showIndicators = false, routingEvent }: IProductCarousel) => {
 
     const [state, setState] = useState({ activeIndex: 0, translate: 0, transition: 0.45 });
     const { activeIndex, translate, transition } = state;
@@ -55,8 +55,8 @@ export const ProductCarousel = ({ products, width, height, history, showIndicato
                 width={width * products.length}
             >
                 {products.map((product, index) => (
-                    <CarouselItem key={`${index}-${product.title}`} content={product.image} id={product.id} title={product.title} history={history} />
-                ))}   
+                    <CarouselItem key={`${index}-${product.title}`} content={product.image} id={product.id} title={product.title} onItemClicked={routingEvent} />
+                ))}
 
             </CarouselContent>
 
