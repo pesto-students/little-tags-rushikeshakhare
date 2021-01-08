@@ -40,7 +40,7 @@ export const ProductList = connect()(({ history, productList, match }: IProductL
 
       <div className='pagination-container'>
         <Pagination
-          totalPages={totalPages * 4}
+          totalPages={totalPages + 1}
           onPageSelected={(page: any) => setCurrentPage(page)}
         />
       </div>
