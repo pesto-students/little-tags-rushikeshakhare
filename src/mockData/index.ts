@@ -7,19 +7,19 @@ import imgProduct5 from "../assets/images/product-5.jpg";
 export const categories = [
   {
     label: "Accessories",
-    value: "/product-list",
+    value: "/category/Accessories",
   },
   {
     label: "Shirts",
-    value: "/product-list",
+    value: "/category/Shirts",
   },
   {
     label: "Pants",
-    value: "/product-list",
+    value: "/category/Pants",
   },
   {
     label: "Jackets",
-    value: "/product-list",
+    value: "/category/Jackets",
   },
 ];
 

@@ -1,6 +1,6 @@
 .toast {
     position: fixed;
-    top: 50px;
+    top: 70px;
     right: 10px;
     background: orange;
     color: black;
@@ -22,4 +22,18 @@
         opacity: 1;
         transform: translateY(0px);
     }
+}
+
+@media only screen and (max-width: 768px) {
+    .toast {
+        top:60px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+   .toast {
+    padding: 15px 30px;
+   }
 }

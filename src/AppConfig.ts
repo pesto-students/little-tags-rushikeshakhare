@@ -15,6 +15,7 @@ export const ROUTES = {
   THANK_YOU: "/payment-success",
   SORRY: "/payment-failed",
   WISH_LIST: "/wish-list",
+  CATEGORY_PRODUCTS:(category:any) => `/category/${category}`
 };
 
 export const CONTAINER_SCROLL_THROTTLE_TIME = 100;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   HeaderType,
   ConfirmationPopup,
@@ -9,23 +9,20 @@ import {
   Header,
   Footer,
   LoaderBar,
-} from "./components";
-import {
-  LOGGED_OUT_MESSAGE,
-  LOGOUT_CONFIRMATION_MESSAGE,
-} from "./AppConstants";
+} from './components';
+import { LOGGED_OUT_MESSAGE, LOGOUT_CONFIRMATION_MESSAGE } from './AppConstants';
 import {
   CONTAINER_SCROLL_THROTTLE_TIME,
   HEADER_SCROLL_THRESHOLD,
   ROUTES,
   LOGIN_LOADED_STORAGE_KEY,
-} from "./AppConfig";
-import { PopupUtility, throttle, showToast, StorageManager } from "./utilities";
-import { firebase } from "./services/firebase";
-import { fetchProducts } from "./store/actions";
-import { categories, userMenuOptions } from "./mockData";
-import { connect } from "./store";
-import { withRouter } from "react-router-dom";
+} from './AppConfig';
+import { PopupUtility, throttle, showToast, StorageManager } from './utilities';
+import { firebase } from './services/firebase';
+import { fetchProducts } from './store/actions';
+import { categories, userMenuOptions } from './mockData';
+import { connect } from './store';
+import { withRouter } from 'react-router-dom';
 
 interface IAppContainerProps {
   children: JSX.Element | JSX.Element[];
@@ -57,8 +54,7 @@ export const AppContainer = withRouter<any, any>(
     const { pathname } = location;
 
     const onContainerScroll = (e: React.BaseSyntheticEvent) => {
-      if (e.target.scrollTop > HEADER_SCROLL_THRESHOLD)
-        setHeaderType(HeaderType.BLACK);
+      if (e.target.scrollTop > HEADER_SCROLL_THRESHOLD) setHeaderType(HeaderType.BLACK);
       else setHeaderType(HeaderType.WHITE);
     };
 
@@ -109,7 +105,7 @@ export const AppContainer = withRouter<any, any>(
       if (StorageManager.get(LOGIN_LOADED_STORAGE_KEY)) setShowLogin(false);
       else {
         setShowLogin(true);
-        StorageManager.set(LOGIN_LOADED_STORAGE_KEY, "1");
+        StorageManager.set(LOGIN_LOADED_STORAGE_KEY, '1');
       }
     }, [authenticated]);
 
@@ -119,7 +115,7 @@ export const AppContainer = withRouter<any, any>(
 
     return (
       <div
-        className="home-screen"
+        className='home-screen'
         onScroll={(e: React.SyntheticEvent) =>
           throttle(onContainerScroll, CONTAINER_SCROLL_THROTTLE_TIME)(e)
         }
@@ -159,7 +155,7 @@ export const AppContainer = withRouter<any, any>(
           navigateToRoute={history.push}
         />
         {children}
-        <Footer />
+        <Footer navigateToRoute={history.push} />
       </div>
     );
   })
