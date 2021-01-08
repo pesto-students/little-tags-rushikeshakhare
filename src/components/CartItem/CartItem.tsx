@@ -9,10 +9,11 @@ interface ICartItemProps {
   image: string;
   name: string;
   price: any;
-  onQuantityChange: (id: number, quantity: number) => void;
+  onQuantityChange: (id: number, quantity: number, size: any) => void;
   defaultQuantity: number;
-  onRemoveButtonClick: (id: number) => void;
+  onRemoveButtonClick: (id: number, size: any) => void;
   onProductClick: (id: number) => void;
+  size: string;
 }
 
 export const CartItem = ({
@@ -24,12 +25,13 @@ export const CartItem = ({
   defaultQuantity,
   onRemoveButtonClick,
   onProductClick,
+  size,
 }: ICartItemProps) => {
   const [quantity, setQuantity] = useState(defaultQuantity);
 
   const handleQuantityChange = (value: number) => {
     setQuantity(value);
-    onQuantityChange(id, value);
+    onQuantityChange(id, value, size);
   };
 
   useEffect(() => {
@@ -44,9 +46,11 @@ export const CartItem = ({
         </div>
 
         <div className='cart-item-content left'>
-          <div className='cart-item-content-title'>{name}</div>
+          <div className='cart-item-content-title'>
+            {name} {size && `(Size - ${size.toUpperCase()})`}
+          </div>
           <ItemQuantity quantity={quantity} handleChange={handleQuantityChange} />
-          <button className='btn remove-btn' onClick={() => onRemoveButtonClick(id)}>
+          <button className='btn remove-btn' onClick={() => onRemoveButtonClick(id, size)}>
             {CART_ITEM_REMOVE_BUTTON_TEXT}
           </button>
         </div>

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { AppLoader, LoaderBar, SetUserNamePopup } from "../components";
-import { firebase } from "../services/firebase";
-import { Application } from "../Application";
-import { showToast, PopupUtility } from "../utilities";
-import { TOAST_CONTAINER_ID, POPUP_CONTAINER_ID } from "../AppConfig";
-import { LOGGED_IN_MESSAGE, USER_SET_NAME_MESSAGE } from "../AppConstants";
+import React, { Component } from 'react';
+import { AppLoader, LoaderBar, SetUserNamePopup } from '../components';
+import { firebase } from '../services/firebase';
+import { Application } from '../Application';
+import { showToast, PopupUtility } from '../utilities';
+import { TOAST_CONTAINER_ID, POPUP_CONTAINER_ID } from '../AppConfig';
+import { LOGGED_IN_MESSAGE, USER_SET_NAME_MESSAGE } from '../AppConstants';
 
 export const withAuth = (AppComponent: any) => {
   return class AuthWrapper extends Component<any, any> {
@@ -19,6 +19,7 @@ export const withAuth = (AppComponent: any) => {
         name: user.displayName,
         email: user.email,
         phone: user.phoneNumber,
+        avatar: user.photoURL,
       };
     };
 
@@ -32,8 +33,7 @@ export const withAuth = (AppComponent: any) => {
       if (!user.displayName) {
         showToast(USER_SET_NAME_MESSAGE);
         PopupUtility(SetUserNamePopup, {
-          setUserName: (name: string) =>
-            user.updateProfile({ displayName: name }),
+          setUserName: (name: string) => user.updateProfile({ displayName: name }),
         }).then(() => {
           this.setUserData(user);
           this.setAuthStatusSuccess();

@@ -27,7 +27,6 @@ class Interceptor {
   }
 
   private apiUrl(config: any): string {
-    console.log( `${config.method}_${config.url}`)
     return `${config.method}_${config.url}`;
   }
 

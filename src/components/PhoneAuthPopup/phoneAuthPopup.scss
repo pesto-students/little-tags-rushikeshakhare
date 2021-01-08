@@ -1,5 +1,4 @@
 .phone-auth-popup {
-    width: 300px;
     min-height: 40px;
     background-color: white;
     border-radius: 5px;
@@ -74,5 +73,17 @@
         100% {
             transform: scale(1);
         }
+    }
+}
+@media only screen and (max-width: 768px) {
+   
+        .phone-auth-popup{
+            width: 80%;
+        }
+}
+
+@media only screen and (min-width: 768px) {
+    .phone-auth-popup{
+        width: 20%;
     }
 }

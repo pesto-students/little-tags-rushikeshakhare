@@ -61,12 +61,7 @@ export function initPaymentRazorpay(
           razorpayPaymentId: response.razorpay_payment_id,
           razorpayOrderId: response.razorpay_order_id,
           razorpaySignature: response.razorpay_signature,
-        };
-
-        // Backend call in here for DB success entry
-        // const result = await NetworkManager.post("http://localhost:4200/payment/success", data);
-
-        console.log(response);
+        };       
         resolve(response);
       },
       prefill: userData,

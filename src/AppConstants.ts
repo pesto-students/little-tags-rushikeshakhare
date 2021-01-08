@@ -115,6 +115,7 @@ export const PRODUCT_DETAILS = {
   ADDED_TO_CART_MESSAGE: " Added to cart",
   ADD_TO_CART_TEXT: "ADD TO CART",
   REMOVE_FROM_CART_TEXT: "REMOVE FROM CART",
+  SIZE_LABEL:'Size'
 };
 
 // Product List Screen
@@ -142,3 +143,25 @@ export const SELECT_PAYMENT_METHOD = {
 export const LOGGED_IN_MESSAGE = (name: string) => `Logged in as ${name}`;
 export const LOGGED_OUT_MESSAGE = "Logged Out Successfully";
 export const LOGOUT_CONFIRMATION_MESSAGE = "Are you sure you want to Logout";
+
+export const CLOTH_SIZES = [
+  {
+    value:'xs',
+    label:'XS'
+  },
+  {
+    value:'s',
+    label:'S'
+  },
+  {
+    value:'m',
+    label:'M'
+  },
+  {
+    value:'l',
+    label:'L'
+  }, {
+    value:'xl',
+    label:'XL'
+  }
+]

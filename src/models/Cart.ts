@@ -24,21 +24,21 @@ class Cart {
     return StorageManager.set(USER_CART_STORAGE_KEY, newCart);
   };
 
-  isProductAlreadyInCart = (productID: number) => {
+  isProductAlreadyInCart = (productID: number,size:any) => {
     const allCartProducts = this.getCart();
     const isProductAlreadyInCart = allCartProducts.find(
-      (cartItem: any) => cartItem.product.id === productID
+      (cartItem: any) => cartItem.product.id === productID && cartItem.size === size
     );
     return !!isProductAlreadyInCart;
   };
 
-  updateItemInCart = (productID: number, quantity: number) => {
+  updateItemInCart = (productID: number, quantity: number,size:any) => {
     let allCartProducts = this.getCart();
-    const isProductAlreadyInCart = this.isProductAlreadyInCart(productID);
+    const isProductAlreadyInCart = this.isProductAlreadyInCart(productID,size);
 
     if (isProductAlreadyInCart) {
       allCartProducts = allCartProducts.map((cartItem: any) => {
-        if (cartItem.product.id === productID) return { ...cartItem, quantity };
+        if (cartItem.product.id === productID && cartItem.size === size) return { ...cartItem, quantity };
         else return cartItem;
       });
       this.setCart(allCartProducts);
@@ -52,7 +52,8 @@ class Cart {
   addItemToCart = (newCartItem: any) => {
     const allCartProducts = this.getCart();
     const isProductAlreadyInCart = this.isProductAlreadyInCart(
-      newCartItem.product.id
+      newCartItem.product.id,
+      newCartItem.size 
     );
 
     if (isProductAlreadyInCart)
@@ -64,13 +65,13 @@ class Cart {
     return { status: true, message: "Product Added to Cart" };
   };
 
-  removeItemFromCart = (productID: number) => {
+  removeItemFromCart = (productID: number,size:any) => {
     let allCartProducts = this.getCart();
-    const isProductAlreadyInCart = this.isProductAlreadyInCart(productID);
+    const isProductAlreadyInCart = this.isProductAlreadyInCart(productID,size);
 
     if (isProductAlreadyInCart) {
       allCartProducts = allCartProducts.filter(
-        (product: any) => product.product.id !== productID
+        (product: any) => !(product.product.id === productID && product.size === size)
       );
 
       this.setCart(allCartProducts);

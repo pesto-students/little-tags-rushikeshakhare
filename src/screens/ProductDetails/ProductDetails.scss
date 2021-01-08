@@ -29,45 +29,16 @@
             font-weight: 300;
         }
 
-        .size-list {
-
-            margin-top: 8px;
-            margin-bottom: 20px;
-
-            ul {
-                list-style: none;
-                display: flex;
-            }
-
-            li {
-                margin-right: 11px;
-                padding: 4px 7px;
-                border: solid 1px transparent;
-
-                button {
-                    font-size: 16px;
-                    font-weight: 500;
-                    background-color: transparent;
-                }
-
-                button[disabled] {
-                    color: #d8d8d8;
-                    cursor: not-allowed;
-                }
-
-            }
-
-            .selected {
-                border-color: #000;
-            }
-        }
-
         .quantity-selection {
             margin-bottom: 20px;
 
             &-title {
                 margin-bottom: 10px;
-            }
+            } 
+        }
+
+        .size-section{
+            margin-bottom: 10px;
         }
 
         .add-to-cart {

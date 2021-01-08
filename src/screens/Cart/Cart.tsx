@@ -14,12 +14,12 @@ interface ICartProps {
 }
 
 export const Cart = connect()(({ cart, history }: ICartProps) => {
-  const handleQuantityChange = (productID: number, quantity: number) => {
-    CartModel.updateItemInCart(productID, quantity);
+  const handleQuantityChange = (productID: number, quantity: number, size: any) => {
+    CartModel.updateItemInCart(productID, quantity, size);
   };
 
-  const onRemoveButtonClick = (productID: number) => {
-    const { message } = CartModel.removeItemFromCart(productID);
+  const onRemoveButtonClick = (productID: number, size: any) => {
+    const { message } = CartModel.removeItemFromCart(productID, size);
     showToast(message);
   };
 
@@ -42,7 +42,7 @@ export const Cart = connect()(({ cart, history }: ICartProps) => {
         </div>
       )}
 
-      {cart.map(({ product: { image, title, price, id }, quantity }: any, index: number) => (
+      {cart.map(({ product: { image, title, price, id }, quantity, size }: any, index: number) => (
         <div key={`${index}-${title}`} className='cart-item-container'>
           <CartItem
             id={id}
@@ -53,6 +53,7 @@ export const Cart = connect()(({ cart, history }: ICartProps) => {
             onRemoveButtonClick={onRemoveButtonClick}
             onProductClick={onProductClick}
             defaultQuantity={quantity}
+            size={size}
           />
         </div>
       ))}
