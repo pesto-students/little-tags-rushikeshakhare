@@ -8,6 +8,7 @@ import {
   Login,
   Header,
   Footer,
+  LoaderBar,
 } from "./components";
 import {
   LOGGED_OUT_MESSAGE,
@@ -33,6 +34,7 @@ interface IAppContainerProps {
   networkActivity: any;
   cart: any;
   productList: any;
+  location: any;
 }
 
 export const AppContainer = withRouter<any, any>(
@@ -44,12 +46,15 @@ export const AppContainer = withRouter<any, any>(
       networkActivity,
       cart,
       productList,
+      location,
     } = props;
 
     const [headerType, setHeaderType] = useState<HeaderType>(HeaderType.WHITE);
     const [showMenu, setShowMenu] = useState<boolean>(false);
     const [showLogin, setShowLogin] = useState<boolean>(false);
     const [authError, setAuthError] = useState<any>(null);
+
+    const { pathname } = location;
 
     const onContainerScroll = (e: React.BaseSyntheticEvent) => {
       if (e.target.scrollTop > HEADER_SCROLL_THRESHOLD)
@@ -119,7 +124,8 @@ export const AppContainer = withRouter<any, any>(
           throttle(onContainerScroll, CONTAINER_SCROLL_THROTTLE_TIME)(e)
         }
       >
-        {networkActivity.inProgress && <AppLoader />}
+        {networkActivity.inProgress && pathname.includes('select-payment-method') && <AppLoader />}
+        {networkActivity.inProgress && !pathname.includes('select-payment-method') && <LoaderBar />}
         {showMenu && (
           <Menu
             categories={categories}

@@ -6,7 +6,7 @@ import { Cart as CartModel } from '../../models/Cart';
 import { connect } from '../../store';
 import { showToast, StorageManager } from '../../utilities';
 import { initPaymentRazorpay } from '../../services';
-import { Order } from '../../Order';
+import { Order } from '../../models/Order';
 import './selectPaymentMethod.scss';
 
 enum paymentMethods {

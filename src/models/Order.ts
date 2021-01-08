@@ -1,6 +1,6 @@
-import { updateOrder } from "./store/actions";
-import { StorageManager } from "./utilities";
-import { USER_ORDERS_STORAGE_KEY } from "./AppConfig";
+import { updateOrder } from "../store/actions";
+import { StorageManager } from "../utilities";
+import { USER_ORDERS_STORAGE_KEY } from "../AppConfig";
 class Order {
   private static instance: Order;
 
