@@ -4,6 +4,7 @@ import { CarouselItem } from './CarouselItem';
 import { CarouselNavigation } from './CarouselNavigation';
 import { CarouselIndicators } from './CarouselIndicators';
 import './ProductCarousel.scss';
+import { fakestoreUrlReplaceFix } from '../../utilities';
 
 interface IProductCarousel {
     products: any[];
@@ -55,7 +56,7 @@ export const ProductCarousel = ({ products, width, height, showIndicators = fals
                 width={width * products.length}
             >
                 {products.map((product, index) => (
-                    <CarouselItem key={`${index}-${product.title}`} content={product.image} id={product.id} title={product.title} onItemClicked={routingEvent} />
+                    <CarouselItem key={`${index}-${product.title}`} content={fakestoreUrlReplaceFix(product.image)} id={product.id} title={product.title} onItemClicked={routingEvent} />
                 ))}
 
             </CarouselContent>

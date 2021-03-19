@@ -5,6 +5,7 @@ import { usePaginator } from '../../hooks/usePaginator';
 import { connect } from '../../store';
 import { ROUTES } from '../../AppConfig';
 import './ProductList.scss';
+import { fakestoreUrlReplaceFix } from '../../utilities';
 
 interface IProductListProps {
   history: any;
@@ -32,7 +33,7 @@ export const ProductList = connect()(({ history, productList, match }: IProductL
               className='list-item item-center'
               onClick={() => history.push(ROUTES.PRODUCT_DETAILS(id))}
             >
-              <ProductCard image={image} name={title} price={price} />
+              <ProductCard image={fakestoreUrlReplaceFix(image)} name={title} price={price} />
             </div>
           ))}
         </div>
