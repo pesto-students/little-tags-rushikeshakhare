@@ -1,0 +1,47 @@
+.select-address {
+    margin: auto;
+    margin-top: 100px;
+
+    &-title {
+        margin-bottom: 20px;
+    }
+
+    &-action-add {
+        background-color: transparent;
+        padding: 10px;
+
+        .plus-icon {
+            width: 16px;
+            height: 16px;
+            border: 2px solid black;
+            align-items: center;
+            border-radius: 50%;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bolder;
+        }
+    }
+
+    &-action-proceed {
+        background-color: black;
+        color: white;
+        padding: 15px 80px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .select-address{
+        margin-top: 150px;
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .select-address{
+        width: 20%;
+    }
+}

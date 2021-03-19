@@ -1,0 +1,119 @@
+.product-details-container {
+    padding-top: 120px;
+    padding: 120px 111px 10px 111px;
+
+    .carousel-holder {
+        display: inline-block;
+    }
+    .content-holder {
+        padding-left: 90px;
+        padding-top: 15px;
+        vertical-align: top;
+        display: inline-block;
+
+        .title {
+            font-size: 29px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .details {
+            margin-bottom: 20px;
+            line-height: 24px;
+            font-weight: 300;
+        }
+
+        .quantity-selection {
+            margin-bottom: 20px;
+
+            &-title {
+                margin-bottom: 10px;
+            } 
+        }
+
+        .size-section{
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart {
+            background-color: #000;
+            color: #fff;
+            border-radius: 7px;
+            padding: 10px 25px;
+            align-items: center;
+            display: inline-flex;
+
+            .cart-text {
+                flex: 1;
+                padding-left: 10px;
+            }
+
+            img {
+                height: 20px;
+            }
+        }
+
+        .add-to-wishlist-btn {
+            height: 20px;
+            width: 20px;
+            margin-top: 8px;
+            margin-right: 2px;
+
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    .details-shimmer {
+        width: 90%;
+    }
+    .shimmer-details {
+        height: 0px;
+        overflow: hidden;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .product-details-container{ 
+        padding: 0;
+        padding-top: 120px;
+        flex-direction: column;
+
+        .carousel-holder{
+            width: auto;
+            margin: auto;
+        }
+        .content-holder{
+            padding: 20px;
+        }  
+    }
+    .suggestions {
+           
+        .header {
+            text-align: left;
+            margin-left: 20px;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
+
+.suggestions {
+    margin-top: 50px;
+    padding-bottom: 120px;
+    .header {
+        font-weight: 300;
+    }
+}
+
+.details-section {
+    min-height: 100vh;
+}

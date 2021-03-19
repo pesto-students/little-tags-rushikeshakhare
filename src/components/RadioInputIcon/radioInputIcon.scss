@@ -1,0 +1,16 @@
+.radio-icon {
+    width: 15px;
+    height: 15px;
+    border: 3px solid black;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    margin-right: 10px;
+
+    .checked {
+        width: 5px;
+        height: 5px;
+        background-color: black;
+        border-radius: 50%;
+    }
+}

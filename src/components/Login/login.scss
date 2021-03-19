@@ -1,0 +1,79 @@
+@import '../../assets/scss/colors.scss';
+@import '../../assets/scss/mixins.scss';
+
+.login-card {
+    min-height: 210px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 40px;
+    box-shadow: 1px 1px 10px 0 rgba(255, 255, 255, 0.5);
+
+    &-close {
+        position: relative;
+
+        img {
+            width: 20px;
+            height: 20px;
+            float: right;
+            position: absolute;
+            right: -20px;
+            top: -20px;
+        }
+    }
+
+    &-title,
+    &-subtitle {
+        text-align: center;
+    }
+
+    &-subtitle {
+        color: grey;
+        margin-top: 10px;
+    }
+
+    &-error {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: rgba(255, 0, 0, 0.3);
+        border-radius: 5px;
+    }
+
+    .phone-number-input {
+        box-sizing: border-box;
+    }
+
+    .btn-auth-provider {
+        background-color: black;
+        padding: 15px 20px;
+        width: 100%;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        border-radius: 8px;
+        outline-color: green;
+
+        img {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .login-card{
+        width: 70%;
+        &-title{
+            h1{
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .login-card{
+        width: 20%;
+    }
+}

@@ -1,0 +1,56 @@
+.wish-list-container {
+    min-height: 100vh;
+    padding-top: 120px;
+
+    .title {
+        font-size: 32px;
+        font-weight: 300;
+        margin-bottom: 32px;
+    }
+    
+
+    .list-item {
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            transform: scale(1.01);
+        }
+    }
+
+    .empty-msg {
+        margin-top: 150px;
+        img {
+            height: 76px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-weight: 300;
+            font-size: 28px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .list{
+            width: 90%;
+            margin: auto;
+            .wish-list-item-text{
+                font-size: 15px;
+                line-height: 15px;
+            }
+            .wish-list-item-price{
+                font-size: 15px;
+            }
+        }
+    }
+    
+    @media only screen and (min-width: 768px) {
+        .list{
+            width: 60%;
+            margin: auto;
+        }
+    }
+}
+

@@ -1,0 +1,209 @@
+.footer-container {
+    background: #32353c;
+    padding-top: 24px;
+    // position: fixed;  // For display purpose only
+    // bottom: 0;
+    width: 100%;
+
+    .content {
+        width: 94%;
+        padding: 23px 3%;
+
+        .content-head {
+            color: #f9f9f9;
+            font-size: 20px;
+            margin-bottom: 13px;
+            width: 100%;
+        }
+        .content-body {
+            color: #6f6f6f;
+        }
+
+        .contact-info {
+
+            width: 250px;
+            
+            p {
+                font-weight: 300;
+                line-height: 24px;
+            }
+        }
+
+        .categories {
+            width: 24%;
+
+            li {
+                font-weight: 300;
+                line-height: 24px;
+            }
+        }
+
+        .stay-in-touch {
+            float: right;
+            margin-right: 3%;
+            width: 260px;
+
+            p {
+                font-weight: 300;
+            }
+
+            input.subscribe-input {
+                height: 30px;
+                margin-top: -6px;
+                padding: 0 8px;
+            }
+            input:focus, textarea:focus, select:focus{
+                outline: none;
+            }
+
+            button {
+                font-size: 16px;
+                background: #32353c;
+                color: #fff;
+                height: 34px;
+                padding: 0 10px;
+                font-weight: 300;
+                border: none;
+                box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+            }
+
+            button:hover {
+                // SOme hovering styles
+            }
+              
+            button:disabled,
+            button[disabled]{
+                border: 1px solid #505358;
+                background-color: #505155;
+                color: #fff;
+            }
+
+            form {
+                margin-bottom: 13px;
+            }
+              
+        }
+    }
+
+    .content>div {
+        display: inline-block;
+        width: 25%;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .payment-links {
+        width: 94%;
+        margin-left: auto;
+        margin-right: auto;
+
+        p {
+            color: #6f6f6f;
+            font-weight: 300;
+        }
+
+        ul {
+            display: inline-flex;
+            margin-top: 7px;
+
+            li {
+                margin-right: 6px;
+            }
+        }
+
+        img {
+            height: 17px;
+        }
+    }
+
+    .copyrights {
+        width: 94%;
+        margin: auto;
+        margin-top: 50px;
+        border-top: solid 1px #6f6f6f;
+        padding: 18px 0;
+        height: 22px;
+        color: rgba(255, 255, 255, 0.71);
+        font-weight: 300;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .footer-container {
+        .content {
+            .contact-info {
+                width: 250px;
+                min-width: 50%;
+            }
+
+            .categories {
+                width: 140px;
+            }
+            .stay-in-touch {
+                float: left;
+                margin-top: 17px;
+                margin-bottom: 17px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+
+
+@media only screen and (max-width: 430px) {
+
+    .footer-container {
+
+        .content {
+            padding-top: 0px;
+    
+            .content-head {
+                font-size: 14px;
+                margin-bottom: 7px;
+            }
+            .content-body {
+                font-size: 12px;
+                
+                p {
+                    line-height: 16px;
+                }
+            }
+
+            .categories {
+                margin-top: 17px;
+                li {
+                    line-height: 16px;
+                }
+            }
+
+            .stay-in-touch {
+
+                input {
+                    font-size: 12px;
+                }
+
+                button {
+                    font-size: 13px;
+                }
+            }
+
+        }
+
+        
+        .copyrights {
+            font-size: 13px;
+            height: 14px;
+        }
+
+        .payment-links {
+            p {
+                font-size: 13px;
+            }
+        }
+    }
+}

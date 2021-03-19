@@ -1,0 +1,58 @@
+.home-screen {
+    height: 100vh;
+    overflow: auto;
+
+    &-categories {
+        height: 80vh;
+        background-color: white;
+        padding: 20px;
+
+        &-title {
+            width: 100%;
+            text-align: center;
+
+            h1 {
+                text-align: center;
+                font-weight: 300;
+            }
+        }
+
+        &-grid {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+
+            .horizontal-categories,
+            .vertical-categories {
+                padding: 20px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .home-screen-categories{
+            height: auto;
+        }
+        &-categories{
+            &-grid {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                margin: auto;
+                margin-top: 20px;
+
+                .horizontal-categories,.vertical-categories{
+                    flex-direction: column;
+                    padding: 0;
+                }
+
+                .category-card{
+                    height: 150px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

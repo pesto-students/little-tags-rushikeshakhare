@@ -1,0 +1,253 @@
+.nav-header {
+
+    height: 70px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    z-index: 1;
+    transition-duration: 200ms;
+
+    .hamburger-toggle-btn {
+        height: 44px;
+        margin-left: 3%;
+        margin-right: 24px;
+        background: transparent;
+        margin-top: 10px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .logo-container {
+        width: auto;
+        font-size: 37px;
+        font-weight: 300;
+        line-height: 44px;
+        margin-top: 10px;  
+    
+    }
+
+    .search-bar-container {
+        width: 44%;
+        padding: 0px 13px;
+        padding-top: 11px;
+    }
+
+    .user-data {
+        margin-right: 3%;
+        margin-top: 11px;
+
+        img {
+            height: 44px;
+            width: 44px;
+            border-radius: 50%;
+        }
+
+        .user-text {
+            line-height: 44px;
+            padding-left: 6px;
+            font-weight: 300;
+            font-size: 18px;
+        }
+    }
+
+    .user-auth-button {
+        margin-right: 20px;
+        margin-top: 12px;
+
+        a {
+            line-height: 44px;
+            padding-left: 6px;
+            font-weight: 300;
+            font-size: 20px;
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+
+    .cart-btn-container {
+        width: 44px;
+        height: 44px;
+        margin-right: 3%;
+        margin-top: 11px;
+        background-color: transparent;
+        position: relative;
+
+        .cart-item-count {
+            position: absolute;
+            right: 0;
+            background-color: red;
+            color: white;
+            width: 17px;
+            height: 17px;
+            align-items: center;
+            border-radius: 50%;
+            justify-content: center;
+        }
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .login-btn {
+        font-size: 27px;
+        background-color: transparent;
+        margin-top: 5px;
+        font-weight: 300;
+    }
+
+    
+}
+
+.theme-white {
+    border-color: #fff;
+
+    * {
+        color: #fff;
+    }
+}
+
+.theme-black {
+    border-color: #000;
+    color: #000;
+    background-color: white;
+
+    * {
+        color: black;
+    }
+}
+
+
+@media only screen and (max-width: 1147px) {
+    .nav-header {
+
+        .search-bar-container {
+            width: 37%;
+            margin-left: 25%;
+            padding-top: 9px;
+        }
+
+        .hamburger-toggle-btn {
+            height: 36px;
+        }
+    
+        .logo-container {
+            font-size: 25px;
+            line-height: 36px;
+        }
+    
+        .user-data {
+    
+            img {
+                height: 36px;
+            }
+    
+            .user-text {
+                line-height: 36px;
+                font-size: 17px;
+            }
+        }
+    
+        .user-auth-button {
+    
+            a {
+                line-height: 36px;
+            }
+        }
+    
+        .cart-btn-container {
+            height: 36px;
+        }
+    
+        .login-btn {
+            font-size: 25px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-header {
+        height: 120px;
+        padding-top: 3px;
+
+        .search-bar-container {
+            width: 94%;
+            display: inline-block;
+            padding-left: 0px;
+            position: relative;
+            left: 3%;
+            top: 8px;
+            padding-top: 0px;
+            margin-left: 0px;
+        }
+
+        .hamburger-toggle-btn {
+            height: 40px;
+        }
+    
+        .logo-container {
+            font-size: 26px;
+            line-height: 30px;
+            margin-top: 5px;
+            margin-left: -10px;
+        }
+
+      
+    
+        .user-data {
+    
+            img {
+                height: 30px;
+            }
+    
+            .user-text {
+                line-height: 30px;
+                font-size: 16px;
+            }
+        }
+    
+        .user-auth-button {
+    
+            a {
+                line-height: 30px;
+                font-size: 18px;
+            }
+        }
+    
+        .cart-btn-container {
+            height: 30px;
+        }
+    
+        .login-btn {
+            font-size: 18px;
+        }
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .nav-header {
+        .user-data {
+            display: none;
+        }
+
+        .hamburger-toggle-btn {
+            height: 30px;
+        }
+
+        .app-logo-image{
+            height: 40px;
+            margin-top: 3px;
+        }
+
+        .user-auth-button {
+    
+            a {
+                line-height: 25px;
+                font-size: 13px;
+            }
+        }
+    } 
+}

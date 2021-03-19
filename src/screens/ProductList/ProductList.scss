@@ -1,0 +1,42 @@
+.product-list-container {
+    min-height: 100vh;
+    padding-top: 120px;
+    margin: auto;
+    .title {
+        font-size: 32px;
+        font-weight: 300;
+        margin-bottom: 32px;
+    }
+
+    .list-item {
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            transform: scale(1.01);
+        }
+    }
+
+   
+}
+
+
+@media only screen and (max-width: 768px) {
+    .pagination-container,.product-list-container{
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .pagination-container,.product-list-container{
+        width: 60%;
+    }
+}
+
+
+
+.pagination-container {
+    margin: auto;
+    margin-bottom: 100px;
+}

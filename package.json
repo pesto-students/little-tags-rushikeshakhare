@@ -1,14 +1,37 @@
 {
-  "name": "little-tags",
+  "name": "little-tags-reactstars",
   "version": "0.1.0",
+  "author": "Rushikesh Akhare <devolopdifferent@gmail.com>",
+  "contributors": [
+    "Ashim Raj Konwar <ashimrajkonwar@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pesto-students/little-tags-rushikeshakhare"
+  },
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^12.19.9",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "axios": "^0.21.1",
+    "firebase": "^8.2.1",
+    "fuse.js": "^6.4.5",
+    "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-loading-skeleton": "^2.1.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-shimmer": "^3.1.1",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
+    "typescript": "^4.1.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -34,5 +57,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-redux": "^7.1.14",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/redux-logger": "^3.0.8",
+    "redux-logger": "^3.0.6"
   }
 }

@@ -2,6 +2,22 @@
 
 Pesto Tech is proudly launching its own Online Clothing Store named **Little Tags**. You have been awarded with the project and you need to design and develop this project which should meet the requirements mentioned in the MVP below.
 
+# Project Demo Link
+
+https://cocky-pare-43b620.netlify.app/
+
+# Testbed Link for Viewing & Testing Components In The Browser
+
+https://cocky-pare-43b620.netlify.app/#/testbed
+
+# Additional Implementations
+
+Keyboard Accessibility
+Sandbox Payment Gateway
+Wishlist
+Phone Number Authentication
+Product Suggestion Engine
+
 # MVP Requirement
 
 1. Show Login/Signup popup to user when he/she lands on the site for first time.

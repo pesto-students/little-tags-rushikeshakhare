@@ -1,0 +1,12 @@
+.radio-card {
+    padding: 15px;
+    margin: 10px 0px;
+    background-color: #f4f4f4;
+    align-items: flex-start !important;
+    border-radius: 10px;
+
+    &-label {
+        text-align: left;
+        flex: 1;
+    }
+}

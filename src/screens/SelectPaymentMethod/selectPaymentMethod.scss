@@ -1,0 +1,43 @@
+.select-payment-method {
+    margin: auto;
+    margin-top: 100px;
+    width: 20%;
+
+    &-title {
+        margin-bottom: 20px;
+    }
+
+    &-address {
+        text-align: left;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    &-options {
+        &-title {
+            margin-bottom: 20px;
+        }
+    }
+
+    &-action {
+        background-color: black;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 768px) {
+    .select-payment-method{
+        margin-top: 150px;
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .select-payment-method{
+        width: 20%;
+    }
+}

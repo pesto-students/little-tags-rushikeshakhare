@@ -1,0 +1,39 @@
+.toast {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    background: orange;
+    color: black;
+    padding: 15px 30px;
+    animation-name: toastOpen;
+    animation-duration: 300ms;
+    animation-iteration-count: initial;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+@keyframes toastOpen {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .toast {
+        top:60px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+   .toast {
+    padding: 15px 30px;
+   }
+}
