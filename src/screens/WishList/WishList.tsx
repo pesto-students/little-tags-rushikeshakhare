@@ -2,7 +2,7 @@ import React from 'react';
 import { WishListItem } from '../../components';
 import { WishList as WishListModel } from '../../models/WishList';
 import { connect } from '../../store';
-import { showToast } from '../../utilities';
+import { fakestoreUrlReplaceFix, showToast } from '../../utilities';
 import { ROUTES } from '../../AppConfig';
 import iconEmpty from '../../assets/images/star-of-life-solid.svg';
 import './WishList.scss';
@@ -38,7 +38,7 @@ export const WishList = connect()(({ wishList, history }: IWishListProps) => {
           >
             <WishListItem
               id={id}
-              image={image}
+              image={fakestoreUrlReplaceFix(image)}
               name={title}
               price={price}
               deleteEvent={handleItemRemove}

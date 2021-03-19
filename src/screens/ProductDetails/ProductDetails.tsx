@@ -18,7 +18,7 @@ import imgCarousel3 from '../../assets/images/carousel-3.jpg';
 import imgCarousel4 from '../../assets/images/carousel-4.jpg';
 import imgHeartRegular from '../../assets/images/heart-regular.svg';
 import imgHeartSolid from '../../assets/images/heart-solid.svg';
-import { showToast } from '../../utilities';
+import { fakestoreUrlReplaceFix, showToast } from '../../utilities';
 import Fuse from 'fuse.js';
 import Skeleton from 'react-loading-skeleton';
 import "./ProductDetails.scss";
@@ -116,7 +116,7 @@ export const ProductDetails = connect((state: any) => ({
           {
             !networkActivity.inProgress && 
             <ImageCarousel
-              images={[productDetails?.image, imgCarousel3, imgCarousel4, imgCarousel2, imgCarousel1]}
+              images={[fakestoreUrlReplaceFix(productDetails?.image), imgCarousel3, imgCarousel4, imgCarousel2, imgCarousel1]}
               width={360}
               height={480}
             />

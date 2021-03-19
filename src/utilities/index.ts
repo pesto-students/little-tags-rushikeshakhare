@@ -24,6 +24,11 @@ export function range(limit: number) {
   return [...Array.from(Array(limit).keys())];
 }
 
+export function fakestoreUrlReplaceFix(url: string) {
+  if (!url) return '';
+  return url.replace('fakestoreapi', 'fakestoreapi.herokuapp');
+}
+
 export { validEmailRegex } from "./FormUtility";
 export { PopupUtility } from "./PopupUtility";
 export { showToast } from "./ToastUtil";

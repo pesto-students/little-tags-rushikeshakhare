@@ -3,7 +3,7 @@ import { CartItem } from '../../components';
 import { CART } from '../../AppConstants';
 import { Cart as CartModel } from '../../models/Cart';
 import { connect } from '../../store';
-import { showToast } from '../../utilities';
+import { fakestoreUrlReplaceFix, showToast } from '../../utilities';
 import { ROUTES } from '../../AppConfig';
 import iconEmptyCart from '../../assets/images/luggage-cart-solid.svg';
 import './Cart.scss';
@@ -46,7 +46,7 @@ export const Cart = connect()(({ cart, history }: ICartProps) => {
         <div key={`${index}-${title}`} className='cart-item-container'>
           <CartItem
             id={id}
-            image={image}
+            image={fakestoreUrlReplaceFix(image)}
             name={title}
             price={(price * quantity).toFixed(2)}
             onQuantityChange={handleQuantityChange}
