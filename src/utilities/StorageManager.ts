@@ -4,9 +4,9 @@ class StorageManager {
   private localStorageAvailable: boolean = false;
 
   constructor() {
-    if (localStorage && localStorage.getItem) {
+    try {
       this.localStorageAvailable = true;
-    }
+    } catch (error) {}
   }
 
   public static getInstance() {
